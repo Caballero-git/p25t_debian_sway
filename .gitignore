@@ -1,0 +1,2 @@
+# build outputs (kernel objects, rootfs, images)
+build/

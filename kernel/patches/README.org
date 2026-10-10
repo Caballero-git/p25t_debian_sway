@@ -1,0 +1,59 @@
+#+TITLE: P25T kernel patches - common series (console and sway)
+#+DATE: 2026-10-10
+
+* What this is
+  - 26 patches on mainline ~f2c53ea949c5048f96b3dbb5a5ee7131ce4ff2de~
+    ("Merge tag 'net-7.3-rc5'", between 7.3-rc4 and rc5). Each patch
+    carries a ~base-commit:~ line.
+  - The same kernel serves both cards; only ~CONFIG_LOCALVERSION~ differs
+    (~-p25t~ console, ~-p25t-sway~ Wayland).
+  - Made from the 30 bring-up patches of ~p25t-linux~ (kernel/patches,
+    0001-0030) by squashing the trial-and-error steps.
+
+* Check against the old series
+  The final tree equals the old series' tree except in the panel driver,
+  where the bring-up log line ~p25t: init sequence sent ...~ is gone and
+  two comments are reworded (no "bring-up" wording). No DT byte changed.
+  Checked twice (2026-10-10): once while building the series, once by
+  applying these files with ~git am~ on a fresh branch.
+
+* Old -> new numbering
+  | New  | Old                         | Subject                                              |
+  |------+-----------------------------+------------------------------------------------------|
+  | 0001 | 0001 (driver), 0002, 0003   | drm/panel: jadard: add the Teclast P25T panel        |
+  | 0002 | 0001 (DT, Makefile)         | arm64: dts: rockchip: add Teclast P25T (P9A6)        |
+  | 0003 | 0024                        | drm/panel: jadard: mode from optional panel-timing   |
+  | 0004 | 0004                        | DWC3 quirks                                          |
+  | 0005 | 0005                        | SDIO Wi-Fi (AIC8800)                                 |
+  | 0006 | 0006                        | Bluetooth UART1 (AIC8800)                            |
+  | 0007 | 0007                        | USB-C host-mode DTB variant                          |
+  | 0008 | 0008, 0010                  | RK817 BOOST and OTG_SWITCH                           |
+  | 0009 | 0009                        | RK817 charger + battery data                         |
+  | 0010 | 0011                        | vdd_cpu (SYR837), CPU DVFS                           |
+  | 0011 | 0012, 0013                  | i2c1, SC7A20 accelerometer                           |
+  | 0012 | 0014                        | vdd_gpu (RK817 DCDC_REG2), GPU DVFS                  |
+  | 0013 | 0015                        | RK817 audio codec + i2s1_8ch                         |
+  | 0014 | 0016                        | tsadc thermal sensor                                 |
+  | 0015 | 0017, 0019                  | Silead GSL3673 touchscreen                           |
+  | 0016 | 0018                        | Input: silead - missing ACK on soft reset            |
+  | 0017 | 0020                        | GSL3673 firmware for CONFIG_EXTRA_FIRMWARE           |
+  | 0018 | 0021                        | speaker amplifier, polled accelerometer              |
+  | 0019 | 0022                        | camera IO bank, rear torch                           |
+  | 0020 | 0023                        | landscape orientation for the panel                  |
+  | 0021 | 0025                        | panel timing node (hfp 21 / hbp 15)                  |
+  | 0022 | 0026                        | measured accelerometer mount-matrix                  |
+  | 0023 | 0027                        | i2c1 at 400 kHz                                      |
+  | 0024 | 0028                        | GC5035 sensor driver                                 |
+  | 0025 | 0029                        | rear camera pipeline, LDO9                           |
+  | 0026 | 0030                        | RK817 LDO2 at 1.2 V                                  |
+  Message bodies kept from the old patches still mention the old numbers
+  (e.g. "patch 0008"); this table translates them.
+
+* Notes
+  - All patches have Jose as author, with Co-Authored-By trailers.
+  - The built-in panel mode in 0001 is still the stock 18/18/18 timing;
+    the DT panel-timing node (0021) overrides it with 21/18/15. The DT
+    node is what the tablet uses.
+  - Patches keep the panel frame for touch (0015), the panel rotation 90
+    (0020) and the landscape accelerometer frame (0022): a compositor
+    relies on all three.

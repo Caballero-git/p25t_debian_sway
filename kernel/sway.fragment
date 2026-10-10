@@ -1,0 +1,2 @@
+# Wayland card (sway profile)
+CONFIG_LOCALVERSION="-p25t-sway"

@@ -1,0 +1,11 @@
+# Added to card 1's p25t-kernel.config for both profiles (2026-10-10).
+# Virtual input devices (input remappers, touch/keyboard helpers)
+CONFIG_INPUT_UINPUT=y
+# dma-buf from memfd: libcamera's software ISP (a camera app later)
+CONFIG_UDMABUF=y
+# Compressed swap in RAM instead of on the SD card
+CONFIG_ZRAM=m
+CONFIG_ZRAM_BACKEND_ZSTD=y
+CONFIG_ZRAM_DEF_COMP_ZSTD=y
+# USB headsets / sound cards
+CONFIG_SND_USB_AUDIO=m

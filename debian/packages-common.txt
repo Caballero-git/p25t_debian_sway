@@ -1,0 +1,51 @@
+# Both profiles: what card 1 gained after its first build (inventory of
+# 2026-10-10, docs/card1-inventory.org), installed without Recommends.
+# system
+locales
+avahi-daemon
+libnss-mdns
+man-db
+command-not-found
+aptitude
+dialog
+acpi
+upower
+lm-sensors
+libpam-systemd
+dbus-user-session
+# hardware
+bluez
+alsa-utils
+triggerhappy
+v4l-utils
+gpiod
+device-tree-compiler
+# Python (+ compilers for pip packages with C parts; on card 1 they came as Recommends)
+python3
+python3-pip
+python3-venv
+python3-numpy
+python3-textual
+python3-doc
+python-is-python3
+build-essential
+# editors
+emacs-nox
+elpa-csv-mode
+elpa-htmlize
+# shell tools
+git
+tmux
+mc
+ncdu
+tree
+ytree
+bat
+btop
+strace
+sqlite3
+# other
+syncthing
+alsaplayer-text
+fonts-terminus
+console-data

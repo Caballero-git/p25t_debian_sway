@@ -1,0 +1,2 @@
+# Console profile only
+consolation

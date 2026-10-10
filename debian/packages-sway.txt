@@ -1,0 +1,26 @@
+# Sway profile only (plan stage 2). Check the names with check_packages.sh first.
+# compositor and terminal
+sway
+swaybg
+swayidle
+foot
+# GPU: Mesa with the Panfrost driver
+libgl1-mesa-dri
+libegl1
+libgles2
+mesa-utils
+glmark2-es2-wayland
+# fonts
+fonts-dejavu-core
+fonts-terminus-otb
+# tablet: rotation, on-screen keyboard, gestures, launcher
+iio-sensor-proxy
+wvkbd
+lisgd
+fuzzel
+# small tools
+brightnessctl
+grim
+slurp
+wl-clipboard
+libinput-tools

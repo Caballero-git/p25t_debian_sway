@@ -1,0 +1,112 @@
+#+TITLE: Card 1 inventory and what the new build takes from it
+#+DATE: 2026-10-10
+#+STARTUP: overview
+
+* Source
+  - ~tools/card_inventory.sh~ on card 1, 2026-10-10, kernel
+    ~7.3.0-rc4-p25t #1 (Oct 10 20:47)~, Debian 13.7, root fs 2.5 of 14 GB.
+  - Raw data in ~build/card-inventory.tar~ (not in git: it holds the
+    Wi-Fi configuration).
+  - 457 packages (145 marked manual, incl. the base set of the first
+    build), 0 package conffiles changed, 183 files that no package owns
+    (in /etc, /usr/local, /var/lib/alsa), 32 units enabled, 7 masked.
+
+* Packages
+** In the first build already (~build_debian.sh~ PKGS)
+   systemd-sysv udev dbus systemd-resolved systemd-timesyncd kmod sudo
+   openssh-server nano vim-tiny less bash-completion console-setup kbd
+   iproute2 iputils-ping ca-certificates curl wget wpasupplicant iw
+   wireless-regdb i2c-tools usbutils htop procps psmisc file rsync
+   e2fsprogs dosfstools fdisk parted evtest fbset tzdata apt-utils
+   debian-archive-keyring
+** Added on card 1 later -> both profiles
+   | Group             | Packages                                                                  |
+   |-------------------+---------------------------------------------------------------------------|
+   | system            | locales avahi-daemon man-db command-not-found aptitude dialog acpi upower lm-sensors |
+   | hardware          | bluez alsa-utils triggerhappy v4l-utils gpiod device-tree-compiler        |
+   | Python            | python3 python3-pip python3-venv python3-numpy python3-textual python3-doc python-is-python3 |
+   | editors           | emacs-nox elpa-csv-mode elpa-htmlize (nano, vim-tiny already in the base)  |
+   | shell tools       | git tmux mc ncdu tree ytree bat btop strace sqlite3                       |
+   | other             | syncthing alsaplayer-text fonts-terminus console-data                     |
+   - ~emacs~ (the metapackage) is marked manual too; with ~emacs-nox~
+     installed it pulls nothing else. The build lists ~emacs-nox~ only.
+   - ~mailutils~ came in as a Recommends of emacs; exim4 was purged by
+     hand. The build installs without Recommends, so neither comes in.
+   - ~libpam-systemd~ is on card 1 now (pulled in later as a
+     dependency), but was not in the first build. The new build lists it.
+** Console profile only
+   consolation
+** Sway profile only (plan stage 2)
+   sway swaybg swayidle foot libgl1-mesa-dri libegl1 libgles2 mesa-utils
+   glmark2-es2-wayland fonts-dejavu-core fonts-terminus-otb
+   iio-sensor-proxy wvkbd lisgd fuzzel brightnessctl grim slurp
+   wl-clipboard libinput-tools libpam-systemd dbus-user-session
+   (names to be confirmed with ~apt-cache policy~ before the build)
+
+* Files no package owns: where each one comes from
+  | File(s) on card 1                                                   | Made by                                   | New build                     |
+  |---------------------------------------------------------------------+-------------------------------------------+-------------------------------|
+  | hostname, hosts, fstab, apt sources, timezone, console font         | ~p25t-setup.sh~ (first build)             | both (hostname per profile)   |
+  | ~p25t-gadget~ + service, ~50-usb0.network~                          | ~p25t-setup.sh~, later fixed by hand      | both (repo version)           |
+  | ~p25t-bootlog~ + service + timer                                     | ~p25t-setup.sh~                           | both                          |
+  | ~99-p25t-vicap.rules~                                                | ~p25t-setup.sh~ (10-07)                   | both                          |
+  | serial-getty@ttyGS0 masked                                          | by hand (09-30)                           | both                          |
+  | locales en_GB/es_ES/en_US, ~LANG=en_GB.UTF-8~, sshd ~AcceptEnv~      | ~install/tablet_stage4.sh~                | both                          |
+  | ~50-usb0.network~ (route metric 2000), ~60-wlan.network~            | ~install/wifi_install.sh~                 | both                          |
+  | ~10-wlan-kernel-name.link~ (keeps the name wlan0)                   | Wi-Fi stage                               | both                          |
+  | ~modules-load.d/aic8800.conf~, wpa_supplicant@wlan0 enabled          | Wi-Fi stage                               | both                          |
+  | ~wpa_supplicant-wlan0.conf~ (network name + password hash)           | ~wifi_install.sh~, typed on the tablet    | both, from ~build/personal/~ (not in git) |
+  | ~p25t-bluetooth.service~ (btattach ttyS1 1.5 Mbaud), bluetooth on    | ~install/bt_install.sh~                   | both                          |
+  | triggerhappy override + ~p25t-audio.conf~ + ~/usr/local/sbin/p25t-audio~ | ~debian/p25t-audio-keys.sh~           | both                          |
+  | ~/var/lib/alsa/asound.state~ (mixer, mic gain 6, capture 255)        | ~alsactl store~ by hand                   | both (copy of card 1's)       |
+  | ~journald.conf.d/p25t-size.conf~ (100 MB)                            | by hand (10-05)                           | both                          |
+  | ~/usr/local/bin/rear-snap~, ~/usr/local/lib/p25t/raw2png.py~         | ~tools/rear-snap.sh~, ~tools/raw2png.py~  | both                          |
+  | ~/etc/p25t-vtrgb~ + ~p25t-console-colors.service~ (dim, backlight 80) | ~debian/p25t-console-colors.sh~          | console only                  |
+  | consolation (~--disable-mouse-reporting~)                           | ~debian/p25t-consolation.sh~              | console only                  |
+  | ~99-p25t-touch-landscape.rules~                                      | ~debian/p25t-touch-landscape.sh~          | console only - *never* on sway (touch would rotate twice) |
+  | ~authorized_keys~ (your PC's ssh key)                               | ~ssh-copy-id~                             | both, from ~build/personal/~  |
+  | keyboard ~XKBLAYOUT="us"~ (console)                                  | first build default                       | open question                 |
+  | leftovers: ~50-usb0.network.stage3/.stage4~, ~p25t-gadget.orig~, ~.resolv.conf.systemd-resolved.bak~ | backups made on the way | not carried |
+  - The rest (rcN.d links, pam common-*, passwd/group/shadow, xml
+    catalogs, console-setup caches, ...) are files that package scripts
+    write; they come with the packages.
+  - Masked units other than ttyGS0 (alsa-utils, cryptdisks, hwclock,
+    sudo, x11-common) are Debian's own defaults.
+
+* Units enabled (32) that the new build must reproduce
+  avahi-daemon (service+socket), bluetooth, p25t-bluetooth, consolation
+  (console only), p25t-console-colors (console only), p25t-gadget,
+  p25t-bootlog.timer, ssh, systemd-networkd (+socket, wait-online),
+  systemd-resolved, systemd-timesyncd, wpa_supplicant@wlan0,
+  triggerhappy (service+socket), lm-sensors, getty@tty1; the rest are
+  Debian defaults (apt-daily, fstrim, man-db, e2scrub, dpkg-db-backup,
+  pstore, network-generator, keyboard-setup, console-setup).
+
+* Home folder of jose
+  - Names only in the inventory. Dotfiles: ~.bashrc~, ~.bash_aliases~,
+    ~.profile~, ~.nanorc~, ~.enanorc~, ~.emacs.d/~, ~.config/~,
+    ~.alsaplayer/~. Work folders: ~documents~, ~music~, ~tests~,
+    ~rear_camera~, ~p25t-mic~, ~boot-backups~, ...
+  - Open question: which of them the new card should start with.
+
+* Decided (Jose, 2026-10-10)
+  - Keyboard: Spanish and US on both cards. Console: ~XKBLAYOUT="es,us"~,
+    ~grp:alt_shift_toggle~ (Alt+Shift switches). Sway: the same two
+    layouts in its own config.
+  - Locale: ~LANG=en_US.UTF-8~. en_GB and es_ES are generated too,
+    because ssh from the PC passes its own locale (AcceptEnv).
+  - syncthing on both cards.
+  - Dotfiles are not copied: the new card starts with Debian's defaults.
+  - New for both cards (my addition, easy to drop):
+    ~/etc/apt/apt.conf.d/90-p25t-no-recommends~, so later
+    ~apt install~ on the tablet also skips Recommends (exim4 lesson).
+
+* A gap in the first inventory (fixed in card_inventory.sh)
+  - It listed changed conffiles and files no package owns, but not
+    package files that are not conffiles and were edited by a script.
+    Example: ~/etc/default/consolation~ (edited by
+    ~p25t-consolation.sh~) appears in neither list.
+  - New: ~27-package-files-changed.txt~ (checked against dpkg's
+    md5sums). A second run on card 1 would show whether anything else
+    was missed; for the sway card only consolation is known, and it is
+    console-only.

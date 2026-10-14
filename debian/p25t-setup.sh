@@ -5,7 +5,7 @@
 #     p25t-setup.sh <USER> <PROFILE> <HOSTNAME>      PROFILE: console | sway
 #
 # Files from the build come in /root/p25t-files/ (removed afterwards):
-#   asound.state, rear-snap.sh, raw2png.py,
+#   asound.state, rear-snap.sh, raw2png.py, set-usb-role.sh,
 #   wpa_supplicant-wlan0.conf, authorized_keys   (personal, from build/personal/)
 # Based on p25t-linux debian/p25t-setup.sh plus everything card 1 gained
 # later (docs/card1-inventory.org). No service is started here (chroot):
@@ -274,6 +274,12 @@ echo "--- camera tools: rear-snap"
 install -m 755 "$F/rear-snap.sh" /usr/local/bin/rear-snap
 mkdir -p /usr/local/lib/p25t
 install -m 755 "$F/raw2png.py" /usr/local/lib/p25t/raw2png.py
+
+echo "--- USB-C role for the next boot: set-usb-role host|normal|status"
+# Card 1 has it as ~/set-usb-role.sh; here system-wide. It switches the
+# DTB copy on P25TBOOT (-normal.dtb / -usbhost.dtb, put there by
+# install_debian.sh) and uses sudo itself, so it is run as the user.
+install -m 755 "$F/set-usb-role.sh" /usr/local/bin/set-usb-role
 
 echo "--- boot log onto the card (for boots without a USB cable)"
 cat > /usr/local/sbin/p25t-bootlog <<'EOT'

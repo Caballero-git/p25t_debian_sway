@@ -1,0 +1,64 @@
+#+TITLE: Sway card: first boot compared with card 1
+#+DATE: 2026-10-14
+#+STARTUP: overview
+
+* Card
+  - SanDisk 64 GB (mmc1 reports SD64G, 59.5 GiB, SDXC). Root partition
+    58 GB, 1.6 GB used after the build.
+  - Made with tools/clone_boot_part.sh read/write and
+    debian/install_debian.sh sway (2026-10-11..14). First boot
+    2026-10-14: console login ~p25t-sway~, Wi-Fi up (192.168.1.122),
+    no failed units, avahi active.
+
+* Health snapshot vs card 1 (card 1: "after" of 2026-10-10)
+  | Topic                      | Result                                                        |
+  |----------------------------+---------------------------------------------------------------|
+  | drivers bound              | same (only the SD card's id differs)                          |
+  | deferred devices           | none on both                                                  |
+  | regulators                 | same; vdd_cpu 1.025 V vs 1.15 V = CPU at 1.416 vs 1.8 GHz then |
+  | devices                    | same                                                          |
+  | dmesg keyword lines        | same                                                          |
+  | failed units               | none on both                                                  |
+  | loaded modules             | same, minus uhid (card 1 has a Bluetooth input device paired) |
+  | boot                       | 14.0 s (5.7 kernel + 8.3 userspace) vs 17.5 s                 |
+  - Only on the new card, explained:
+    - cold first boot: the regulator core sets BOOST, vcc2v8_dvp,
+      vccio_acodec and vdda_0v9 (0.9 -> 1.2 V, patch 0030) - card 1's
+      snapshot came after a warm reboot, where RK817 keeps them;
+    - first boot: machine-id generated, ldconfig 4.2 s, console-setup
+      4.9 s (keymap es,us compiled) - should not repeat;
+    - the Wi-Fi line ~done=1 ... acknowledged=1~ four times: it comes a
+      while after boot (card 1's "after" was taken earlier), so it is
+      timing, not a difference;
+    - iio-sensor-proxy (new package) logs that the SC7A20 has no
+      trigger/buffer - expected for a polled sensor; whether its
+      polling works is checked with monitor-sensor.
+    - ~Could not set hostname: Access denied~: systemd-networkd asks
+      hostnamed to take a name from the router; without polkitd
+      (pulled in on card 1 by a Recommends) it is denied. Fix:
+      ~UseHostname=no~ for wlan0.
+  - Only on card 1, explained: Bluetooth warnings of its paired device.
+
+* Inventory vs card 1
+  - 536 packages (card 1: 457). Only on the new card: the sway stack
+    (sway, wlroots 0.18, foot, Mesa/Panfrost with LLVM, fonts,
+    iio-sensor-proxy, wvkbd, lisgd, fuzzel, ...). GTK 3 and some X11
+    libraries come in as dependencies of one of them (to look at later;
+    libinput-tools is the likely one).
+  - Only on card 1: consolation (console profile), and what card 1 got
+    through Recommends. Wanted from that list and now added to the build:
+    emacs-common-non-dfsg (Emacs manuals), util-linux-extra, unzip,
+    manpages, python3-dev. Not wanted: mailutils (+ mail/database
+    libraries), polkitd, xdg-user-dirs, usbmuxd, sqlite3-doc, ...
+  - Files no package owns: the same, minus the console-profile ones
+    (palette, consolation, landscape touch rule) and card 1's leftover
+    backups; plus the no-Recommends apt files.
+  - Console CODESET: card 1 "Lat15", new card "guess" (= Uni2). Build
+    now sets Lat15.
+  - Enabled units: the same, minus consolation and console colours.
+
+* Fixes (2026-10-14)
+  - Build: debian/packages-common.txt (+5 packages),
+    debian/p25t-setup.sh (UseHostname=no, CODESET Lat15).
+  - Running card: tools/card_fix_2026-10-14.sh (same changes, no
+    rebuild).

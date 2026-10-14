@@ -92,8 +92,9 @@ BACKSPACE="guess"
 EOT
 
 echo "--- console font (large, for the 800x1280 screen)"
-sed -i 's/^FONTFACE=.*/FONTFACE="Terminus"/; s/^FONTSIZE=.*/FONTSIZE="10x20"/' /etc/default/console-setup
+sed -i 's/^FONTFACE=.*/FONTFACE="Terminus"/; s/^FONTSIZE=.*/FONTSIZE="10x20"/; s/^CODESET=.*/CODESET="Lat15"/' /etc/default/console-setup
 # 10x20 (or 11x22) suits the 800x1280 panel; 16x32 is far too big.
+# CODESET Lat15 as on card 1 ("guess" would pick Uni2 for en_US.UTF-8).
 
 echo "--- USB gadget: serial console (ACM) + network (NCM)"
 cat > /usr/local/sbin/p25t-gadget <<'EOT'
@@ -182,6 +183,9 @@ IgnoreCarrierLoss=3s
 
 [DHCPv4]
 RouteMetric=600
+# keep our hostname: without polkitd, networkd's attempt to take a name
+# from the router only logs "Could not set hostname: Access denied"
+UseHostname=no
 EOT
 cat > /etc/systemd/network/10-wlan-kernel-name.link <<'EOT'
 [Match]

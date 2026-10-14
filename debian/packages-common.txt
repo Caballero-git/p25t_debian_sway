@@ -16,6 +16,9 @@ upower
 lm-sensors
 libpam-systemd
 dbus-user-session
+# polkit: iio-sensor-proxy (screen rotation) and hostnamed ask it for permission;
+# card 1 got it through a Recommends (found 2026-10-14 with monitor-sensor)
+polkitd
 # hardware
 bluez
 alsa-utils

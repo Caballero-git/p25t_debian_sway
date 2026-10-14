@@ -48,8 +48,8 @@
   - Only on card 1: consolation (console profile), and what card 1 got
     through Recommends. Wanted from that list and now added to the build:
     emacs-common-non-dfsg (Emacs manuals), util-linux-extra, unzip,
-    manpages, python3-dev. Not wanted: mailutils (+ mail/database
-    libraries), polkitd, xdg-user-dirs, usbmuxd, sqlite3-doc, ...
+    manpages, python3-dev, and polkitd (see below). Not wanted: mailutils
+    (+ mail/database libraries), xdg-user-dirs, usbmuxd, sqlite3-doc, ...
   - Files no package owns: the same, minus the console-profile ones
     (palette, consolation, landscape touch rule) and card 1's leftover
     backups; plus the no-Recommends apt files.
@@ -62,3 +62,14 @@
     debian/p25t-setup.sh (UseHostname=no, CODESET Lat15).
   - Running card: tools/card_fix_2026-10-14.sh (same changes, no
     rebuild).
+
+* polkitd is needed (found 2026-10-14, after the fixes above)
+  - ~monitor-sensor~ on the new card: "Failed to claim accelerometer:
+    ... Not Authorized ... org.freedesktop.PolicyKit1 was not provided".
+    iio-sensor-proxy asks polkit whether the caller may claim the
+    sensor; without polkitd every claim is refused. Sway's auto-rotation
+    claims it the same way.
+  - So the "not wanted" verdict on polkitd above was wrong: it is now in
+    debian/packages-common.txt (both cards; card 1 has it already).
+  - On the running card: ~sudo apt install polkitd~.
+  - UseHostname=no stays: the tablet keeps its own name either way.

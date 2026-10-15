@@ -26,3 +26,13 @@ input type:touch map_to_output DSI-1
 # Every window full screen with a tab bar: easier on a 10" screen and by
 # finger than side-by-side tiling. Super+e switches back to tiling.
 workspace_layout tabbed
+
+# Launcher: fuzzel. Debian's default ($menu = wmenu-run) is not installed
+# on this card (no Recommends).
+bindsym --no-warn $mod+d exec fuzzel
+
+# Auto-rotation from the accelerometer (stage 5, item 1). exec_always runs
+# it again on every reload; the script stops its older copy itself.
+exec_always ~/.config/sway/autorotate.sh run
+# Super+o: lock / unlock the rotation
+bindsym $mod+o exec ~/.config/sway/autorotate.sh toggle

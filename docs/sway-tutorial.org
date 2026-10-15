@@ -1,0 +1,197 @@
+#+TITLE: Sway on the P25T - a growing tutorial
+#+STARTUP: overview
+
+A working guide to sway on the Teclast P25T sway card, written for
+someone who has never used sway. It grows with the card: every stage
+that adds something adds its section here. The keyboard comes first;
+touch is mentioned where it helps.
+
+Conventions: =Super= is the key with the Windows logo (sway calls it
+=Mod4=, the config calls it =$mod=). =Super+Shift+q= means: hold Super
+and Shift, press q. Commands in =code= are typed literally; words in
+=<ANGLE-BRACKETS>= are placeholders.
+
+* What sway is, in five lines
+- Sway is a /tiling/ Wayland compositor: it places windows for you,
+  without overlaps; you rarely drag anything.
+- Everything is reachable from the keyboard; the mouse/touch is optional.
+- Windows live in /workspaces/ (numbered 1-10, like virtual desktops).
+- On this card every new window opens as a /tab/ filling the screen
+  (=workspace_layout tabbed=); the tab titles sit at the top.
+- Its behaviour comes from one text file, =~/.config/sway/config=, which
+  here is a copy of the repo's =config/sway/config=.
+
+* Starting and stopping
+** Before: a keyboard on the tablet
+Sway must be started from a login on the tablet's own screen (tty1), not
+over ssh. The Bluetooth keyboard drops and repeats keys, so use the
+cable keyboard with the USB-C port in host mode:
+#+begin_src sh
+set-usb-role host        # then: sudo reboot
+#+end_src
+Back to normal (USB cable to the PC) with =set-usb-role normal= and a
+reboot. Wi-Fi and ssh work in both modes.
+
+** Start
+Log in on tty1 and type:
+#+begin_src sh
+sway
+#+end_src
+To keep a log for a problem report:
+#+begin_src sh
+sway -d 2> sway.log
+#+end_src
+(Later, stage 5 item 5, sway will start by itself after the tty1 login.)
+
+** Stop
+| How                        | What happens                                          |
+|----------------------------+-------------------------------------------------------|
+| =Super+Shift+e=            | a yellow bar asks; tap/click "Yes, exit sway"          |
+| =swaymsg exit= in foot     | leaves at once, no question                           |
+| =pkill -x sway= over ssh   | when the screen is stuck                              |
+You are back at the tty1 prompt.
+
+** Text consoles while sway runs
+=Ctrl+Alt+F2= ... =Ctrl+Alt+F6= switch to text consoles (log in there
+as usual); =Ctrl+Alt+F1= goes back to sway.
+
+* Keyboard layout
+Spanish first, US second (as on the console).
+| Key         | Effect                       |
+|-------------+------------------------------|
+| =Alt+Shift= | switch es <-> us             |
+The bar does not show the layout yet (stage 5, item 2); type =ñ= to check.
+
+* Windows
+| Keys                       | Effect                                              |
+|----------------------------+-----------------------------------------------------|
+| =Super+Enter=              | new terminal (foot)                                 |
+| =Super+d=                  | launcher (fuzzel): type part of a program name, Enter |
+| =Super+Shift+q=            | close the focused window                            |
+| =Super+Left= / =Right=     | focus previous / next tab (also =Super+h= / =l=)    |
+| =Super+Up= / =Down=        | focus up / down (=Super+k= / =j=)                   |
+| =Super+Shift+<ARROW>=      | move the window that way                            |
+| =Super+f=                  | fullscreen on/off                                   |
+| =Super+Shift+space=        | floating on/off (a normal overlapping window)       |
+| =Super+space=              | focus between floating and tiled windows            |
+| =Super+a=                  | focus the parent container                          |
+With a mouse/touch: tap a tab title to focus it; =Super= + drag moves a
+floating window.
+
+** Layouts
+| Keys      | Layout of the current container                        |
+|-----------+--------------------------------------------------------|
+| =Super+w= | tabbed (the card's default): one window, tabs on top   |
+| =Super+s= | stacking: like tabbed, titles one under the other      |
+| =Super+e= | tiled side by side; press again for top/bottom         |
+| =Super+b= | next window opens to the right (split horizontal)      |
+| =Super+v= | next window opens below (split vertical)               |
+
+** The launcher (fuzzel)
+=Super+d= opens a list of the installed programs. Type a few letters,
+move with the arrows, =Enter= starts the program, =Escape= closes the
+list. Terminal programs (micro, htop, ...) open inside foot.
+Settings: =~/.config/fuzzel/fuzzel.ini= (repo =config/fuzzel/fuzzel.ini=):
+Terminus 18 px.
+foot has three lines in the list: pick plain "Foot". "Foot Server"
+starts a background server without a window, and "Foot Client" only
+works when that server runs.
+
+** Resizing (tiled windows)
+=Super+r= enters resize mode; arrows (or h j k l) grow/shrink by 10 px;
+=Enter= or =Escape= leaves it.
+
+** Scratchpad (a hidden drawer)
+=Super+Shift+minus= hides the focused window there; =Super+minus= shows
+it again (and hides it on the next press). Handy for a terminal you
+call up now and then. On the Spanish layout =minus= is the =-= key next
+to right Shift.
+
+* Workspaces
+| Keys                 | Effect                                         |
+|----------------------+------------------------------------------------|
+| =Super+1= ... =Super+0= | go to workspace 1 ... 10                    |
+| =Super+Shift+1= ...  | move the focused window to workspace 1 ...     |
+The bar (top) shows the workspaces in use; tap one to go there.
+
+* foot, the terminal
+Settings: =~/.config/foot/foot.ini= (repo =config/foot/foot.ini=):
+Terminus 18 px.
+| Keys                       | Effect                                   |
+|----------------------------+------------------------------------------|
+| =Ctrl+Shift+c= / =v=       | copy / paste (clipboard)                 |
+| =Shift+Insert=             | paste the last selection                 |
+| select with the mouse      | copies to the selection                  |
+| =Shift+PageUp= / =PageDown= | scroll back / forward                   |
+| =Ctrl+Shift+r=             | search the scrollback                    |
+| =Ctrl+plus= / =Ctrl+minus= / =Ctrl+0= | bigger / smaller / reset font (this window only) |
+| =Ctrl+Shift+n=             | new foot window in the same folder       |
+| =Ctrl+Shift+o=             | pick a URL on screen with the keyboard   |
+| =Ctrl+Shift+u=             | type a Unicode character by its code     |
+
+* Screen rotation
+Since stage 5, item 1 the screen follows the tablet's position (all four
+ways); touch follows by itself.
+| Keys      | Effect                                                     |
+|-----------+------------------------------------------------------------|
+| =Super+o= | lock / unlock the rotation (unlock jumps to the current position) |
+Status from foot:
+#+begin_src sh
+~/.config/sway/autorotate.sh status
+#+end_src
+By hand (lock first, or the next turn of the tablet overrides it):
+=swaymsg output DSI-1 transform <N>= with =<N>= = =90= (landscape, normal), =270= (upside
+down), =0= or =180= (portrait).
+
+* swaymsg: talking to sway from a terminal
+Every config line can also be typed as a command:
+#+begin_src sh
+swaymsg reload                      # re-read the config (also Super+Shift+c)
+swaymsg -t get_outputs              # the screen: mode, transform, scale
+swaymsg -t get_inputs               # keyboards, touch, layouts
+swaymsg -t get_tree                 # all windows (long JSON)
+swaymsg output DSI-1 transform 90   # turn the screen (see rotation)
+#+end_src
+Over ssh swaymsg needs to be told where sway is (one line, literal):
+#+begin_src sh
+export SWAYSOCK=/run/user/1000/sway-ipc.1000.$(pgrep -x sway).sock
+#+end_src
+
+* Other keys from the default config
+| Keys              | Effect                                              |
+|-------------------+-----------------------------------------------------|
+| =Print=           | screenshot of the whole screen (grim, PNG with the date) |
+| =Super+Shift+c=   | reload the config                                   |
+The default config also binds the keyboard's volume keys to =pactl=,
+which is not installed here: the tablet's own volume buttons work
+through triggerhappy (as on the console). Brightness keys come with
+stage 5, item 3.
+
+* Changing the configuration
+The files on the tablet are copies of the repo's =config/= folder;
+change them in the repo, then install (hp240 tab, then tablet tab):
+#+begin_src sh
+# hp240
+scp -r ~/p25t-backup/p25t-sway/config p25t-sway:p25t-config
+scp ~/p25t-backup/p25t-sway/tools/install_user_config.sh p25t-sway:
+# tablet (delete p25t-config first if an older copy is there: rm -rf p25t-config)
+bash install_user_config.sh p25t-config
+#+end_src
+The installer needs sway running: it reloads sway to check the config
+and puts the old files back if sway reports an error.
+
+* When something goes wrong
+- Sway does not start: start it with =sway -d 2> sway.log= and look at
+  the end of =sway.log= (or copy it to the PC).
+- The screen is stuck: from ssh, =pkill -x sway=.
+- A config error after editing by hand: sway shows a yellow bar with the
+  line; fix it and press =Super+Shift+c=, or put the previous file back
+  (the installer keeps them as =config.pre-<DATE>=).
+- The rotation is wrong: =Super+o= locks it; report with
+  =~/.config/sway/autorotate.sh status=.
+
+* Changes to this file
+- 2026-10-15: first version (start/stop, windows, workspaces, foot,
+  rotation, swaymsg, config install).
+- 2026-10-15: rotation checked in all four positions; launcher (fuzzel)
+  section.

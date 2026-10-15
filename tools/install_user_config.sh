@@ -19,6 +19,8 @@ die() { echo "ABORT: $*" >&2; exit 1; }
 
 [ -f "$SRC/sway/config" ] || die "$SRC/sway/config missing"
 [ -f "$SRC/foot/foot.ini" ] || die "$SRC/foot/foot.ini missing"
+[ -f "$SRC/sway/autorotate.sh" ] || die "$SRC/sway/autorotate.sh missing"
+[ -f "$SRC/fuzzel/fuzzel.ini" ] || die "$SRC/fuzzel/fuzzel.ini missing"
 
 SOCK=""
 for f in /run/user/"$(id -u)"/sway-ipc.*.sock; do
@@ -28,7 +30,7 @@ done
 export SWAYSOCK=$SOCK
 
 UNDO=()   # lines "target|backup" (backup "-" = there was no file before)
-put() {   # put <source> <target>
+put() {   # put <source> <target> [<mode>]
     mkdir -p "$(dirname "$2")"
     if [ -f "$2" ]; then
         if cmp -s "$1" "$2"; then echo "unchanged: $2"; return; fi
@@ -39,11 +41,14 @@ put() {   # put <source> <target>
         UNDO+=("$2|-")
     fi
     cp "$1" "$2"
+    [ -n "${3:-}" ] && chmod "$3" "$2"
     cmp -s "$1" "$2" || die "$2 differs from $1 after copying"
     echo "installed: $2  $(sha256sum "$2" | cut -c1-12)"
 }
 put "$SRC/sway/config"   "$HOME/.config/sway/config"
 put "$SRC/foot/foot.ini" "$HOME/.config/foot/foot.ini"
+put "$SRC/sway/autorotate.sh" "$HOME/.config/sway/autorotate.sh" 755
+put "$SRC/fuzzel/fuzzel.ini" "$HOME/.config/fuzzel/fuzzel.ini"
 
 echo "--- reloading sway (this checks the new config)"
 if swaymsg reload; then

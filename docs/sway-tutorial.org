@@ -116,7 +116,10 @@ The bar (top) shows the workspaces in use; tap one to go there.
 
 * foot, the terminal
 Settings: =~/.config/foot/foot.ini= (repo =config/foot/foot.ini=):
-Terminus 18 px.
+Terminus 18 px, and the "dim" palette of card 1's console (background
+#1c1c1c, text #b0b0b0, toned-down colours, no pure white). To change a
+colour, edit the =[colors]= section in the repo file and install it;
+new foot windows use it.
 | Keys                       | Effect                                   |
 |----------------------------+------------------------------------------|
 | =Ctrl+Shift+c= / =v=       | copy / paste (clipboard)                 |
@@ -232,4 +235,5 @@ and puts the old files back if sway reports an error.
   section.
 - 2026-10-15: the bar; brightness, power key and idle (stage 5, items
   2-4): bar, brightness keys, power key, rotation lock checked on the
-  tablet, also after a reboot; idle dim / screen-off being checked.
+  tablet, also after a reboot; idle dim / screen-off checked.
+- 2026-10-15: foot uses the console's "dim" palette.

@@ -60,7 +60,7 @@ Spanish first, US second (as on the console).
 | Key         | Effect                       |
 |-------------+------------------------------|
 | =Alt+Shift= | switch es <-> us             |
-The bar does not show the layout yet (stage 5, item 2); type =ñ= to check.
+The bar shows the active layout (=kb es= / =kb us=).
 
 * Windows
 | Keys                       | Effect                                              |
@@ -131,6 +131,43 @@ new foot windows use it.
 | =Ctrl+Shift+n=             | new foot window in the same folder       |
 | =Ctrl+Shift+o=             | pick a URL on screen with the keyboard   |
 | =Ctrl+Shift+u=             | type a Unicode character by its code     |
+
+* Programs: PDF, web, pictures
+All open as a new tab; start them from =Super+d= (fuzzel) or from foot.
+=xdg-open <FILE>= (also Midnight Commander's Enter) picks the program by
+file type, from =~/.config/mimeapps.list= (repo =config/mimeapps.list=).
+| Program     | Command                        | Opens by default            |
+|-------------+--------------------------------+-----------------------------|
+| zathura     | =zathura <FILE>.pdf=           | PDF                         |
+| Firefox ESR | =firefox-esr <FILE>.html=      | HTML, http/https links      |
+| imv         | =imv-wayland <FILE>.png=       | PNG, JPEG, GIF, WebP, BMP, TIFF |
+Note: plain =imv= is a different program (renameutils, renames files).
+
+** zathura keys
+| Keys          | Effect                                        |
+|---------------+-----------------------------------------------|
+| j / k         | scroll down / up                              |
+| J / K         | next / previous page                          |
+| + / -         | zoom in / out                                 |
+| a / s         | fit the page / fit the width                  |
+| / and n       | search, next match                            |
+| Ctrl+r        | dark pages on/off (dark is the default here)  |
+| q             | quit                                          |
+Settings: =~/.config/zathura/zathurarc= (repo =config/zathura/zathurarc=).
+
+** imv keys
+| Keys            | Effect                          |
+|-----------------+---------------------------------|
+| arrows, n / p   | next / previous picture         |
+| + / -           | zoom                            |
+| f               | fullscreen                      |
+| q               | quit                            |
+
+** Firefox
+Normal Firefox keys; =Ctrl+o= opens a local file, =Ctrl+q= quits. It is
+the heavy program on this tablet: a few seconds to start, 0.5-1 GB with
+some tabs. Its frame is dark (=~/.config/gtk-3.0/settings.ini=, repo
+=config/gtk-3.0/settings.ini=, asks all GTK programs for dark).
 
 * Screen rotation
 Since stage 5, item 1 the screen follows the tablet's position (all four
@@ -237,3 +274,5 @@ and puts the old files back if sway reports an error.
   2-4): bar, brightness keys, power key, rotation lock checked on the
   tablet, also after a reboot; idle dim / screen-off checked.
 - 2026-10-15: foot uses the console's "dim" palette.
+- 2026-10-15: programs (zathura, Firefox ESR, imv), xdg-open defaults,
+  dark launcher and GTK programs.

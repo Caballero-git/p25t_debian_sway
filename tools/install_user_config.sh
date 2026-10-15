@@ -24,6 +24,9 @@ die() { echo "ABORT: $*" >&2; exit 1; }
 [ -f "$SRC/sway/status.sh" ] || die "$SRC/sway/status.sh missing"
 [ -f "$SRC/sway/brightness.sh" ] || die "$SRC/sway/brightness.sh missing"
 [ -f "$SRC/sway/powerkey.sh" ] || die "$SRC/sway/powerkey.sh missing"
+[ -f "$SRC/gtk-3.0/settings.ini" ] || die "$SRC/gtk-3.0/settings.ini missing"
+[ -f "$SRC/zathura/zathurarc" ] || die "$SRC/zathura/zathurarc missing"
+[ -f "$SRC/mimeapps.list" ] || die "$SRC/mimeapps.list missing"
 
 SOCK=""
 for f in /run/user/"$(id -u)"/sway-ipc.*.sock; do
@@ -55,11 +58,14 @@ put "$SRC/fuzzel/fuzzel.ini" "$HOME/.config/fuzzel/fuzzel.ini"
 put "$SRC/sway/status.sh" "$HOME/.config/sway/status.sh" 755
 put "$SRC/sway/brightness.sh" "$HOME/.config/sway/brightness.sh" 755
 put "$SRC/sway/powerkey.sh" "$HOME/.config/sway/powerkey.sh" 755
+put "$SRC/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
+put "$SRC/zathura/zathurarc" "$HOME/.config/zathura/zathurarc"
+put "$SRC/mimeapps.list" "$HOME/.config/mimeapps.list"
 
 echo "--- reloading sway (this checks the new config)"
 if swaymsg reload; then
     echo "OK: sway reloaded with the new config"
-    echo "new foot windows use the new font; open ones keep the old one"
+    echo "new windows (foot, fuzzel, zathura, GTK programs) use the new settings; open ones keep the old"
     echo "lines with exec (brightness at start, swayidle, power key guard) start at the next sway start"
     exit 0
 fi

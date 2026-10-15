@@ -24,3 +24,11 @@ grim
 slurp
 wl-clipboard
 libinput-tools
+# utilities (2026-10-15): PDF reader, web browser, image viewer, "open with"
+# (imv's command is imv-wayland: plain imv belongs to renameutils)
+zathura
+zathura-pdf-poppler
+firefox-esr
+imv
+fonts-liberation2
+xdg-utils

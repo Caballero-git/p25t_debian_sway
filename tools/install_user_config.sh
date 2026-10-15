@@ -21,6 +21,9 @@ die() { echo "ABORT: $*" >&2; exit 1; }
 [ -f "$SRC/foot/foot.ini" ] || die "$SRC/foot/foot.ini missing"
 [ -f "$SRC/sway/autorotate.sh" ] || die "$SRC/sway/autorotate.sh missing"
 [ -f "$SRC/fuzzel/fuzzel.ini" ] || die "$SRC/fuzzel/fuzzel.ini missing"
+[ -f "$SRC/sway/status.sh" ] || die "$SRC/sway/status.sh missing"
+[ -f "$SRC/sway/brightness.sh" ] || die "$SRC/sway/brightness.sh missing"
+[ -f "$SRC/sway/powerkey.sh" ] || die "$SRC/sway/powerkey.sh missing"
 
 SOCK=""
 for f in /run/user/"$(id -u)"/sway-ipc.*.sock; do
@@ -49,11 +52,15 @@ put "$SRC/sway/config"   "$HOME/.config/sway/config"
 put "$SRC/foot/foot.ini" "$HOME/.config/foot/foot.ini"
 put "$SRC/sway/autorotate.sh" "$HOME/.config/sway/autorotate.sh" 755
 put "$SRC/fuzzel/fuzzel.ini" "$HOME/.config/fuzzel/fuzzel.ini"
+put "$SRC/sway/status.sh" "$HOME/.config/sway/status.sh" 755
+put "$SRC/sway/brightness.sh" "$HOME/.config/sway/brightness.sh" 755
+put "$SRC/sway/powerkey.sh" "$HOME/.config/sway/powerkey.sh" 755
 
 echo "--- reloading sway (this checks the new config)"
 if swaymsg reload; then
     echo "OK: sway reloaded with the new config"
     echo "new foot windows use the new font; open ones keep the old one"
+    echo "lines with exec (brightness at start, swayidle, power key guard) start at the next sway start"
     exit 0
 fi
 

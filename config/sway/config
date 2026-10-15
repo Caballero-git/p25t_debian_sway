@@ -36,3 +36,24 @@ bindsym --no-warn $mod+d exec fuzzel
 exec_always ~/.config/sway/autorotate.sh run
 # Super+o: lock / unlock the rotation
 bindsym $mod+o exec ~/.config/sway/autorotate.sh toggle
+
+# Bar text (stage 5, item 2): keyboard, rotation lock, backlight, volume,
+# Wi-Fi, battery, date. bar-0 is the bar of Debian's default config.
+bar bar-0 status_command ~/.config/sway/status.sh
+
+# Brightness (stage 5, item 3): 80 at start (as on the console), 5 % steps,
+# never below 5 %. The keyboard's own brightness keys work too, if it has
+# them (--no-warn: Debian's default binds them to brightnessctl).
+exec ~/.config/sway/brightness.sh set 80
+bindsym $mod+F5 exec ~/.config/sway/brightness.sh down
+bindsym $mod+F6 exec ~/.config/sway/brightness.sh up
+bindsym --no-warn --locked XF86MonBrightnessDown exec ~/.config/sway/brightness.sh down
+bindsym --no-warn --locked XF86MonBrightnessUp exec ~/.config/sway/brightness.sh up
+
+# Power key and idle (stage 5, item 4). Short press: screen off / on.
+# Idle 3 min: dim; idle 5 min: screen off; any key or touch undoes both.
+# systemd-inhibit keeps logind from powering off on the power key for as
+# long as swayidle runs (swayidle ends with sway). These lines use exec:
+# they start with sway, not on a reload.
+bindsym XF86PowerOff exec ~/.config/sway/powerkey.sh press
+exec systemd-inhibit --what=handle-power-key --who=sway --why="the power key turns the screen off and on" --mode=block swayidle -w timeout 180 '~/.config/sway/brightness.sh dim' resume '~/.config/sway/brightness.sh undim' timeout 300 '~/.config/sway/powerkey.sh idle-off' resume '~/.config/sway/powerkey.sh wake'

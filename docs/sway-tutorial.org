@@ -143,6 +143,38 @@ By hand (lock first, or the next turn of the tablet overrides it):
 =swaymsg output DSI-1 transform <N>= with =<N>= = =90= (landscape, normal), =270= (upside
 down), =0= or =180= (portrait).
 
+* The bar
+The line at the top right (repo =config/sway/status.sh=, every 2 s):
+#+begin_example
+kb es | rot lock | bl 32% | vol 70% | wifi <NETWORK> -55dBm | bat 85% chg | Thu 15 Oct 12:00
+#+end_example
+| Field    | Meaning                                                     |
+|----------+-------------------------------------------------------------|
+| kb       | keyboard layout, es or us (Alt+Shift)                       |
+| rot lock | only while the rotation is locked (=Super+o=)               |
+| bl       | backlight, % of maximum                                     |
+| vol      | volume of the speaker/headphones mixer ("off" when muted)   |
+| wifi     | network name and signal (-40 strong ... -80 weak)           |
+| bat      | battery %, then chg (charging), full or plugged             |
+To test it over ssh: =bash ~/.config/sway/status.sh once= (=kb ?= there,
+because ssh has no sway).
+
+* Brightness, power key and idle
+| Keys / event        | Effect                                                      |
+|---------------------+-------------------------------------------------------------|
+| =Super+F5= / =F6=   | darker / brighter, 5 % steps (also the keyboard's brightness keys) |
+| sway start          | backlight 80 (about 32 %), as on the console                |
+| power key, short    | screen off / on (sway keeps logind from powering off)        |
+| power key, long     | hardware power-off (RK817), as always                       |
+| idle 3 min          | dims to the floor (5 %)                                     |
+| idle 5 min          | screen off                                                  |
+| any key or touch    | undoes the dim / switches the screen on                     |
+The brightness never goes below 5 %, so the screen cannot go black by
+mistake. By hand, from foot: =~/.config/sway/brightness.sh set 120=
+(raw level; =brightness.sh get= prints level and maximum). It works only
+from sway, not over ssh. Outside sway (text console) a short press of the
+power key still powers the tablet off.
+
 * swaymsg: talking to sway from a terminal
 Every config line can also be typed as a command:
 #+begin_src sh
@@ -164,8 +196,8 @@ export SWAYSOCK=/run/user/1000/sway-ipc.1000.$(pgrep -x sway).sock
 | =Super+Shift+c=   | reload the config                                   |
 The default config also binds the keyboard's volume keys to =pactl=,
 which is not installed here: the tablet's own volume buttons work
-through triggerhappy (as on the console). Brightness keys come with
-stage 5, item 3.
+through triggerhappy (as on the console). Brightness: see "Brightness,
+power key and idle".
 
 * Changing the configuration
 The files on the tablet are copies of the repo's =config/= folder;
@@ -189,9 +221,15 @@ and puts the old files back if sway reports an error.
   (the installer keeps them as =config.pre-<DATE>=).
 - The rotation is wrong: =Super+o= locks it; report with
   =~/.config/sway/autorotate.sh status=.
+- The bar shows =[error reading from status command]=: the bar script
+  stopped. =Super+Shift+c= (reload) starts it again; report it with the
+  output of =bash ~/.config/sway/status.sh once= over ssh.
 
 * Changes to this file
 - 2026-10-15: first version (start/stop, windows, workspaces, foot,
   rotation, swaymsg, config install).
 - 2026-10-15: rotation checked in all four positions; launcher (fuzzel)
   section.
+- 2026-10-15: the bar; brightness, power key and idle (stage 5, items
+  2-4): bar, brightness keys, power key, rotation lock checked on the
+  tablet, also after a reboot; idle dim / screen-off being checked.

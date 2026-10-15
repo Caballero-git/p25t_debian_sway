@@ -30,6 +30,17 @@ transform_for() {
     esac
 }
 
+# Ask the bar to refresh now: one line into status.sh's FIFO. No signal -
+# a USR1 arriving while bash runs a $(...) made status.sh die with "unexpected
+# EOF while looking for matching `)'" (bash 5.2, seen 2026-10-15) and swaybar
+# showed "[error reading from status command]". dd with oflag=nonblock fails
+# at once instead of hanging when no status.sh is reading.
+bar_refresh() {
+    local f=${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/p25t-status.fifo
+    [ -p "$f" ] && echo | dd of="$f" oflag=nonblock status=none 2>/dev/null
+    return 0
+}
+
 apply() {
     local t
     t=$(transform_for "$1") || return 0
@@ -69,6 +80,7 @@ toggle)
     else
         touch "$LOCKED"
     fi
+    bar_refresh   # let the bar show the change at once
     ;;
 status)
     if [ -e "$LOCKED" ]; then echo -n "locked"; else echo -n "unlocked"; fi

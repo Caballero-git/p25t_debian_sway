@@ -1,0 +1,28 @@
+# P25T sway config, first version - repo: config/sway/config
+# Installed as ~/.config/sway/config by tools/install_user_config.sh.
+#
+# It loads Debian's default config (/etc/sway/config: key bindings, bar,
+# Super+Enter = foot) and only adds what the P25T needs on top. The panel
+# rotation needs no line here: sway applies the DT panel orientation by
+# itself (transform 90, checked 2026-10-15).
+
+# Terminus 18 px (pango counts in points at 96 dpi: 13.5 pt = 18 px).
+# One size below the console's 20 px: tabbed windows are narrower and 20 px
+# left too few characters per line (chosen 2026-10-15). The bar uses this
+# font too.
+font pango:Terminus 13.5
+
+include /etc/sway/config
+
+# Keyboard: Spanish first, US second, Alt+Shift switches (as on the console)
+input type:keyboard {
+    xkb_layout es,us
+    xkb_options grp:alt_shift_toggle
+}
+
+# Touch follows the panel and its rotation
+input type:touch map_to_output DSI-1
+
+# Every window full screen with a tab bar: easier on a 10" screen and by
+# finger than side-by-side tiling. Super+e switches back to tiling.
+workspace_layout tabbed

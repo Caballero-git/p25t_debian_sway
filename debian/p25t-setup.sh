@@ -5,7 +5,7 @@
 #     p25t-setup.sh <USER> <PROFILE> <HOSTNAME>      PROFILE: console | sway
 #
 # Files from the build come in /root/p25t-files/ (removed afterwards):
-#   asound.state, rear-snap.sh, raw2png.py, set-usb-role.sh,
+#   asound.state, 61-p25t-sensor.hwdb, rear-snap.sh, raw2png.py, set-usb-role.sh,
 #   wpa_supplicant-wlan0.conf, authorized_keys   (personal, from build/personal/)
 # Based on p25t-linux debian/p25t-setup.sh plus everything card 1 gained
 # later (docs/card1-inventory.org). No service is started here (chroot):
@@ -280,6 +280,13 @@ echo "--- USB-C role for the next boot: set-usb-role host|normal|status"
 # DTB copy on P25TBOOT (-normal.dtb / -usbhost.dtb, put there by
 # install_debian.sh) and uses sudo itself, so it is run as the user.
 install -m 755 "$F/set-usb-role.sh" /usr/local/bin/set-usb-role
+
+echo "--- accelerometer: P25T mount matrix for iio-sensor-proxy"
+# systemd's 60-sensor.hwdb gives every devicetree SC7A20 the PineTab2
+# matrix, 90 degrees off here (2026-10-15, tools/accel_probe.sh). This
+# file overrides it; see its comments.
+install -D -m 644 "$F/61-p25t-sensor.hwdb" /etc/udev/hwdb.d/61-p25t-sensor.hwdb
+systemd-hwdb update
 
 echo "--- boot log onto the card (for boots without a USB cable)"
 cat > /usr/local/sbin/p25t-bootlog <<'EOT'

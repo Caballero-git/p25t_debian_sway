@@ -124,7 +124,7 @@ echo "$(find "$R/usr/lib/modules/$REL" -name '*.ko*' | wc -l) modules, firmware 
 say "6/8 Tablet configuration"
 mkdir -p "$R/root/p25t-files"
 cp "$HERE/p25t-setup.sh" "$R/root/p25t-setup.sh"
-cp "$HERE/files/asound.state" "$REPO/tools/rear-snap.sh" "$REPO/tools/raw2png.py" "$REPO/tools/set-usb-role.sh" \
+cp "$HERE/files/asound.state" "$HERE/files/61-p25t-sensor.hwdb" "$REPO/tools/rear-snap.sh" "$REPO/tools/raw2png.py" "$REPO/tools/set-usb-role.sh" \
    "$PERS/wpa_supplicant-wlan0.conf" "$PERS/authorized_keys" "$R/root/p25t-files/"
 [ -f /etc/timezone ] && cp /etc/timezone "$R/root/host-timezone"
 if ! chroot "$R" /bin/bash /root/p25t-setup.sh "$TABLET_USER" "$PROFILE" "$HOSTNAME_NEW" 2>&1 | tee -a "$LOG"; then

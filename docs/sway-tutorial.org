@@ -156,7 +156,11 @@ file type, from =~/.config/mimeapps.list= (repo =config/mimeapps.list=).
 | zathura     | =zathura <FILE>.pdf=           | PDF                         |
 | Firefox ESR | =firefox-esr <FILE>.html=      | HTML, http/https links      |
 | imv         | =imv-wayland <FILE>.png=       | PNG, JPEG, GIF, WebP, BMP, TIFF |
+| GNOME Web   | =epiphany-browser <FILE>.html= | - (on trial, lighter than Firefox) |
 Note: plain =imv= is a different program (renameutils, renames files).
+GNOME Web's window is dark through =ADW_DEBUG_COLOR_SCHEME=prefer-dark=,
+set in =~/.config/sway/autostart.sh= (newer GNOME programs ignore the
+GTK 3 setting). Web pages without a dark design of their own stay white.
 
 ** zathura keys
 | Keys          | Effect                                        |
@@ -296,6 +300,8 @@ the old file is kept as =.profile.pre-<DATE>=).
 - 2026-10-15: foot uses the console's "dim" palette.
 - 2026-10-15: programs (zathura, Firefox ESR, imv), xdg-open defaults,
   dark launcher and GTK programs.
+- 2026-10-16: GNOME Web (epiphany) on trial as a lighter browser; its
+  window made dark.
 - 2026-10-16: the Bluetooth keyboard works again (re-pairing after
   using it elsewhere); sway starts by itself after the tty1 login
   (stage 5, item 5); a new card gets all of this from the build.

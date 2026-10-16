@@ -16,6 +16,14 @@
 # sway's messages go to ~/.local/state/sway.log (the start before that:
 # sway.log.old), for problem reports.
 
+# Dark GNOME programs. GTK 4 programs built on libadwaita (GNOME Web) take
+# light/dark from a desktop settings service (xdg-desktop-portal) that this
+# card does not run; they read neither ~/.config/gtk-3.0/settings.ini nor
+# the GNOME color-scheme key (both tried on the tablet, 2026-10-16). This
+# variable tells libadwaita "dark" directly. Exported in every login shell,
+# so a sway started by hand passes it on too.
+export ADW_DEBUG_COLOR_SCHEME=prefer-dark
+
 if [ -n "${BASH_VERSION:-}" ] && [ "$(tty)" = /dev/tty1 ] \
    && [ -z "${WAYLAND_DISPLAY:-}" ] && [ ! -e "$HOME/.no-sway" ]; then
     echo

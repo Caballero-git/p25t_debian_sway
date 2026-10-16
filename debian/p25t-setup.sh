@@ -7,6 +7,7 @@
 # Files from the build come in /root/p25t-files/ (removed afterwards):
 #   asound.state, 61-p25t-sensor.hwdb, rear-snap.sh, raw2png.py, set-usb-role.sh,
 #   wpa_supplicant-wlan0.conf, authorized_keys   (personal, from build/personal/)
+#   config/   the repo's config/ folder: the user's ~/.config (sway profile)
 # Based on p25t-linux debian/p25t-setup.sh plus everything card 1 gained
 # later (docs/card1-inventory.org). No service is started here (chroot):
 # units are only enabled.
@@ -378,9 +379,26 @@ ACTION=="add|change", KERNEL=="event*", ATTRS{name}=="silead_ts", ENV{LIBINPUT_C
 EOT
 fi
 if [ "$PROFILE" = sway ]; then
-    echo "--- sway profile: nothing starts sway yet (first start by hand, plan stage 4)"
     # never the console's landscape touch rule here: sway rotates touch itself
     rm -f /etc/udev/rules.d/99-p25t-touch-landscape.rules
+    echo "--- sway profile: user config (repo config/ -> ~/.config of $U)"
+    # The same files tools/install_user_config.sh puts on a running card:
+    # sway (config, bar, rotation, brightness, power key and idle, autostart),
+    # foot, fuzzel, GTK dark theme, zathura, xdg-open defaults (mimeapps.list).
+    [ -f "$F/config/sway/config" ] || { echo "$F/config/sway/config missing"; exit 1; }
+    install -d -m 755 -o "$U" -g "$U" "$H/.config"
+    cp -r "$F/config/." "$H/.config/"
+    chmod 755 "$H"/.config/sway/*.sh
+    chmod 644 "$H/.config/sway/autostart.sh"     # read by the login shell, not run
+    chown -R "$U:$U" "$H/.config"
+    echo "--- sway profile: sway starts after the login on tty1 (~/.config/sway/autostart.sh)"
+    # tty2-6 and ssh stay text; ~/.no-sway or a key during the 3 s countdown skips it.
+    [ -f "$H/.profile" ] || install -m 644 -o "$U" -g "$U" /etc/skel/.profile "$H/.profile"
+    cat >> "$H/.profile" <<'EOT'
+
+# P25T: start sway after the login on tty1 (see that file)
+[ -f "$HOME/.config/sway/autostart.sh" ] && . "$HOME/.config/sway/autostart.sh"
+EOT
 fi
 
 echo "--- enable services"

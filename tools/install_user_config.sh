@@ -8,6 +8,11 @@
 # <CONFIG-DIR> is a copy of the repo's config/ folder (scp -r). Existing
 # files are kept as <file>.pre-<date>.
 #
+# It also adds one line to the login profile (~/.profile, or ~/.bash_profile
+# if that exists) that runs ~/.config/sway/autostart.sh: sway then starts by
+# itself after the login on tty1 (stage 5, item 5). Added once, only after
+# sway accepted the new config.
+#
 # The sway config is checked by reloading the running sway: if sway reports
 # an error, the previous files are put back and sway reloaded again.
 # (sway --validate is no use here: sway 1.10 still opens a seat for it,
@@ -27,6 +32,7 @@ die() { echo "ABORT: $*" >&2; exit 1; }
 [ -f "$SRC/gtk-3.0/settings.ini" ] || die "$SRC/gtk-3.0/settings.ini missing"
 [ -f "$SRC/zathura/zathurarc" ] || die "$SRC/zathura/zathurarc missing"
 [ -f "$SRC/mimeapps.list" ] || die "$SRC/mimeapps.list missing"
+[ -f "$SRC/sway/autostart.sh" ] || die "$SRC/sway/autostart.sh missing"
 
 SOCK=""
 for f in /run/user/"$(id -u)"/sway-ipc.*.sock; do
@@ -61,12 +67,40 @@ put "$SRC/sway/powerkey.sh" "$HOME/.config/sway/powerkey.sh" 755
 put "$SRC/gtk-3.0/settings.ini" "$HOME/.config/gtk-3.0/settings.ini"
 put "$SRC/zathura/zathurarc" "$HOME/.config/zathura/zathurarc"
 put "$SRC/mimeapps.list" "$HOME/.config/mimeapps.list"
+put "$SRC/sway/autostart.sh" "$HOME/.config/sway/autostart.sh" 644
+
+# The line that runs autostart.sh at login. bash reads the first of
+# ~/.bash_profile, ~/.bash_login, ~/.profile that exists.
+add_autostart_line() {
+    local p="" f
+    for f in "$HOME/.bash_profile" "$HOME/.bash_login" "$HOME/.profile"; do
+        [ -f "$f" ] && { p=$f; break; }
+    done
+    if [ -z "$p" ]; then
+        p=$HOME/.profile
+        cp /etc/skel/.profile "$p"
+        echo "created: $p (Debian's default)"
+    fi
+    if grep -qF '.config/sway/autostart.sh' "$p"; then
+        echo "unchanged: $p (autostart line there already)"
+        return
+    fi
+    cp -p "$p" "$p.pre-$STAMP"
+    cat >> "$p" <<'EOT'
+
+# P25T: start sway after the login on tty1 (see that file)
+[ -f "$HOME/.config/sway/autostart.sh" ] && . "$HOME/.config/sway/autostart.sh"
+EOT
+    echo "autostart line added: $p  (old copy: $p.pre-$STAMP)"
+}
 
 echo "--- reloading sway (this checks the new config)"
 if swaymsg reload; then
     echo "OK: sway reloaded with the new config"
+    add_autostart_line
     echo "new windows (foot, fuzzel, zathura, GTK programs) use the new settings; open ones keep the old"
     echo "lines with exec (brightness at start, swayidle, power key guard) start at the next sway start"
+    echo "sway starts by itself from the next login on tty1 (touch ~/.no-sway to stop that)"
     exit 0
 fi
 

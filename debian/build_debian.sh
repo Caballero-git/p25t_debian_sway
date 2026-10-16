@@ -55,6 +55,11 @@ done
 for f in "$REPO/tools/rear-snap.sh" "$REPO/tools/raw2png.py" "$HERE/files/asound.state"; do
     [ -f "$f" ] || die "$f missing"
 done
+if [ "$PROFILE" = sway ]; then
+    for f in sway/config sway/autostart.sh sway/status.sh foot/foot.ini mimeapps.list; do
+        [ -f "$REPO/config/$f" ] || die "$REPO/config/$f missing"
+    done
+fi
 [ -f "$KP/release.txt" ] || die "no packed kernel in $KP - run tools/pack_kernel.sh $PROFILE first"
 ( cd "$KP" && sha256sum -c --quiet files.sha256 ) || die "packed kernel files do not match files.sha256"
 REL=$(cat "$KP/release.txt")
@@ -126,6 +131,8 @@ mkdir -p "$R/root/p25t-files"
 cp "$HERE/p25t-setup.sh" "$R/root/p25t-setup.sh"
 cp "$HERE/files/asound.state" "$HERE/files/61-p25t-sensor.hwdb" "$REPO/tools/rear-snap.sh" "$REPO/tools/raw2png.py" "$REPO/tools/set-usb-role.sh" \
    "$PERS/wpa_supplicant-wlan0.conf" "$PERS/authorized_keys" "$R/root/p25t-files/"
+# the user's ~/.config (sway profile): the repo's config/ folder as it is
+[ "$PROFILE" = sway ] && cp -r "$REPO/config" "$R/root/p25t-files/config"
 [ -f /etc/timezone ] && cp /etc/timezone "$R/root/host-timezone"
 if ! chroot "$R" /bin/bash /root/p25t-setup.sh "$TABLET_USER" "$PROFILE" "$HOSTNAME_NEW" 2>&1 | tee -a "$LOG"; then
     die "tablet configuration failed, see $LOG"

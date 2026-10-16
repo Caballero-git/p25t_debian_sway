@@ -23,9 +23,14 @@ and Shift, press q. Commands in =code= are typed literally; words in
 
 * Starting and stopping
 ** Before: a keyboard on the tablet
-Sway must be started from a login on the tablet's own screen (tty1), not
-over ssh. The Bluetooth keyboard drops and repeats keys, so use the
-cable keyboard with the USB-C port in host mode:
+Sway runs from a login on the tablet's own screen (tty1), not over ssh,
+so the tablet needs a keyboard:
+- the Bluetooth keyboard: it reconnects by itself after a key press, also
+  after a reboot (checked 2026-10-16). If it was paired with another
+  device in between, pair it with the tablet again: in =bluetoothctl=,
+  =remove=, =scan on=, =pair=, then =connect= at once (while the keyboard
+  is still in pairing mode), then =trust=;
+- or the cable keyboard, with the USB-C port in host mode:
 #+begin_src sh
 set-usb-role host        # then: sudo reboot
 #+end_src
@@ -33,15 +38,24 @@ Back to normal (USB cable to the PC) with =set-usb-role normal= and a
 reboot. Wi-Fi and ssh work in both modes.
 
 ** Start
-Log in on tty1 and type:
+Sway starts by itself after you log in on tty1 (since 2026-10-16):
+- the login prints =sway starts in 3 s - press any key to stay in the
+  text console.= Any key in those 3 s gives you the plain tty1 prompt;
+- only tty1 does this: tty2-tty6 and ssh logins stay text consoles;
+- to turn it off: =touch ~/.no-sway=; on again: =rm ~/.no-sway=;
+- sway's messages go to =~/.local/state/sway.log= (the start before:
+  =sway.log.old=).
+By hand, at a tty1 prompt (after the countdown key, or after leaving
+sway):
 #+begin_src sh
 sway
 #+end_src
-To keep a log for a problem report:
+With the full debug log for a problem report:
 #+begin_src sh
 sway -d 2> sway.log
 #+end_src
-(Later, stage 5 item 5, sway will start by itself after the tty1 login.)
+The autostart is =~/.config/sway/autostart.sh=, read at login through
+the last lines of =~/.profile=.
 
 ** Stop
 | How                        | What happens                                          |
@@ -49,7 +63,8 @@ sway -d 2> sway.log
 | =Super+Shift+e=            | a yellow bar asks; tap/click "Yes, exit sway"          |
 | =swaymsg exit= in foot     | leaves at once, no question                           |
 | =pkill -x sway= over ssh   | when the screen is stuck                              |
-You are back at the tty1 prompt.
+You are back at the tty1 prompt, still logged in: =sway= starts it
+again, =exit= logs out (the next tty1 login starts sway again).
 
 ** Text consoles while sway runs
 =Ctrl+Alt+F2= ... =Ctrl+Alt+F6= switch to text consoles (log in there
@@ -250,11 +265,16 @@ scp ~/p25t-backup/p25t-sway/tools/install_user_config.sh p25t-sway:
 bash install_user_config.sh p25t-config
 #+end_src
 The installer needs sway running: it reloads sway to check the config
-and puts the old files back if sway reports an error.
+and puts the old files back if sway reports an error. When sway accepts
+it, the installer also adds the autostart lines to =~/.profile= (once;
+the old file is kept as =.profile.pre-<DATE>=).
 
 * When something goes wrong
-- Sway does not start: start it with =sway -d 2> sway.log= and look at
-  the end of =sway.log= (or copy it to the PC).
+- Sway does not start: look at the end of =~/.local/state/sway.log=,
+  or start it by hand with =sway -d 2> sway.log= for the full log (copy
+  it to the PC).
+- Sway starts and you want the console instead: press a key during the
+  3 s countdown, or =touch ~/.no-sway= (over ssh, too).
 - The screen is stuck: from ssh, =pkill -x sway=.
 - A config error after editing by hand: sway shows a yellow bar with the
   line; fix it and press =Super+Shift+c=, or put the previous file back
@@ -276,3 +296,6 @@ and puts the old files back if sway reports an error.
 - 2026-10-15: foot uses the console's "dim" palette.
 - 2026-10-15: programs (zathura, Firefox ESR, imv), xdg-open defaults,
   dark launcher and GTK programs.
+- 2026-10-16: the Bluetooth keyboard works again (re-pairing after
+  using it elsewhere); sway starts by itself after the tty1 login
+  (stage 5, item 5); a new card gets all of this from the build.

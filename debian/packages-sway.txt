@@ -32,3 +32,6 @@ firefox-esr
 imv
 fonts-liberation2
 xdg-utils
+# on trial (2026-10-16): lighter than Firefox; programs being tried out to
+# see what the tablet can do. Remove here whatever is dropped later.
+epiphany-browser

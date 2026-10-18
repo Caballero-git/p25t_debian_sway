@@ -38,6 +38,7 @@ python-is-python3
 build-essential
 # editors (+ the Emacs manuals for C-h i; on card 1 they came as Recommends)
 emacs-nox
+micro
 emacs-common-non-dfsg
 elpa-csv-mode
 elpa-htmlize

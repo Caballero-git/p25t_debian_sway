@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Runs INSIDE the new Debian root filesystem (chroot), called by
 # build_debian.sh. Configures it for the Teclast P25T.
 #

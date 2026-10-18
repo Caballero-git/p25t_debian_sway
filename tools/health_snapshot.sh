@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Health snapshot of the running P25T system, for before/after comparisons
 # (e.g. a kernel change). Run on the tablet:
 #

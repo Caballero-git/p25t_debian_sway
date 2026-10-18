@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Compare two health snapshots made by health_snapshot.sh. Run on the tablet:
 #
 #     bash health_compare.sh <LABEL-A> <LABEL-B>      e.g. before after

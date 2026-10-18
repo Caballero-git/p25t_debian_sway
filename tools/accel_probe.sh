@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # accel_probe.sh - what the accelerometer and iio-sensor-proxy see, for one
 # tablet position. Run on the tablet, with the tablet still:
 #

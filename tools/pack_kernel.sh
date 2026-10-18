@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Pack a built kernel (one profile) for the tablet: boot files, modules
 # (with the AIC8800 Wi-Fi modules), Wi-Fi firmware and the tablet scripts,
 # all in one tar with checksums.

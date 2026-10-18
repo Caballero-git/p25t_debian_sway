@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # privacy_check.sh - keep personal data out of this (public) repository.
 #
 #     bash tools/privacy_check.sh --staged    what is about to be committed

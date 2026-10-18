@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # install_privacy_hooks.sh - make git run tools/privacy_check.sh by itself:
 #   pre-commit: checks what is being committed (files and your e-mail)
 #   pre-push:   checks the whole history before anything leaves the PC

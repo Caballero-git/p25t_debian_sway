@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # status.sh - the text in the P25T's sway bar (stage 5, item 2).
 # Repo: config/sway/status.sh, installed as ~/.config/sway/status.sh and
 # started by swaybar (status_command in the sway config).

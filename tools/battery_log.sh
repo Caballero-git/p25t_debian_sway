@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # battery_log.sh - log what the RK817 fuel gauge reports, to see how its
 # capacity estimate behaves (2026-10-15: 27% before a reboot with the
 # charger in, 72-78% right after it). Read-only: it only reads

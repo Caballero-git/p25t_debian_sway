@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Check that every package in packages-*.txt exists in Debian trixie for
 # arm64. Run on the tablet (it has Debian's package lists), from the
 # folder that holds the lists:

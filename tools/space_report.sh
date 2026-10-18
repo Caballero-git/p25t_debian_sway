@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # space_report.sh - where the PC's disk space goes. READ-ONLY.
 #
 # Usage:

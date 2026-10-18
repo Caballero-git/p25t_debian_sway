@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # bt_keytest.sh - is the Bluetooth keyboard's trouble the keyboard, the
 # radio shared with Wi-Fi (AIC8800, 2.4 GHz), or something else?
 # Records every key press/release for 45 s while you type, with Wi-Fi on

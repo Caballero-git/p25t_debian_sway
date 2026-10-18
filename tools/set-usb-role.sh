@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # set-usb-role.sh - choose which DTB U-Boot loads on the NEXT boot, to pick
 # the USB-C port's role for that boot: "normal" (USB-C acts as a USB
 # device - gives the PC a serial console + network link, current default)

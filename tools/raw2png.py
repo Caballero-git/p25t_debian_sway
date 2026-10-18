@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-2.0-only
 """raw2png.py - turn a raw Bayer frame from the P25T rear camera into a PNG.
 
     python3 raw2png.py FRAME.raw WIDTH HEIGHT [--order GRBG] [--out FILE.png]

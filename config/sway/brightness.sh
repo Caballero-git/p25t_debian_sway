@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # brightness.sh - backlight for the P25T under sway (stage 5, item 3).
 # Repo: config/sway/brightness.sh, installed as ~/.config/sway/brightness.sh.
 #

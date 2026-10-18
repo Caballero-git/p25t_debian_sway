@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # install_user_config.sh - install the repo's sway and foot config for the
 # current user on the tablet. Run as the normal user (no sudo), with sway
 # running on the tablet:

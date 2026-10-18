@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Build the Debian 13 (trixie) arm64 root filesystem for one P25T profile,
 # on the PC. Nothing here touches an SD card or the tablet: the result is
 #     ~/p25t-backup/p25t-sway/build/rootfs-<profile>

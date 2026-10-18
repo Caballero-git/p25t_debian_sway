@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # deploy_kernel.sh - put a new kernel Image and both role DTBs on P25TBOOT
 # (mounted at /boot/firmware), on the tablet, with backups and checksums.
 #

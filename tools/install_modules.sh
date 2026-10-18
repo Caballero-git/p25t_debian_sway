@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Install the kernel modules (and the AIC8800 Wi-Fi firmware) from a folder
 # made by pack_kernel.sh, on the tablet, with a backup of what they replace.
 # Run it BEFORE deploy_kernel.sh, then reboot.

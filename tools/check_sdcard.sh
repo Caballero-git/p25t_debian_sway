@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # check_sdcard.sh - look at an SD card that shows no partitions. READ-ONLY.
 #
 # Usage (DEVICE = the whole card, e.g. /dev/sdb or /dev/mmcblk0 - not a

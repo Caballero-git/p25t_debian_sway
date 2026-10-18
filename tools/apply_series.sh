@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Apply the common P25T patch series to the kernel clone and compare the
 # result with the old bring-up branch.
 #

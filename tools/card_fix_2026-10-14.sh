@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Bring a card built before 2026-10-14 in line with the corrected build
 # (debian/packages-common.txt and debian/p25t-setup.sh of that date):
 #   1. packages card 1 has and the first sway build missed:

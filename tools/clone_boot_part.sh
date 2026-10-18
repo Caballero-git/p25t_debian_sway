@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Copy the boot part of card 1 (the first GiB: GPT, U-Boot partitions 1-3,
 # P25TBOOT) to a new card. The root partition (partition 5) is not copied;
 # install_debian.sh creates a new one that fits the new card.

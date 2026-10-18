@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Build the AIC8800 Wi-Fi driver (out of tree) for one kernel profile.
 #
 # Usage:

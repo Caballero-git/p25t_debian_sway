@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Configure and build the P25T kernel for one profile, out of tree.
 #
 # Usage:

@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Inventory of a running P25T card: what was added or changed after the
 # first Debian build (packages installed by hand, /etc files changed or
 # added, local scripts, enabled services, udev rules, sound state, user

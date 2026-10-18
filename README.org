@@ -240,13 +240,28 @@ as =<SSID>= (=tests/README.org=, "Privacy").
 - =<UPPER-CASE>= in angle brackets is a placeholder to replace, e.g.
   =<DEVICE>= -> =/dev/sdb=.
 
-* Credits and licences
-- Linux: GPL-2.0. The kernel patches here are under the same licence.
+* Licence
+This repository is free software under the GNU General Public License,
+version 2 only (GPL-2.0-only); the full text is in [[file:LICENSE][LICENSE]].
+That covers the scripts, the configuration files, the package lists and
+the documents. The scripts carry an =SPDX-License-Identifier= line.
+
+The kernel patches are under the licences of the files they change or
+add, as each file's SPDX line says: GPL-2.0 for the drivers, and
+=GPL-2.0+ OR MIT= for the board's device tree files, as usual for
+Rockchip device trees.
+
+Not covered: the touchscreen firmware
+=p25t-firmware/silead/gsl3673-p25t.fw= (added by patch 0017). It is
+Silead's, taken from the tablet's stock kernel, and not under the GPL.
+
+* Credits
+- Linux: GPL-2.0.
 - U-Boot: GPL-2.0+. BL31 is a Rockchip binary from =rkbin= and is not in
   this repository.
 - AIC8800 driver: [[https://github.com/radxa-pkg/aic8800][radxa-pkg/aic8800]]
   (GPL-2.0); only a build fix is here.
-- The panel's start-up table and the touchscreen firmware come from the
-  tablet's stock software.
-- Written with help from Claude (Anthropic); the patches carry
+- The panel's start-up table in patch 0001 was read from the stock
+  device tree.
+- Written with help from Claude (Anthropic); commits and patches carry
   =Co-Authored-By= lines.

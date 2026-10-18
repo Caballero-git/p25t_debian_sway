@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # rear-snap.sh - take a photo with the P25T rear camera (GC5035) as a PNG.
 #
 #   rear-snap [-e EXPOSURE] [-g GAIN] [-n FRAMES] [-r auto|0|90|180|270] [-k] [FILE]
@@ -31,7 +32,7 @@
 
 set -u
 EXP=1992; GAIN=1024; FRAMES=20; ROT=auto; KEEP=0
-usage() { sed -n '4,18p' "$0" | sed 's/^# \{0,1\}//'; exit "${1:-0}"; }
+usage() { sed -n '5,19p' "$0" | sed 's/^# \{0,1\}//'; exit "${1:-0}"; }
 while getopts "e:g:n:r:kh" o; do
     case $o in
         e) EXP=$OPTARG ;; g) GAIN=$OPTARG ;; n) FRAMES=$OPTARG ;;

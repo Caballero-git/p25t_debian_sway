@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # sway_check.sh - what a running sway sees on the P25T (plan stage 4).
 # Run over ssh as the normal user (no sudo) while sway runs on tty1:
 #

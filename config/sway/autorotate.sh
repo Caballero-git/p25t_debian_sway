@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # autorotate.sh - turn the P25T screen with the accelerometer, under sway.
 # Repo: config/sway/autorotate.sh, installed as ~/.config/sway/autorotate.sh.
 #

@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # powerkey.sh - power key and idle screen-off for the P25T under sway
 # (stage 5, item 4). Repo: config/sway/powerkey.sh, installed as
 # ~/.config/sway/powerkey.sh.

@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # manual_vs_lists.sh - does the build's package list cover a running card?
 # Run on the tablet as the normal user (read-only), with a copy of the
 # repo's debian/ folder:

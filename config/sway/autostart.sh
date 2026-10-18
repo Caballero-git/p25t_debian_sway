@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: GPL-2.0-only
 # autostart.sh - start sway after the login on tty1 (stage 5, item 5).
 # Repo: config/sway/autostart.sh, installed as ~/.config/sway/autostart.sh.
 # Read (sourced, not run) by the login shell, through this line at the end

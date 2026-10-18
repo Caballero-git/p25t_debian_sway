@@ -1,4 +1,5 @@
 #!/bin/bash
+# SPDX-License-Identifier: GPL-2.0-only
 # Put a built root filesystem and its kernel onto a P25T SD card and switch
 # the card to boot it.
 #

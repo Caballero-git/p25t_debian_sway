@@ -1,0 +1,788 @@
+=================== running   2026-10-15 09:30:42
+kernel: 7.3.0-rc4-p25t-sway #1 SMP PREEMPT Sat Oct 10 10:52:05 CEST 2026
+## /dev/dri
+/dev/dri:
+total 0
+drwxr-xr-x  2 root root        100 Oct 15 08:46 by-path
+crw-rw----+ 1 root video  226,   0 Oct 15 08:46 card0
+crw-rw----+ 1 root video  226,   1 Oct 15 08:46 card1
+crw-rw----+ 1 root render 226, 128 Oct 15 09:30 renderD128
+
+/dev/dri/by-path:
+total 0
+lrwxrwxrwx 1 root root  8 Oct 15 08:46 platform-display-subsystem-card -> ../card0
+lrwxrwxrwx 1 root root  8 Oct 15 08:46 platform-fde60000.gpu-card -> ../card1
+lrwxrwxrwx 1 root root 13 Oct 15 08:46 platform-fde60000.gpu-render -> ../renderD128
+## sessions (sway needs one on seat0, tty1, Remote=no, Active=yes)
+SESSION  UID USER SEAT  LEADER CLASS   TTY  IDLE SINCE
+      1 1000 jose -     562    user    -    no   -
+      2 1000 jose -     567    manager -    no   -
+      3 1000 jose seat0 431    user    tty1 no   -
+
+3 sessions listed.
+Id=1
+VTNr=0
+Seat=
+TTY=
+Remote=yes
+Type=tty
+Class=user
+Active=yes
+
+Id=2
+VTNr=0
+Seat=
+TTY=
+Remote=no
+Type=unspecified
+Class=manager
+Active=yes
+
+Id=3
+VTNr=1
+Seat=seat0
+TTY=tty1
+Remote=no
+Type=wayland
+Class=user
+Active=yes
+
+## sway processes
+926 sway -d
+## swaymsg (socket /run/user/1000/sway-ipc.1000.926.sock)
+{
+  "human_readable": "1.10.1",
+  "variant": "sway",
+  "major": 1,
+  "minor": 10,
+  "patch": 1,
+  "loaded_config_file_name": "\/\/etc\/sway\/config"
+}
+## outputs
+[
+  {
+    "id": 3,
+    "type": "output",
+    "orientation": "none",
+    "percent": 1.0,
+    "urgent": false,
+    "marks": [],
+    "layout": "output",
+    "border": "none",
+    "current_border_width": 0,
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 800
+    },
+    "deco_rect": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "window_rect": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "geometry": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "name": "DSI-1",
+    "window": null,
+    "nodes": [],
+    "floating_nodes": [],
+    "focus": [
+      4
+    ],
+    "fullscreen_mode": 0,
+    "sticky": false,
+    "floating": null,
+    "scratchpad_state": null,
+    "primary": false,
+    "make": "Unknown",
+    "model": "Unknown",
+    "serial": "Unknown",
+    "modes": [
+      {
+        "width": 800,
+        "height": 1280,
+        "refresh": 60164,
+        "picture_aspect_ratio": "none"
+      }
+    ],
+    "non_desktop": false,
+    "active": true,
+    "dpms": true,
+    "power": true,
+    "scale": 1.0,
+    "scale_filter": "nearest",
+    "transform": "90",
+    "adaptive_sync_status": "disabled",
+    "current_workspace": "1",
+    "current_mode": {
+      "width": 800,
+      "height": 1280,
+      "refresh": 60164,
+      "picture_aspect_ratio": "none"
+    },
+    "max_render_time": 0,
+    "allow_tearing": false,
+    "focused": true,
+    "subpixel_hinting": "unknown"
+  }
+]
+## inputs
+[
+  {
+    "identifier": "1133:49948:Logitech_USB_Keyboard",
+    "name": "Logitech USB Keyboard",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1133,
+    "product": 49948
+  },
+  {
+    "identifier": "1133:49948:Logitech_USB_Keyboard_Consumer_Control",
+    "name": "Logitech USB Keyboard Consumer Control",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1133,
+    "product": 49948
+  },
+  {
+    "identifier": "1133:49948:Logitech_USB_Keyboard_System_Control",
+    "name": "Logitech USB Keyboard System Control",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1133,
+    "product": 49948
+  },
+  {
+    "identifier": "1390:4176:1byone_Keyboard_Mouse",
+    "name": "1byone Keyboard Mouse",
+    "type": "pointer",
+    "scroll_factor": 1.0,
+    "libinput": {
+      "send_events": "enabled",
+      "accel_speed": 0.0,
+      "accel_profile": "adaptive",
+      "natural_scroll": "disabled",
+      "left_handed": "disabled",
+      "middle_emulation": "disabled",
+      "scroll_method": "none",
+      "scroll_button": 274,
+      "scroll_button_lock": "disabled"
+    },
+    "vendor": 1390,
+    "product": 4176
+  },
+  {
+    "identifier": "1390:4176:1byone_Keyboard",
+    "name": "1byone Keyboard",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1390,
+    "product": 4176
+  },
+  {
+    "identifier": "0:0:silead_ts",
+    "name": "silead_ts",
+    "type": "touch",
+    "libinput": {
+      "send_events": "enabled",
+      "calibration_matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "vendor": 0,
+    "product": 0
+  },
+  {
+    "identifier": "0:0:rk805_pwrkey",
+    "name": "rk805 pwrkey",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 0,
+    "product": 0
+  },
+  {
+    "identifier": "1:1:adc-keys",
+    "name": "adc-keys",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1,
+    "product": 1
+  }
+]
+## /home/jose/sway-first.log: 1266 lines; renderer, GPU, DRM and error lines
+00:00:00.040 [INFO] [wlr] [libseat] [libseat/libseat.c:76] Backend 'seatd' failed to open seat, skipping
+00:00:00.108 [INFO] [wlr] [backend/drm/backend.c:185] Initializing DRM backend for /dev/dri/card0 (rockchip)
+00:00:00.108 [DEBUG] [wlr] [backend/drm/drm.c:111] Using atomic DRM interface
+00:00:00.108 [DEBUG] [wlr] [backend/drm/drm.c:131] ADDFB2 modifiers supported
+00:00:00.108 [INFO] [wlr] [backend/drm/drm.c:310] Found 1 DRM CRTCs
+00:00:00.108 [INFO] [wlr] [backend/drm/drm.c:268] Found 3 DRM planes
+00:00:03.256 [INFO] [wlr] [render/egl.c:205] Supported EGL client extensions: EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_EXT_platform_base EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_EXT_platform_device EGL_EXT_explicit_device EGL_EXT_platform_wayland EGL_KHR_platform_wayland EGL_EXT_platform_x11 EGL_KHR_platform_x11 EGL_EXT_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+00:00:03.269 [ERROR] [wlr] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:03.273 [ERROR] [wlr] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:03.274 [DEBUG] [wlr] [render/egl.c:508] DRM device '/dev/dri/card0' has no render node, falling back to primary node
+00:00:03.619 [INFO] [wlr] [render/egl.c:354] Using EGL 1.5
+00:00:03.619 [INFO] [wlr] [render/egl.c:355] Supported EGL display extensions: EGL_ANDROID_blob_cache EGL_ANDROID_native_fence_sync EGL_EXT_buffer_age EGL_EXT_config_select_group EGL_EXT_image_dma_buf_import EGL_EXT_image_dma_buf_import_modifiers EGL_EXT_surface_compression EGL_IMG_context_priority EGL_KHR_cl_event2 EGL_KHR_config_attribs EGL_KHR_context_flush_control EGL_KHR_create_context EGL_KHR_create_context_no_error EGL_KHR_fence_sync EGL_KHR_get_all_proc_addresses EGL_KHR_gl_colorspace EGL_KHR_gl_renderbuffer_image EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_3D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_image EGL_KHR_image_base EGL_KHR_image_pixmap EGL_KHR_no_config_context EGL_KHR_partial_update EGL_KHR_reusable_sync EGL_KHR_surfaceless_context EGL_EXT_pixel_format_float EGL_KHR_wait_sync EGL_MESA_configless_context EGL_MESA_drm_image EGL_MESA_gl_interop EGL_MESA_image_dma_buf_export EGL_MESA_query_driver EGL_MESA_x11_native_visual_id EGL_WL_bind_wayland_display 
+00:00:03.619 [INFO] [wlr] [render/egl.c:357] Supported EGL device extensions: EGL_EXT_device_drm EGL_EXT_device_drm_render_node
+00:00:03.619 [INFO] [wlr] [render/egl.c:359] EGL vendor: Mesa Project
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:120] Supported DMA-BUF formats:
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   AB4H (0x48344241)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   XB4H (0x48344258)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   AB48 (0x38344241)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   XB48 (0x38344258)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:169]   AR30 (0x30335241)
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:169]   XR30 (0x30335258)
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:169]   AB30 (0x30334241)
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:169]   XB30 (0x30334258)
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:169]   AR24 (0x34325241)
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:169]   AB24 (0x34324241)
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:169]   XR24 (0x34325258)
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:169]   XB24 (0x34324258)
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:169]   AR15 (0x35315241)
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:169]   AB15 (0x35314241)
+## memory
+               total        used        free      shared  buff/cache   available
+Mem:            3921         328        3470          24         279        3593
+Swap:              0           0           0
+## temperatures
+cpu-thermal 38 C
+gpu-thermal 35 C
+## backlight
+120
+=================== after-glmark2   2026-10-15 09:55:04
+kernel: 7.3.0-rc4-p25t-sway #1 SMP PREEMPT Sat Oct 10 10:52:05 CEST 2026
+## /dev/dri
+/dev/dri:
+total 0
+drwxr-xr-x  2 root root        100 Oct 15 08:46 by-path
+crw-rw----+ 1 root video  226,   0 Oct 15 08:46 card0
+crw-rw----+ 1 root video  226,   1 Oct 15 08:46 card1
+crw-rw----+ 1 root render 226, 128 Oct 15 09:55 renderD128
+
+/dev/dri/by-path:
+total 0
+lrwxrwxrwx 1 root root  8 Oct 15 08:46 platform-display-subsystem-card -> ../card0
+lrwxrwxrwx 1 root root  8 Oct 15 08:46 platform-fde60000.gpu-card -> ../card1
+lrwxrwxrwx 1 root root 13 Oct 15 08:46 platform-fde60000.gpu-render -> ../renderD128
+## sessions (sway needs one on seat0, tty1, Remote=no, Active=yes)
+SESSION  UID USER SEAT  LEADER CLASS   TTY  IDLE SINCE
+      1 1000 jose -     562    user    -    no   -
+      2 1000 jose -     567    manager -    no   -
+      3 1000 jose seat0 431    user    tty1 no   -
+
+3 sessions listed.
+Id=1
+VTNr=0
+Seat=
+TTY=
+Remote=yes
+Type=tty
+Class=user
+Active=yes
+
+Id=2
+VTNr=0
+Seat=
+TTY=
+Remote=no
+Type=unspecified
+Class=manager
+Active=yes
+
+Id=3
+VTNr=1
+Seat=seat0
+TTY=tty1
+Remote=no
+Type=wayland
+Class=user
+Active=yes
+
+## sway processes
+926 sway -d
+## swaymsg (socket /run/user/1000/sway-ipc.1000.926.sock)
+{
+  "human_readable": "1.10.1",
+  "variant": "sway",
+  "major": 1,
+  "minor": 10,
+  "patch": 1,
+  "loaded_config_file_name": "\/\/etc\/sway\/config"
+}
+## outputs
+[
+  {
+    "id": 3,
+    "type": "output",
+    "orientation": "none",
+    "percent": 1.0,
+    "urgent": false,
+    "marks": [],
+    "layout": "output",
+    "border": "none",
+    "current_border_width": 0,
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1280,
+      "height": 800
+    },
+    "deco_rect": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "window_rect": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "geometry": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    "name": "DSI-1",
+    "window": null,
+    "nodes": [],
+    "floating_nodes": [],
+    "focus": [
+      4
+    ],
+    "fullscreen_mode": 0,
+    "sticky": false,
+    "floating": null,
+    "scratchpad_state": null,
+    "primary": false,
+    "make": "Unknown",
+    "model": "Unknown",
+    "serial": "Unknown",
+    "modes": [
+      {
+        "width": 800,
+        "height": 1280,
+        "refresh": 60164,
+        "picture_aspect_ratio": "none"
+      }
+    ],
+    "non_desktop": false,
+    "active": true,
+    "dpms": true,
+    "power": true,
+    "scale": 1.0,
+    "scale_filter": "nearest",
+    "transform": "90",
+    "adaptive_sync_status": "disabled",
+    "current_workspace": "1",
+    "current_mode": {
+      "width": 800,
+      "height": 1280,
+      "refresh": 60164,
+      "picture_aspect_ratio": "none"
+    },
+    "max_render_time": 0,
+    "allow_tearing": false,
+    "focused": true,
+    "subpixel_hinting": "unknown"
+  }
+]
+## inputs
+[
+  {
+    "identifier": "1133:49948:Logitech_USB_Keyboard",
+    "name": "Logitech USB Keyboard",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1133,
+    "product": 49948
+  },
+  {
+    "identifier": "1133:49948:Logitech_USB_Keyboard_Consumer_Control",
+    "name": "Logitech USB Keyboard Consumer Control",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1133,
+    "product": 49948
+  },
+  {
+    "identifier": "1133:49948:Logitech_USB_Keyboard_System_Control",
+    "name": "Logitech USB Keyboard System Control",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1133,
+    "product": 49948
+  },
+  {
+    "identifier": "0:0:silead_ts",
+    "name": "silead_ts",
+    "type": "touch",
+    "libinput": {
+      "send_events": "enabled",
+      "calibration_matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "vendor": 0,
+    "product": 0
+  },
+  {
+    "identifier": "0:0:rk805_pwrkey",
+    "name": "rk805 pwrkey",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 0,
+    "product": 0
+  },
+  {
+    "identifier": "1:1:adc-keys",
+    "name": "adc-keys",
+    "type": "keyboard",
+    "repeat_delay": 600,
+    "repeat_rate": 25,
+    "xkb_layout_names": [
+      "English (US)"
+    ],
+    "xkb_active_layout_index": 0,
+    "xkb_active_layout_name": "English (US)",
+    "libinput": {
+      "send_events": "enabled"
+    },
+    "vendor": 1,
+    "product": 1
+  }
+]
+## /home/jose/sway-first.log: 1492 lines; renderer, GPU, DRM and error lines
+00:00:00.040 [INFO] [wlr] [libseat] [libseat/libseat.c:76] Backend 'seatd' failed to open seat, skipping
+00:00:00.108 [INFO] [wlr] [backend/drm/backend.c:185] Initializing DRM backend for /dev/dri/card0 (rockchip)
+00:00:00.108 [DEBUG] [wlr] [backend/drm/drm.c:111] Using atomic DRM interface
+00:00:00.108 [DEBUG] [wlr] [backend/drm/drm.c:131] ADDFB2 modifiers supported
+00:00:00.108 [INFO] [wlr] [backend/drm/drm.c:310] Found 1 DRM CRTCs
+00:00:00.108 [INFO] [wlr] [backend/drm/drm.c:268] Found 3 DRM planes
+00:00:03.256 [INFO] [wlr] [render/egl.c:205] Supported EGL client extensions: EGL_EXT_device_base EGL_EXT_device_enumeration EGL_EXT_device_query EGL_EXT_platform_base EGL_KHR_client_get_all_proc_addresses EGL_EXT_client_extensions EGL_KHR_debug EGL_EXT_platform_device EGL_EXT_explicit_device EGL_EXT_platform_wayland EGL_KHR_platform_wayland EGL_EXT_platform_x11 EGL_KHR_platform_x11 EGL_EXT_platform_xcb EGL_MESA_platform_gbm EGL_KHR_platform_gbm EGL_MESA_platform_surfaceless
+00:00:03.269 [ERROR] [wlr] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:03.273 [ERROR] [wlr] [EGL] command: eglQueryDeviceStringEXT, error: EGL_BAD_PARAMETER (0x300c), message: "eglQueryDeviceStringEXT"
+00:00:03.274 [DEBUG] [wlr] [render/egl.c:508] DRM device '/dev/dri/card0' has no render node, falling back to primary node
+00:00:03.619 [INFO] [wlr] [render/egl.c:354] Using EGL 1.5
+00:00:03.619 [INFO] [wlr] [render/egl.c:355] Supported EGL display extensions: EGL_ANDROID_blob_cache EGL_ANDROID_native_fence_sync EGL_EXT_buffer_age EGL_EXT_config_select_group EGL_EXT_image_dma_buf_import EGL_EXT_image_dma_buf_import_modifiers EGL_EXT_surface_compression EGL_IMG_context_priority EGL_KHR_cl_event2 EGL_KHR_config_attribs EGL_KHR_context_flush_control EGL_KHR_create_context EGL_KHR_create_context_no_error EGL_KHR_fence_sync EGL_KHR_get_all_proc_addresses EGL_KHR_gl_colorspace EGL_KHR_gl_renderbuffer_image EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_3D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_image EGL_KHR_image_base EGL_KHR_image_pixmap EGL_KHR_no_config_context EGL_KHR_partial_update EGL_KHR_reusable_sync EGL_KHR_surfaceless_context EGL_EXT_pixel_format_float EGL_KHR_wait_sync EGL_MESA_configless_context EGL_MESA_drm_image EGL_MESA_gl_interop EGL_MESA_image_dma_buf_export EGL_MESA_query_driver EGL_MESA_x11_native_visual_id EGL_WL_bind_wayland_display 
+00:00:03.619 [INFO] [wlr] [render/egl.c:357] Supported EGL device extensions: EGL_EXT_device_drm EGL_EXT_device_drm_render_node
+00:00:03.619 [INFO] [wlr] [render/egl.c:359] EGL vendor: Mesa Project
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:120] Supported DMA-BUF formats:
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   AB4H (0x48344241)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   XB4H (0x48344258)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   AB48 (0x38344241)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:169]   XB48 (0x38344258)
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.620 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:169]   AR30 (0x30335241)
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:169]   XR30 (0x30335258)
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:169]   AB30 (0x30334241)
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.621 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:169]   XB30 (0x30334258)
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:169]   AR24 (0x34325241)
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:169]   AB24 (0x34324241)
+00:00:03.622 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:169]   XR24 (0x34325258)
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:169]   XB24 (0x34324258)
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=SPLIT|SPARSE (0x0800000000000062): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=32x8,MODE=YTR|SPLIT|SPARSE (0x0800000000000072): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.623 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:169]   AR15 (0x35315241)
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     INVALID (0x00FFFFFFFFFFFFFF): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE|TILED|SC (0x0800000000000351): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE|TILED|SC (0x0800000000000341): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=YTR|SPARSE (0x0800000000000051): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     BLOCK_SIZE=16x16,MODE=SPARSE (0x0800000000000041): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     16X16_BLOCK_U_INTERLEAVED (0x0810000000000001): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:103]     LINEAR (0x0000000000000000): ✓ texture  ✓ render
+00:00:03.624 [DEBUG] [wlr] [render/egl.c:169]   AB15 (0x35314241)
+## memory
+               total        used        free      shared  buff/cache   available
+Mem:            3921         346        3431          25         300        3575
+Swap:              0           0           0
+## temperatures
+cpu-thermal 39 C
+gpu-thermal 36 C
+## backlight
+120

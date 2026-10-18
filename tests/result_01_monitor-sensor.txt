@@ -1,0 +1,28 @@
+    Waiting for iio-sensor-proxy to appear
++++ iio-sensor-proxy appeared
+=== Has accelerometer (orientation: undefined, tilt: undefined)
+=== No ambient light sensor
+=== No proximity sensor
+=== No compass
+    Accelerometer orientation changed: left-up
+    Tilt changed: vertical
+    Waiting for iio-sensor-proxy to appear
++++ iio-sensor-proxy appeared
+=== Has accelerometer (orientation: left-up, tilt: vertical)
+=== No ambient light sensor
+=== No proximity sensor
+=== No compass
+    Waiting for iio-sensor-proxy to appear
++++ iio-sensor-proxy appeared
+=== Has accelerometer (orientation: left-up, tilt: vertical)
+=== No ambient light sensor
+=== No proximity sensor
+=== No compass
+    Accelerometer orientation changed: right-up
+    Waiting for iio-sensor-proxy to appear
++++ iio-sensor-proxy appeared
+=== Has accelerometer (orientation: right-up, tilt: vertical)
+=== No ambient light sensor
+=== No proximity sensor
+=== No compass
+    Accelerometer orientation changed: left-up

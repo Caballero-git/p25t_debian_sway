@@ -1,0 +1,3266 @@
+Bluetooth monitor ver 5.82
+btmon[43763]: = Note: Linux version 7.3.0-rc4-p25t-sway (aarch64)      0.256594
+btmon[43763]: = Note: Bluetooth subsystem version 2.22                 0.256602
+= New Index: 8C:35:92:F2:B5:46 (Primary,UART,hci0)              [hci0] 0.256606
+= Open Index: 8C:35:92:F2:B5:46                                 [hci0] 0.256607
+= Index Info: 8C:35:92:F2:B5:46 (RivieraWaves S.A.S)            [hci0] 0.256608
+bluetoothd[473]: @ MGMT Open: bl.. (privileged) version 1.23  {0x0001} 0.256612
+bluetoothctl[43941]: @ MGMT Open: bluetoothctl version 1.23  {0x0002} 12.662893
+bluetoothd[473]: @ MGMT Command: S.. (0x0009) plen 1  {0x0001} [hci0] 12.676817
+        Bondable: Enabled (0x01)
+@ MGMT Event: Command Complete (0x0001) plen 7        {0x0001} [hci0] 12.676849
+      Set Bondable (0x0009) plen 4
+        Status: Success (0x00)
+        Current settings: 0x00400ad3
+          Powered
+          Connectable
+          Bondable
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Secure Connections
+          LL Privacy
+@ MGMT Event: New Settings (0x0006) plen 4            {0x0002} [hci0] 12.676856
+        Current settings: 0x00400ad3
+          Powered
+          Connectable
+          Bondable
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Secure Connections
+          LL Privacy
+bluetoothd[473]: @ MGMT Command: S.. (0x0018) plen 1  {0x0001} [hci0] 12.677013
+        Capability: KeyboardDisplay (0x04)
+@ MGMT Event: Command Complete (0x0001) plen 3        {0x0001} [hci0] 12.677023
+      Set IO Capability (0x0018) plen 0
+        Status: Success (0x00)
+bluetoothd[473]: @ MGMT Command: R.. (0x0034) plen 7  {0x0001} [hci0] 26.048975
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+@ MGMT Event: Command Complete (0x0001) plen 10       {0x0001} [hci0] 26.049114
+      Remove Device (0x0034) plen 7
+        Status: Success (0x00)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+bluetoothd[473]: @ MGMT Command: U.. (0x001b) plen 8  {0x0001} [hci0] 26.049711
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Disconnect: Enabled (0x01)
+@ MGMT Event: Command Complete (0x0001) plen 10       {0x0001} [hci0] 26.049754
+      Unpair Device (0x001b) plen 7
+        Status: Success (0x00)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+bluetoothd[473]: @ MGMT Command: S.. (0x0023) plen 1  {0x0001} [hci0] 32.328430
+        Address type: 0x07
+          BR/EDR
+          LE Public
+          LE Random
+< HCI Command: LE Set Random Address (0x08|0x0005) plen 6   #1 [hci0] 32.329422
+        Address: <OTHER-DEVICE> (Non-Resolvable)
+> HCI Event: Command Complete (0x0e) plen 4                 #2 [hci0] 32.330044
+      LE Set Random Address (0x08|0x0005) ncmd 5
+        Status: Success (0x00)
+< HCI Command: LE Set Extended Sca.. (0x08|0x0041) plen 13  #3 [hci0] 32.330537
+        Own address type: Random (0x01)
+        Filter policy: Accept all advertisement (0x00)
+        PHYs: 0x05
+        Entry 0: LE 1M
+          Type: Active (0x01)
+          Interval: 11.250 msec (0x0012)
+          Window: 11.250 msec (0x0012)
+        Entry 1: LE Coded
+          Type: Active (0x01)
+          Interval: 33.750 msec (0x0036)
+          Window: 33.750 msec (0x0036)
+> HCI Event: Command Complete (0x0e) plen 4                 #4 [hci0] 32.331026
+      LE Set Extended Scan Parameters (0x08|0x0041) ncmd 5
+        Status: Success (0x00)
+< HCI Command: LE Set Extended Scan.. (0x08|0x0042) plen 6  #5 [hci0] 32.331246
+        Extended scan: Enabled (0x01)
+        Filter duplicates: Enabled (0x01)
+        Duration: 0 msec (0x0000)
+        Period: 0.00 sec (0x0000)
+> HCI Event: Command Complete (0x0e) plen 4                 #6 [hci0] 32.331674
+      LE Set Extended Scan Enable (0x08|0x0042) ncmd 5
+        Status: Success (0x00)
+@ MGMT Event: Discovering (0x0013) plen 2             {0x0001} [hci0] 32.331774
+        Address type: 0x07
+          BR/EDR
+          LE Public
+          LE Random
+        Discovery: Enabled (0x01)
+@ MGMT Event: Command Complete (0x0001) plen 4        {0x0001} [hci0] 32.331895
+      Start Discovery (0x0023) plen 1
+        Status: Success (0x00)
+        Address type: 0x07
+          BR/EDR
+          LE Public
+          LE Random
+< HCI Command: LE Set Extended Scan.. (0x08|0x0042) plen 6  #7 [hci0] 37.457740
+        Extended scan: Disabled (0x00)
+        Filter duplicates: Disabled (0x00)
+        Duration: 0 msec (0x0000)
+        Period: 0.00 sec (0x0000)
+> HCI Event: Command Complete (0x0e) plen 4                 #8 [hci0] 37.458317
+      LE Set Extended Scan Enable (0x08|0x0042) ncmd 5
+        Status: Success (0x00)
+< HCI Command: Inquiry (0x01|0x0001) plen 5                 #9 [hci0] 37.458744
+        Access code: 0x9e8b33 (General Inquiry)
+        Length: 5.12s (0x04)
+        Num responses: 0
+> HCI Event: Command Status (0x0f) plen 4                  #10 [hci0] 37.459276
+      Inquiry (0x01|0x0001) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Inquiry Result with RSSI (0x22) plen 15       #11 [hci0] 37.625052
+        Num responses: 1
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page scan repetition mode: R1 (0x01)
+        Page period mode: P0 (0x00)
+        Class: 0x002540
+          Major class: Peripheral (mouse, joystick, keyboards)
+          Minor class: 0x10
+          Limited Discoverable Mode
+        Clock offset: 0x6c3b
+        RSSI: -54 dBm (0xca)
+@ MGMT Event: Device Found (0x0012) plen 19           {0x0001} [hci0] 37.625187
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        RSSI: -54 dBm (0xca)
+        Flags: 0x00000003
+          Confirm Name
+          Legacy Pairing
+        Data length: 5
+        Class: 0x002540
+          Major class: Peripheral (mouse, joystick, keyboards)
+          Minor class: 0x10
+          Limited Discoverable Mode
+bluetoothd[473]: @ MGMT Command: C.. (0x0025) plen 8  {0x0001} [hci0] 37.652690
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Name known: Yes (0x01)
+@ MGMT Event: Command Complete (0x0001) plen 10       {0x0001} [hci0] 37.652729
+      Confirm Name (0x0025) plen 7
+        Status: Success (0x00)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Inquiry Complete (0x01) plen 1                #12 [hci0] 42.650706
+        Status: Success (0x00)
+@ MGMT Event: Discovering (0x0013) plen 2             {0x0001} [hci0] 42.650889
+        Address type: 0x07
+          BR/EDR
+          LE Public
+          LE Random
+        Discovery: Disabled (0x00)
+bluetoothd[473]: @ MGMT Command: A.. (0x0033) plen 8  {0x0001} [hci0] 56.769247
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Action: Allow incoming connection (0x01)
+@ MGMT Event: Device Flags Changed (0x002a) plen 15   {0x0001} [hci0] 56.769348
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Supported Flags: 0x00000006
+          Device Privacy Mode
+          Address Resolution
+        Current Flags: 0x00000000
+@ MGMT Event: Command Complete (0x0001) plen 10       {0x0001} [hci0] 56.769374
+      Add Device (0x0033) plen 7
+        Status: Success (0x00)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+bluetoothd[473]: @ MGMT Command: P.. (0x0019) plen 8  {0x0001} [hci0] 56.770044
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Capability: KeyboardDisplay (0x04)
+< HCI Command: Create Connection (0x01|0x0005) plen 13     #13 [hci0] 56.770225
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Packet type: 0xcc18
+          DM1 may be used
+          DH1 may be used
+          DM3 may be used
+          DH3 may be used
+          DM5 may be used
+          DH5 may be used
+        Page scan repetition mode: R2 (0x02)
+        Page scan mode: Mandatory (0x00)
+        Clock offset: 0x0000
+        Role switch: Allow peripheral (0x01)
+> HCI Event: Command Status (0x0f) plen 4                  #14 [hci0] 56.770978
+      Create Connection (0x01|0x0005) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Connect Complete (0x03) plen 11               #15 [hci0] 57.071297
+        Status: Success (0x00)
+        Handle: 129
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Link type: ACL (0x01)
+        Encryption: Disabled (0x00)
+< HCI Command: Read Remote Support.. (0x01|0x001b) plen 2  #16 [hci0] 57.071995
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+btmon[43763]: @ RAW Open: btmon (privileged) version 2.22    {0x0003} 57.072226
+btmon[43763]: @ RAW Close: btmon                             {0x0003} 57.072242
+> HCI Event: Command Status (0x0f) plen 4                  #17 [hci0] 57.072455
+      Read Remote Supported Features (0x01|0x001b) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Read Remote Supported Featu.. (0x0b) plen 11  #18 [hci0] 57.072467
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Features: 0xbf 0x06 0x86 0x78 0x18 0x1c 0x59 0x87
+          3 slot packets
+          5 slot packets
+          Encryption
+          Slot offset
+          Timing accuracy
+          Role switch
+          Sniff mode
+          Power control requests
+          Channel quality driven data rate (CQDDR)
+          Paging parameter negotiation
+          Power control
+          Broadcast Encryption
+          Enhanced inquiry scan
+          Interlaced inquiry scan
+          Interlaced page scan
+          RSSI with inquiry results
+          AFH capable peripheral
+          AFH classification peripheral
+          Pause encryption
+          AFH capable central
+          AFH classification central
+          Extended Inquiry Response
+          Secure Simple Pairing
+          Encapsulated PDU
+          Non-flushable Packet Boundary Flag
+          Link Supervision Timeout Changed Event
+          Inquiry TX Power Level
+          Enhanced Power Control
+          Extended features
+< HCI Command: Read Remote Extende.. (0x01|0x001c) plen 3  #19 [hci0] 57.072546
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page: 1
+> HCI Event: Command Status (0x0f) plen 4                  #20 [hci0] 57.073092
+      Read Remote Extended Features (0x01|0x001c) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Read Remote Extended Features (0x23) plen 13  #21 [hci0] 57.073118
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page: 1/1
+        Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+          Secure Simple Pairing (Host Support)
+< HCI Command: Remote Name Request (0x01|0x0019) plen 10   #22 [hci0] 57.073286
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page scan repetition mode: R2 (0x02)
+        Page scan mode: Mandatory (0x00)
+        Clock offset: 0x0000
+> HCI Event: Command Status (0x0f) plen 4                  #23 [hci0] 57.073764
+      Remote Name Request (0x01|0x0019) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Max Slots Change (0x1b) plen 3                #24 [hci0] 57.075075
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Max slots: 5
+> HCI Event: Remote Name Req Complete (0x07) plen 255      #25 [hci0] 57.154625
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Name: 1byone Keyboard
+@ MGMT Event: Device Connected (0x000b) plen 35       {0x0001} [hci0] 57.154727
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Flags: 0x00000008
+          Connection Locally Initiated
+        Data length: 22
+        Name (complete): 1byone Keyboard
+        Class: 0x002540
+          Major class: Peripheral (mouse, joystick, keyboards)
+          Minor class: 0x10
+          Limited Discoverable Mode
+< HCI Command: Authentication Requ.. (0x01|0x0011) plen 2  #26 [hci0] 57.154770
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Status (0x0f) plen 4                  #27 [hci0] 57.155139
+      Authentication Requested (0x01|0x0011) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Link Key Request (0x17) plen 6                #28 [hci0] 57.155154
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+< HCI Command: Link Key Request Ne.. (0x01|0x000c) plen 6  #29 [hci0] 57.155218
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Complete (0x0e) plen 10               #30 [hci0] 57.156014
+      Link Key Request Negative Reply (0x01|0x000c) ncmd 5
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: IO Capability Request (0x31) plen 6           #31 [hci0] 57.156025
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+< HCI Command: IO Capability Reque.. (0x01|0x002b) plen 9  #32 [hci0] 57.156085
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        IO capability: DisplayYesNo (0x01)
+        OOB data: Authentication data not present (0x00)
+        Authentication: Dedicated Bonding - MITM required (0x03)
+> HCI Event: Command Complete (0x0e) plen 10               #33 [hci0] 57.156492
+      IO Capability Request Reply (0x01|0x002b) ncmd 5
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: IO Capability Response (0x32) plen 9          #34 [hci0] 57.240051
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        IO capability: NoInputNoOutput (0x03)
+        OOB data: Authentication data not present (0x00)
+        Authentication: General Bonding - MITM not required (0x04)
+> HCI Event: User Confirmation Request (0x33) plen 10      #35 [hci0] 57.928164
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Passkey: <PASSKEY>
+< HCI Command: User Confirmation R.. (0x01|0x002c) plen 6  #36 [hci0] 57.928348
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Complete (0x0e) plen 10               #37 [hci0] 57.928917
+      User Confirmation Request Reply (0x01|0x002c) ncmd 5
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Simple Pairing Complete (0x36) plen 7         #38 [hci0] 58.015985
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Link Key Notification (0x18) plen 23          #39 [hci0] 58.102082
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Link key[16]: <LINK-KEY>
+        Key type: Unauthenticated Combination key from P-192 (0x04)
+@ MGMT Event: New Link Key (0x0009) plen 26           {0x0001} [hci0] 58.102238
+        Store hint: Yes (0x01)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Key type: Unauthenticated Combination key from P-192 (0x04)
+        Link key[16]: <LINK-KEY>
+        PIN length: 0
+> HCI Event: Auth Complete (0x06) plen 3                   #40 [hci0] 58.102102
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+< HCI Command: Set Connection Encr.. (0x01|0x0013) plen 3  #41 [hci0] 58.102317
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Encryption: Enabled (0x01)
+> HCI Event: Command Status (0x0f) plen 4                  #42 [hci0] 58.102724
+      Set Connection Encryption (0x01|0x0013) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Encryption Change (0x08) plen 4               #43 [hci0] 58.283687
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Encryption: Enabled with E0 (0x01)
+< HCI Command: Read Encryption Key.. (0x05|0x0008) plen 2  #44 [hci0] 58.283874
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Complete (0x0e) plen 7                #45 [hci0] 58.284300
+      Read Encryption Key Size (0x05|0x0008) ncmd 5
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Key size: 16
+@ MGMT Event: Command Complete (0x0001) plen 10       {0x0001} [hci0] 58.284462
+      Pair Device (0x0019) plen 7
+        Status: Success (0x00)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+< ACL Data TX: Handle 129 flags 0x00 dlen 10               #46 [hci0] 58.284528
+      L2CAP: Information Request (0x0a) ident 1 len 2
+        Type: Extended features supported (0x0002)
+> HCI Event: Number of Completed Packets (0x13) plen 5     #47 [hci0] 58.286150
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #46: len 10 (80 Kb/s)
+        Latency: 1 msec (1-1 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 16               #48 [hci0] 58.370156
+      L2CAP: Information Response (0x0b) ident 1 len 8
+        Type: Extended features supported (0x0002)
+        Result: Success (0x0000)
+        Features: 0x00000280
+          Fixed Channels
+          Unicast Connectionless Data Reception
+< ACL Data TX: Handle 129 flags 0x00 dlen 10               #49 [hci0] 58.370330
+      L2CAP: Information Request (0x0a) ident 2 len 2
+        Type: Fixed channels supported (0x0003)
+> HCI Event: Number of Completed Packets (0x13) plen 5     #50 [hci0] 58.372280
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #49: len 10 (80 Kb/s)
+        Latency: 1 msec (1-1 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 20               #51 [hci0] 58.456365
+      L2CAP: Information Response (0x0b) ident 2 len 12
+        Type: Fixed channels supported (0x0003)
+        Result: Success (0x0000)
+        Channels: 0x0000000000000006
+          L2CAP Signaling (BR/EDR)
+          Connectionless reception
+< ACL Data TX: Handle 129 flags 0x00 dlen 12               #52 [hci0] 58.456564
+      L2CAP: Connection Request (0x02) ident 3 len 4
+        PSM: 1 (0x0001)
+        Source CID: 64
+> HCI Event: Number of Completed Packets (0x13) plen 5     #53 [hci0] 58.458534
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #52: len 12 (96 Kb/s)
+        Latency: 1 msec (1-1 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 16               #54 [hci0] 58.460164
+      L2CAP: Connection Response (0x03) ident 3 len 8
+        Destination CID: 67
+        Source CID: 64
+        Result: Connection successful (0x0000)
+        Status: No further information available (0x0000)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12               #55 [hci0] 58.460319
+      L2CAP: Configure Request (0x04) ident 4 len 4
+        Destination CID: 67
+        Flags: 0x0000
+> ACL Data RX: Handle 129 flags 0x02 dlen 16               #56 [hci0] 58.542741
+      L2CAP: Configure Request (0x04) ident 2 len 8
+        Destination CID: 64
+        Flags: 0x0000
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+> HCI Event: Number of Completed Packets (0x13) plen 5     #57 [hci0] 58.542767
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #55: len 12 (1 Kb/s)
+        Latency: 82 msec (1-82 msec ~42 msec)
+< ACL Data TX: Handle 129 flags 0x00 dlen 18               #58 [hci0] 58.542951
+      L2CAP: Configure Response (0x05) ident 2 len 10
+        Source CID: 67
+        Flags: 0x0000
+        Result: Success (0x0000)
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+> ACL Data RX: Handle 129 flags 0x02 dlen 14               #59 [hci0] 58.543834
+      L2CAP: Configure Response (0x05) ident 4 len 6
+        Source CID: 64
+        Flags: 0x0000
+        Result: Success (0x0000)
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 24  #60 [hci0] 58.544505
+      Channel: 67 len 20 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 0 len 15
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5     #61 [hci0] 58.544784
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #58: len 18 (144 Kb/s)
+        Latency: 1 msec (1-82 msec ~21 msec)
+> HCI Event: Number of Completed Packets (0x13) plen 5     #62 [hci0] 58.628551
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #60: len 24 (2 Kb/s)
+        Latency: 84 msec (1-84 msec ~53 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 84 msec (84-84 msec ~84 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #63 [hci0] 58.633842
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 0 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 26                                            .&              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #64 [hci0] 58.634904
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 1 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 26                                            .&              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #65 [hci0] 58.714844
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #64: len 26 (2 Kb/s)
+        Latency: 79 msec (1-84 msec ~66 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 79 msec (79-84 msec ~81 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #66 [hci0] 58.802574
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 1 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 4c                                            .L              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #67 [hci0] 58.803311
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 2 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 4c                                            .L              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #68 [hci0] 58.887284
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #67: len 26 (2 Kb/s)
+        Latency: 83 msec (1-84 msec ~75 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 83 msec (79-84 msec ~82 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #69 [hci0] 58.892538
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 2 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 72                                            .r              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #70 [hci0] 58.893258
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 3 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 72                                            .r              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #71 [hci0] 58.973557
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #70: len 26 (2 Kb/s)
+        Latency: 80 msec (1-84 msec ~77 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 80 msec (79-84 msec ~81 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #72 [hci0] 59.061223
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 3 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 98                                            ..              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #73 [hci0] 59.062004
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 4 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 98                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #74 [hci0] 59.146009
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #73: len 26 (2 Kb/s)
+        Latency: 84 msec (1-84 msec ~80 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 84 msec (79-84 msec ~82 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #75 [hci0] 59.233829
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 4 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 be                                            ..              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #76 [hci0] 59.234447
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 5 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 be                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #77 [hci0] 59.236068
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #76: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~41 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~42 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #78 [hci0] 59.319973
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 5 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 e4                                            ..              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #79 [hci0] 59.320546
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 6 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 e4                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #80 [hci0] 59.322243
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #79: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~21 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~21 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #81 [hci0] 59.406224
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 6 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 0a                                            ..              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #82 [hci0] 59.406960
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 7 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 0a                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #83 [hci0] 59.408552
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #82: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~11 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~11 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #84 [hci0] 59.492490
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 7 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 30                                            .0              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #85 [hci0] 59.492994
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 8 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 30                                            .0              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #86 [hci0] 59.494826
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #85: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~6 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~6 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #87 [hci0] 59.578734
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 8 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 56                                            .V              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #88 [hci0] 59.579292
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 9 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 56                                            .V              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #89 [hci0] 59.580999
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #88: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~4 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~4 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #90 [hci0] 59.587467
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 9 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 7c                                            .|              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #91 [hci0] 59.588123
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 10 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 7c                                            .|              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #92 [hci0] 59.589757
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #91: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~2 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #93 [hci0] 59.595012
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 10 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 a2                                            ..              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #94 [hci0] 59.595497
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 11 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 a2                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #95 [hci0] 59.672251
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #94: len 26 (2 Kb/s)
+        Latency: 76 msec (1-84 msec ~39 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 76 msec (1-84 msec ~39 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #96 [hci0] 59.761206
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 11 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 c8                                            ..              
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 26  #97 [hci0] 59.761798
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 12 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 c8                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5     #98 [hci0] 59.763531
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #97: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~20 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~20 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52               #99 [hci0] 59.846149
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 12 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 ee                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #100 [hci0] 59.846489
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 13 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 ee                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #101 [hci0] 59.848452
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #100: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~11 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~11 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #102 [hci0] 59.932391
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 13 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 14                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #103 [hci0] 59.932756
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 14 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 14                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #104 [hci0] 59.934708
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #103: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~6 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~6 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #105 [hci0] 60.018721
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 14 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 3a                                            .:              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #106 [hci0] 60.019430
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 15 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 3a                                            .:              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #107 [hci0] 60.103495
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #106: len 26 (2 Kb/s)
+        Latency: 84 msec (1-84 msec ~45 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 84 msec (1-84 msec ~45 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #108 [hci0] 60.108738
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 15 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 60                                            .`              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #109 [hci0] 60.109426
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 16 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 60                                            .`              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #110 [hci0] 60.189731
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #109: len 26 (2 Kb/s)
+        Latency: 80 msec (1-84 msec ~62 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 80 msec (1-84 msec ~62 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #111 [hci0] 60.277525
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 16 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 86                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #112 [hci0] 60.278057
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 17 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 86                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #113 [hci0] 60.279761
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #112: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~32 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~32 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #114 [hci0] 60.363695
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 17 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 ac                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #115 [hci0] 60.364192
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 18 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 ac                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #116 [hci0] 60.366043
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #115: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~17 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~17 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #117 [hci0] 60.449944
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 18 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 d2                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #118 [hci0] 60.450571
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 19 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 d2                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #119 [hci0] 60.452239
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #118: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~9 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~9 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #120 [hci0] 60.536173
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 19 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 f8                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #121 [hci0] 60.536713
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 20 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 f8                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #122 [hci0] 60.538486
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #121: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~5 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~5 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #123 [hci0] 60.622422
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 20 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 1e                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #124 [hci0] 60.623121
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 21 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 1e                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #125 [hci0] 60.624739
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #124: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~3 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~3 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #126 [hci0] 60.708667
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 21 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 44                                            .D              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #127 [hci0] 60.709336
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 22 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 44                                            .D              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #128 [hci0] 60.710992
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #127: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~2 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #129 [hci0] 60.794922
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 22 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 6a                                            .j              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #130 [hci0] 60.795632
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 23 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 6a                                            .j              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #131 [hci0] 60.797245
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #130: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~2 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #132 [hci0] 60.892424
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 23 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 90                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #133 [hci0] 60.893136
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 24 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 90                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #134 [hci0] 60.894757
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #133: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~1 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #135 [hci0] 60.979916
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 24 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 b6                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #136 [hci0] 60.980648
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 25 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 b6                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #137 [hci0] 60.982239
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #136: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~1 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 46              #138 [hci0] 61.064865
+      Channel: 64 len 42 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 25 len 37
+        Attribute bytes: 34
+        Continuation state: 0
+        Combined attribute bytes: 984
+          Attribute list: [len 142] {position 0}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00000000
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Service Discovery Server Service Class (0x1000)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0001
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  SDP (0x0001)
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless Keyboard SDP Server [len 47]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0200) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+          Attribute list: [len 669] {position 1}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010000
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Human Interface Device Service (0x1124)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0011
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  HIDP (0x0011)
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  Human Interface Device Service (0x1124)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Additional Protocol Descriptor List (0x000d) [len 2]
+              Sequence (6) with 13 bytes [8 extra bits] len 15
+                Sequence (6) with 6 bytes [8 extra bits] len 8
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    L2CAP (0x0100)
+                  Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                    0x0013
+                Sequence (6) with 3 bytes [8 extra bits] len 5
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    HIDP (0x0011)
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless  Keyboard                         [len 61]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0102) [len 2]
+              Broadcom Corp.   [len 16]
+            Attribute: Unknown (0x0200) [len 2]
+              0x0100
+            Attribute: Unknown (0x0201) [len 2]
+              0x0111
+            Attribute: Unknown (0x0202) [len 2]
+              0x40
+            Attribute: Unknown (0x0203) [len 2]
+              0x21
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              true
+            Attribute: Unknown (0x0206) [len 2]
+              Sequence (6) with 377 bytes [16 extra bits] len 380
+                Unsigned Integer (1) with 1 byte [0 extra bits] len 2
+                  0x22
+                String (4) with 372 bytes [16 extra bits] len 375
+                  	¡…u•à)ç [len 372]
+            Attribute: Unknown (0x0207) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0409
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0208) [len 2]
+              false
+            Attribute: Unknown (0x0209) [len 2]
+              true
+            Attribute: Unknown (0x020a) [len 2]
+              true
+            Attribute: Unknown (0x020b) [len 2]
+              0x0100
+            Attribute: Unknown (0x020c) [len 2]
+              0x1f40
+            Attribute: Unknown (0x020d) [len 2]
+              false
+            Attribute: Unknown (0x020e) [len 2]
+              true
+            Attribute: Unknown (0x020f) [len 2]
+              0x0318
+            Attribute: Unknown (0x0210) [len 2]
+              0x0000
+          Attribute list: [len 161] {position 2}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010001
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                PnP Information (0x1200)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0001
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  SDP (0x0001)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  PnP Information (0x1200)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless Keyboard PnP Server [len 47]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0200) [len 2]
+              0x0103
+            Attribute: Unknown (0x0201) [len 2]
+              0x056e
+            Attribute: Unknown (0x0202) [len 2]
+              0x1050
+            Attribute: Unknown (0x0203) [len 2]
+              0x0019
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              0x0002
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 24  #139 [hci0] 61.091301
+      Channel: 67 len 20 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 26 len 15
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5    #140 [hci0] 61.149705
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #139: len 24 (3 Kb/s)
+        Latency: 58 msec (1-84 msec ~30 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 58 msec (1-84 msec ~30 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #141 [hci0] 61.154947
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 26 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 26                                            .&              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #142 [hci0] 61.155632
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 27 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 26                                            .&              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #143 [hci0] 61.235963
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #142: len 26 (2 Kb/s)
+        Latency: 80 msec (1-84 msec ~55 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 80 msec (1-84 msec ~55 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #144 [hci0] 61.241181
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 27 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 4c                                            .L              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #145 [hci0] 61.241878
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 28 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 4c                                            .L              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #146 [hci0] 61.322175
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #145: len 26 (2 Kb/s)
+        Latency: 80 msec (1-84 msec ~67 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 80 msec (1-84 msec ~67 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #147 [hci0] 61.409900
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 28 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 72                                            .r              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #148 [hci0] 61.410436
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 29 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 72                                            .r              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #149 [hci0] 61.412199
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #148: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~34 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~34 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 52              #150 [hci0] 61.496135
+      Channel: 64 len 48 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 29 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 98                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #151 [hci0] 61.496818
+      Channel: 67 len 22 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Request (0x06) tid 30 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 98                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #152 [hci0] 61.498456
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #151: len 26 (208 Kb/s)
+        Latency: 1 msec (1-84 msec ~18 msec)
+        Channel: 67 [PSM 1 mode Basic (0x00)] {chan 0}
+        Channel Latency: 1 msec (1-84 msec ~18 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #153 [hci0] 61.581307
+      Channel: 64 len 23 [PSM 1 mode Basic (0x00)] {chan 0}
+      SDP: Service Search Attribute Response (0x07) tid 30 len 18
+        Attribute bytes: 15
+        Continuation state: 0
+        Combined attribute bytes: 167
+          Attribute list: [len 161] {position 0}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010001
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                PnP Information (0x1200)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0001
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  SDP (0x0001)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  PnP Information (0x1200)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless Keyboard PnP Server [len 47]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0200) [len 2]
+              0x0103
+            Attribute: Unknown (0x0201) [len 2]
+              0x056e
+            Attribute: Unknown (0x0202) [len 2]
+              0x1050
+            Attribute: Unknown (0x0203) [len 2]
+              0x0019
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              0x0002
+bluetoothd[473]: @ MGMT Command:... (0x0050) plen 11  {0x0001} [hci0] 61.608253
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Current Flags: 0x00000003
+          Remote Wakeup
+          Device Privacy Mode
+@ MGMT Event: Command Complete (0x0001) plen 10       {0x0001} [hci0] 61.608478
+      Set Device Flags (0x0050) plen 7
+        Status: Invalid Parameters (0x0d)
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+bluetoothd[473]: = src/device.c:set_wake_allowed_complete() Set d..   61.611258
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #154 [hci0] 63.548213
+      L2CAP: Disconnection Request (0x06) ident 5 len 4
+        Destination CID: 67
+        Source CID: 64
+> HCI Event: Number of Completed Packets (0x13) plen 5    #155 [hci0] 63.629632
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #154: len 12 (1 Kb/s)
+        Latency: 81 msec (1-84 msec ~49 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 12              #156 [hci0] 63.631078
+      L2CAP: Disconnection Response (0x07) ident 5 len 4
+        Destination CID: 67
+        Source CID: 64
+< HCI Command: Disconnect (0x01|0x0006) plen 3            #157 [hci0] 65.649701
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Reason: Remote User Terminated Connection (0x13)
+> HCI Event: Command Status (0x0f) plen 4                 #158 [hci0] 65.650208
+      Disconnect (0x01|0x0006) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Disconnect Complete (0x05) plen 4            #159 [hci0] 65.772468
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Reason: Connection Terminated By Local Host (0x16)
+@ MGMT Event: Device Disconnected (0x000c) plen 8     {0x0001} [hci0] 65.772608
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Reason: Connection terminated by local host (0x02)
+< HCI Command: Create Connection (0x01|0x0005) plen 13    #160 [hci0] 76.265436
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Packet type: 0xcc18
+          DM1 may be used
+          DH1 may be used
+          DM3 may be used
+          DH3 may be used
+          DM5 may be used
+          DH5 may be used
+        Page scan repetition mode: R2 (0x02)
+        Page scan mode: Mandatory (0x00)
+        Clock offset: 0x0000
+        Role switch: Allow peripheral (0x01)
+> HCI Event: Command Status (0x0f) plen 4                 #161 [hci0] 76.266240
+      Create Connection (0x01|0x0005) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Connect Complete (0x03) plen 11              #162 [hci0] 78.510437
+        Status: Success (0x00)
+        Handle: 129
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Link type: ACL (0x01)
+        Encryption: Disabled (0x00)
+< HCI Command: Read Remote Suppor.. (0x01|0x001b) plen 2  #163 [hci0] 78.511116
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Status (0x0f) plen 4                 #164 [hci0] 78.511696
+      Read Remote Supported Features (0x01|0x001b) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Read Remote Supported Feat.. (0x0b) plen 11  #165 [hci0] 78.511717
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Features: 0xbf 0x06 0x86 0x78 0x18 0x1c 0x59 0x87
+          3 slot packets
+          5 slot packets
+          Encryption
+          Slot offset
+          Timing accuracy
+          Role switch
+          Sniff mode
+          Power control requests
+          Channel quality driven data rate (CQDDR)
+          Paging parameter negotiation
+          Power control
+          Broadcast Encryption
+          Enhanced inquiry scan
+          Interlaced inquiry scan
+          Interlaced page scan
+          RSSI with inquiry results
+          AFH capable peripheral
+          AFH classification peripheral
+          Pause encryption
+          AFH capable central
+          AFH classification central
+          Extended Inquiry Response
+          Secure Simple Pairing
+          Encapsulated PDU
+          Non-flushable Packet Boundary Flag
+          Link Supervision Timeout Changed Event
+          Inquiry TX Power Level
+          Enhanced Power Control
+          Extended features
+< HCI Command: Read Remote Extend.. (0x01|0x001c) plen 3  #166 [hci0] 78.511838
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page: 1
+btmon[43763]: @ RAW Open: btmon (privileged) version 2.22    {0x0003} 78.511925
+btmon[43763]: @ RAW Close: btmon                             {0x0003} 78.511968
+> HCI Event: Command Status (0x0f) plen 4                 #167 [hci0] 78.512303
+      Read Remote Extended Features (0x01|0x001c) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Read Remote Extended Featu.. (0x23) plen 13  #168 [hci0] 78.512324
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page: 1/1
+        Features: 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+          Secure Simple Pairing (Host Support)
+< HCI Command: Remote Name Request (0x01|0x0019) plen 10  #169 [hci0] 78.512438
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Page scan repetition mode: R2 (0x02)
+        Page scan mode: Mandatory (0x00)
+        Clock offset: 0x0000
+> HCI Event: Command Status (0x0f) plen 4                 #170 [hci0] 78.513129
+      Remote Name Request (0x01|0x0019) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Max Slots Change (0x1b) plen 3               #171 [hci0] 78.514077
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Max slots: 5
+> HCI Event: Remote Name Req Complete (0x07) plen 255     #172 [hci0] 78.594916
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Name: 1byone Keyboard
+@ MGMT Event: Device Connected (0x000b) plen 35       {0x0001} [hci0] 78.595042
+        BR/EDR Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Flags: 0x00000008
+          Connection Locally Initiated
+        Data length: 22
+        Name (complete): 1byone Keyboard
+        Class: 0x002540
+          Major class: Peripheral (mouse, joystick, keyboards)
+          Minor class: 0x10
+          Limited Discoverable Mode
+< HCI Command: Authentication Req.. (0x01|0x0011) plen 2  #173 [hci0] 78.595089
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Status (0x0f) plen 4                 #174 [hci0] 78.595459
+      Authentication Requested (0x01|0x0011) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Link Key Request (0x17) plen 6               #175 [hci0] 78.595472
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+< HCI Command: Link Key Request... (0x01|0x000b) plen 22  #176 [hci0] 78.595567
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Link key[16]: <LINK-KEY>
+> HCI Event: Command Complete (0x0e) plen 10              #177 [hci0] 78.596053
+      Link Key Request Reply (0x01|0x000b) ncmd 5
+        Status: Success (0x00)
+        Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Auth Complete (0x06) plen 3                  #178 [hci0] 78.765902
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+< HCI Command: Set Connection Enc.. (0x01|0x0013) plen 3  #179 [hci0] 78.765967
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Encryption: Enabled (0x01)
+> HCI Event: Command Status (0x0f) plen 4                 #180 [hci0] 78.766217
+      Set Connection Encryption (0x01|0x0013) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Encryption Change (0x08) plen 4              #181 [hci0] 78.937819
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Encryption: Enabled with E0 (0x01)
+< HCI Command: Read Encryption Ke.. (0x05|0x0008) plen 2  #182 [hci0] 78.938004
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Complete (0x0e) plen 7               #183 [hci0] 78.938378
+      Read Encryption Key Size (0x05|0x0008) ncmd 5
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Key size: 16
+< ACL Data TX: Handle 129 flags 0x00 dlen 10              #184 [hci0] 78.938553
+      L2CAP: Information Request (0x0a) ident 1 len 2
+        Type: Extended features supported (0x0002)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #185 [hci0] 78.940280
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #184: len 10 (80 Kb/s)
+        Latency: 1 msec (1-1 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #186 [hci0] 79.024294
+      L2CAP: Information Response (0x0b) ident 1 len 8
+        Type: Extended features supported (0x0002)
+        Result: Success (0x0000)
+        Features: 0x00000280
+          Fixed Channels
+          Unicast Connectionless Data Reception
+< ACL Data TX: Handle 129 flags 0x00 dlen 10              #187 [hci0] 79.024452
+      L2CAP: Information Request (0x0a) ident 2 len 2
+        Type: Fixed channels supported (0x0003)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #188 [hci0] 79.026432
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #187: len 10 (80 Kb/s)
+        Latency: 1 msec (1-1 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 20              #189 [hci0] 79.028038
+      L2CAP: Information Response (0x0b) ident 2 len 12
+        Type: Fixed channels supported (0x0003)
+        Result: Success (0x0000)
+        Channels: 0x0000000000000006
+          L2CAP Signaling (BR/EDR)
+          Connectionless reception
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #190 [hci0] 79.028169
+      L2CAP: Connection Request (0x02) ident 3 len 4
+        PSM: 17 (0x0011)
+        Source CID: 64
+> HCI Event: Number of Completed Packets (0x13) plen 5    #191 [hci0] 79.110173
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #190: len 12 (1 Kb/s)
+        Latency: 82 msec (1-82 msec ~41 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #192 [hci0] 79.111754
+      L2CAP: Connection Response (0x03) ident 3 len 8
+        Destination CID: 68
+        Source CID: 64
+        Result: Connection successful (0x0000)
+        Status: No further information available (0x0000)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #193 [hci0] 79.111831
+      L2CAP: Configure Request (0x04) ident 4 len 4
+        Destination CID: 68
+        Flags: 0x0000
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #194 [hci0] 79.112991
+      L2CAP: Configure Request (0x04) ident 2 len 8
+        Destination CID: 64
+        Flags: 0x0000
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+< ACL Data TX: Handle 129 flags 0x00 dlen 18              #195 [hci0] 79.113057
+      L2CAP: Configure Response (0x05) ident 2 len 10
+        Source CID: 68
+        Flags: 0x0000
+        Result: Success (0x0000)
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+> HCI Event: Number of Completed Packets (0x13) plen 5    #196 [hci0] 79.113896
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #193: len 12 (48 Kb/s)
+        Latency: 2 msec (1-82 msec ~21 msec)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #197 [hci0] 79.115150
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #195: len 18 (72 Kb/s)
+        Latency: 2 msec (1-82 msec ~12 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 14              #198 [hci0] 79.116732
+      L2CAP: Configure Response (0x05) ident 4 len 6
+        Source CID: 64
+        Flags: 0x0000
+        Result: Success (0x0000)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #199 [hci0] 79.117132
+      L2CAP: Connection Request (0x02) ident 5 len 4
+        PSM: 19 (0x0013)
+        Source CID: 65
+> HCI Event: Number of Completed Packets (0x13) plen 5    #200 [hci0] 79.196475
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #199: len 12 (1 Kb/s)
+        Latency: 79 msec (1-82 msec ~45 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #201 [hci0] 79.198030
+      L2CAP: Connection Response (0x03) ident 5 len 8
+        Destination CID: 69
+        Source CID: 65
+        Result: Connection successful (0x0000)
+        Status: No further information available (0x0000)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #202 [hci0] 79.198191
+      L2CAP: Configure Request (0x04) ident 6 len 4
+        Destination CID: 69
+        Flags: 0x0000
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #203 [hci0] 79.199278
+      L2CAP: Configure Request (0x04) ident 3 len 8
+        Destination CID: 65
+        Flags: 0x0000
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+< ACL Data TX: Handle 129 flags 0x00 dlen 18              #204 [hci0] 79.199404
+      L2CAP: Configure Response (0x05) ident 3 len 10
+        Source CID: 69
+        Flags: 0x0000
+        Result: Success (0x0000)
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+> HCI Event: Number of Completed Packets (0x13) plen 5    #205 [hci0] 79.200178
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #202: len 12 (96 Kb/s)
+        Latency: 1 msec (1-82 msec ~23 msec)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #206 [hci0] 79.201454
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #204: len 18 (72 Kb/s)
+        Latency: 2 msec (1-82 msec ~12 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 14              #207 [hci0] 79.203018
+      L2CAP: Configure Response (0x05) ident 6 len 6
+        Source CID: 65
+        Flags: 0x0000
+        Result: Success (0x0000)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #208 [hci0] 79.204199
+      L2CAP: Connection Request (0x02) ident 7 len 4
+        PSM: 1 (0x0001)
+        Source CID: 66
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 6  #209 [hci0] 79.212710
+      Channel: 68 len 2 [PSM 17 mode Basic (0x00)] {chan 0}
+        43 07                                            C.              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #210 [hci0] 79.282843
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #208: len 12 (1 Kb/s)
+        Latency: 78 msec (1-82 msec ~45 msec)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #211 [hci0] 79.284157
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #209: len 6 (0 Kb/s)
+        Latency: 71 msec (1-82 msec ~58 msec)
+        Channel: 68 [PSM 17 mode Basic (0x00)] {chan 0}
+        Channel Latency: 71 msec (71-71 msec ~71 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 13              #212 [hci0] 79.285614
+      Channel: 65 len 9 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 03 9f 20 73 34 03 10 4c                       ... s4..L       
+> HCI Event: Mode Change (0x14) plen 6                    #213 [hci0] 79.285644
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Mode: Sniff (0x02)
+        Interval: 10.000 msec (0x0010)
+> ACL Data RX: Handle 129 flags 0x02 dlen 7               #214 [hci0] 79.294106
+      Channel: 65 len 3 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 05 03                                         ...             
+> ACL Data RX: Handle 129 flags 0x02 dlen 14              #215 [hci0] 79.295595
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 06 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14              #216 [hci0] 79.393010
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #217 [hci0] 79.394276
+      L2CAP: Connection Response (0x03) ident 7 len 8
+        Destination CID: 64
+        Source CID: 66
+        Result: Connection successful (0x0000)
+        Status: No further information available (0x0000)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #218 [hci0] 79.394465
+      L2CAP: Configure Request (0x04) ident 8 len 4
+        Destination CID: 64
+        Flags: 0x0000
+< HCI Command: Exit Sniff Mode (0x02|0x0004) plen 2       #219 [hci0] 79.394530
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Status (0x0f) plen 4                 #220 [hci0] 79.394990
+      Exit Sniff Mode (0x02|0x0004) ncmd 5
+        Status: Success (0x00)
+> ACL Data RX: Handle 129 flags 0x02 dlen 16              #221 [hci0] 79.395540
+      L2CAP: Configure Request (0x04) ident 4 len 8
+        Destination CID: 66
+        Flags: 0x0000
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+< ACL Data TX: Handle 129 flags 0x00 dlen 18              #222 [hci0] 79.395664
+      L2CAP: Configure Response (0x05) ident 4 len 10
+        Source CID: 64
+        Flags: 0x0000
+        Result: Success (0x0000)
+        Option: Maximum Transmission Unit (0x01) [mandatory]
+          MTU: 48
+> ACL Data RX: Handle 129 flags 0x02 dlen 5               #223 [hci0] 79.432874
+      Channel: 64 len 1 [PSM 17 mode Basic (0x00)] {chan 0}
+        02                                               .               
+> HCI Event: Number of Completed Packets (0x13) plen 5    #224 [hci0] 79.432893
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #218: len 12 (2 Kb/s)
+        Latency: 38 msec (1-82 msec ~48 msec)
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 7  #225 [hci0] 79.434267
+      Channel: 68 len 3 [PSM 17 mode Basic (0x00)] {chan 0}
+        53 07 05                                         S..             
+> ACL Data RX: Handle 129 flags 0x02 dlen 14              #226 [hci0] 79.434266
+      L2CAP: Configure Response (0x05) ident 8 len 6
+        Source CID: 66
+        Flags: 0x0000
+        Result: Success (0x0000)
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 24  #227 [hci0] 79.434652
+      Channel: 64 len 20 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 0 len 15
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5    #228 [hci0] 79.472808
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #222: len 18 (1 Kb/s)
+        Latency: 77 msec (1-82 msec ~62 msec)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #229 [hci0] 79.474078
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #225: len 7 (1 Kb/s)
+        Latency: 39 msec (1-82 msec ~51 msec)
+        Channel: 68 [PSM 17 mode Basic (0x00)] {chan 0}
+        Channel Latency: 39 msec (39-71 msec ~55 msec)
+> HCI Event: Mode Change (0x14) plen 6                    #230 [hci0] 79.474096
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Mode: Active (0x00)
+        Interval: 0.000 msec (0x0000)
+> ACL Data RX: Handle 129 flags 0x02 dlen 5               #231 [hci0] 79.475442
+      Channel: 64 len 1 [PSM 17 mode Basic (0x00)] {chan 0}
+        02                                               .               
+> HCI Event: Number of Completed Packets (0x13) plen 5    #232 [hci0] 79.475460
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #227: len 24 (4 Kb/s)
+        Latency: 40 msec (1-82 msec ~46 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 40 msec (40-40 msec ~40 msec)
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 6  #233 [hci0] 79.476616
+      Channel: 68 len 2 [PSM 17 mode Basic (0x00)] {chan 0}
+        43 07                                            C.              
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #234 [hci0] 79.529360
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #235 [hci0] 79.530588
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 0 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 26                                            .&              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #236 [hci0] 79.530610
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #233: len 6 (0 Kb/s)
+        Latency: 53 msec (1-82 msec ~50 msec)
+        Channel: 68 [PSM 17 mode Basic (0x00)] {chan 0}
+        Channel Latency: 53 msec (39-71 msec ~54 msec)
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #237 [hci0] 79.531152
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 1 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 26                                            .&              
+> ACL Data RX: Handle 129 flags 0x02 dlen 5               #238 [hci0] 79.531556
+      Channel: 64 len 1 [PSM 17 mode Basic (0x00)] {chan 0}
+        02                                               .               
+bluetoothd[473]: < ACL Data TX: Hand.. flags 0x00 dlen 7  #239 [hci0] 79.534764
+      Channel: 69 len 3 [PSM 19 mode Basic (0x00)] {chan 1}
+        a2 01 00                                         ...             
+> HCI Event: Number of Completed Packets (0x13) plen 5    #240 [hci0] 79.534960
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #237: len 26 (69 Kb/s)
+        Latency: 3 msec (1-82 msec ~26 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 3 msec (3-40 msec ~22 msec)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #241 [hci0] 79.536421
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #239: len 7 (56 Kb/s)
+        Latency: 1 msec (1-82 msec ~14 msec)
+        Channel: 69 [PSM 19 mode Basic (0x00)] {chan 1}
+        Channel Latency: 1 msec (1-1 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #242 [hci0] 79.539270
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #243 [hci0] 79.541781
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 1 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 4c                                            .L              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #244 [hci0] 79.542152
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 2 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 4c                                            .L              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #245 [hci0] 79.543912
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #244: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~8 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~12 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #246 [hci0] 79.583031
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #247 [hci0] 79.584241
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 2 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 72                                            .r              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #248 [hci0] 79.584498
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 3 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 72                                            .r              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #249 [hci0] 79.586400
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #248: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~4 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~6 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #250 [hci0] 79.591781
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #251 [hci0] 79.593016
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 3 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 98                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #252 [hci0] 79.593289
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 4 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 98                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #253 [hci0] 79.595127
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #252: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~3 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~4 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #254 [hci0] 79.648031
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #255 [hci0] 79.649270
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 4 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 be                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #256 [hci0] 79.649726
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 5 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 be                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #257 [hci0] 79.651398
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #256: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~2 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~3 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #258 [hci0] 79.656788
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #259 [hci0] 79.658021
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 5 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 e4                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #260 [hci0] 79.658571
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 6 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 e4                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #261 [hci0] 79.660188
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #260: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~2 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #262 [hci0] 79.664316
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #263 [hci0] 79.701814
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 6 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 0a                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #264 [hci0] 79.702225
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 7 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 0a                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #265 [hci0] 79.703879
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #264: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~1 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #266 [hci0] 79.708204
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #267 [hci0] 79.709292
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 7 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 30                                            .0              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #268 [hci0] 79.709947
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 8 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 30                                            .0              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #269 [hci0] 79.712662
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #268: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~2 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #270 [hci0] 79.718076
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #271 [hci0] 79.755514
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 8 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 56                                            .V              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #272 [hci0] 79.755868
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 9 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 56                                            .V              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #273 [hci0] 79.757626
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #272: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~2 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #274 [hci0] 79.763013
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #275 [hci0] 79.764236
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 9 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 7c                                            .|              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #276 [hci0] 79.764456
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 10 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 7c                                            .|              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #277 [hci0] 79.766367
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #276: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~1 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #278 [hci0] 79.771809
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #279 [hci0] 79.809298
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 10 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 a2                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #280 [hci0] 79.809807
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 11 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 a2                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #281 [hci0] 79.811393
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #280: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~1 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #282 [hci0] 79.816766
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #283 [hci0] 79.818006
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 11 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 c8                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #284 [hci0] 79.818293
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 12 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 c8                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #285 [hci0] 79.820123
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #284: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~1 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #286 [hci0] 79.825557
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #287 [hci0] 79.863070
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 12 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        01 ee                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #288 [hci0] 79.863648
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 13 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        01 ee                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #289 [hci0] 79.865200
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #288: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~1 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #290 [hci0] 79.870560
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #291 [hci0] 79.871802
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 13 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 14                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #292 [hci0] 79.872417
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 14 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 14                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #293 [hci0] 79.875168
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #292: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~2 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #294 [hci0] 79.879345
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #295 [hci0] 79.916836
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 14 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 3a                                            .:              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #296 [hci0] 79.917554
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 15 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 3a                                            .:              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #297 [hci0] 79.920166
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #296: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~2 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~2 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #298 [hci0] 79.924315
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #299 [hci0] 79.925579
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 15 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 60                                            .`              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #300 [hci0] 79.926151
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 16 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 60                                            .`              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #301 [hci0] 79.927652
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #300: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~1 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~1 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #302 [hci0] 79.931808
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #303 [hci0] 79.933079
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 16 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 86                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #304 [hci0] 79.933739
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 17 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 86                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #305 [hci0] 79.970172
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #304: len 26 (5 Kb/s)
+        Latency: 36 msec (1-82 msec ~19 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 36 msec (1-40 msec ~19 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #306 [hci0] 79.975568
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #307 [hci0] 79.976798
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 17 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 ac                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #308 [hci0] 79.977286
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 18 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 ac                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #309 [hci0] 79.978849
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #308: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~10 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~10 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #310 [hci0] 79.984317
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #311 [hci0] 79.985542
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 18 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 d2                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #312 [hci0] 79.986318
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 19 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 d2                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #313 [hci0] 80.023930
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #312: len 26 (5 Kb/s)
+        Latency: 37 msec (1-82 msec ~23 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 37 msec (1-40 msec ~23 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #314 [hci0] 80.029328
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #315 [hci0] 80.030545
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 19 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        02 f8                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #316 [hci0] 80.031270
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 20 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        02 f8                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #317 [hci0] 80.033915
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #316: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~13 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~13 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #318 [hci0] 80.039304
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #319 [hci0] 80.040557
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 20 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 1e                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #320 [hci0] 80.041244
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 21 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 1e                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #321 [hci0] 80.077683
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #320: len 26 (5 Kb/s)
+        Latency: 36 msec (1-82 msec ~24 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 36 msec (1-40 msec ~24 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #322 [hci0] 80.083050
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #323 [hci0] 80.084286
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 21 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 44                                            .D              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #324 [hci0] 80.084883
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 22 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 44                                            .D              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #325 [hci0] 80.086408
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #324: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~13 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~13 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #326 [hci0] 80.090554
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #327 [hci0] 80.091778
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 22 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 6a                                            .j              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #328 [hci0] 80.092500
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 23 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 6a                                            .j              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #329 [hci0] 80.131432
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #328: len 26 (5 Kb/s)
+        Latency: 38 msec (1-82 msec ~26 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 38 msec (1-40 msec ~26 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #330 [hci0] 80.135582
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #331 [hci0] 80.136789
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 23 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 90                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #332 [hci0] 80.137399
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 24 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 90                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #333 [hci0] 80.140153
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #332: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~14 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~14 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #334 [hci0] 80.145569
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #335 [hci0] 80.146787
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 24 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        03 b6                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #336 [hci0] 80.147275
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 25 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              L2CAP (0x0100)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        03 b6                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #337 [hci0] 80.185167
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #336: len 26 (5 Kb/s)
+        Latency: 37 msec (1-82 msec ~26 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 37 msec (1-40 msec ~26 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #338 [hci0] 80.190560
+> ACL Data RX: Handle 129 flags 0x01 dlen 19              #339 [hci0] 80.191691
+      Channel: 66 len 42 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 25 len 37
+        Attribute bytes: 34
+        Continuation state: 0
+        Combined attribute bytes: 984
+          Attribute list: [len 142] {position 0}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00000000
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Service Discovery Server Service Class (0x1000)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0001
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  SDP (0x0001)
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless Keyboard SDP Server [len 47]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0200) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+          Attribute list: [len 669] {position 1}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010000
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Human Interface Device Service (0x1124)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0011
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  HIDP (0x0011)
+            Attribute: Browse Group List (0x0005) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                Public Browse Root (0x1002)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  Human Interface Device Service (0x1124)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Additional Protocol Descriptor List (0x000d) [len 2]
+              Sequence (6) with 13 bytes [8 extra bits] len 15
+                Sequence (6) with 6 bytes [8 extra bits] len 8
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    L2CAP (0x0100)
+                  Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                    0x0013
+                Sequence (6) with 3 bytes [8 extra bits] len 5
+                  UUID (3) with 2 bytes [0 extra bits] len 3
+                    HIDP (0x0011)
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless  Keyboard                         [len 61]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0102) [len 2]
+              Broadcom Corp.   [len 16]
+            Attribute: Unknown (0x0200) [len 2]
+              0x0100
+            Attribute: Unknown (0x0201) [len 2]
+              0x0111
+            Attribute: Unknown (0x0202) [len 2]
+              0x40
+            Attribute: Unknown (0x0203) [len 2]
+              0x21
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              true
+            Attribute: Unknown (0x0206) [len 2]
+              Sequence (6) with 377 bytes [16 extra bits] len 380
+                Unsigned Integer (1) with 1 byte [0 extra bits] len 2
+                  0x22
+                String (4) with 372 bytes [16 extra bits] len 375
+                  	¡…u•à)ç [len 372]
+            Attribute: Unknown (0x0207) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0409
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0208) [len 2]
+              false
+            Attribute: Unknown (0x0209) [len 2]
+              true
+            Attribute: Unknown (0x020a) [len 2]
+              true
+            Attribute: Unknown (0x020b) [len 2]
+              0x0100
+            Attribute: Unknown (0x020c) [len 2]
+              0x1f40
+            Attribute: Unknown (0x020d) [len 2]
+              false
+            Attribute: Unknown (0x020e) [len 2]
+              true
+            Attribute: Unknown (0x020f) [len 2]
+              0x0318
+            Attribute: Unknown (0x0210) [len 2]
+              0x0000
+          Attribute list: [len 161] {position 2}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010001
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                PnP Information (0x1200)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0001
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  SDP (0x0001)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  PnP Information (0x1200)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless Keyboard PnP Server [len 47]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0200) [len 2]
+              0x0103
+            Attribute: Unknown (0x0201) [len 2]
+              0x056e
+            Attribute: Unknown (0x0202) [len 2]
+              0x1050
+            Attribute: Unknown (0x0203) [len 2]
+              0x0019
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              0x0002
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 24  #340 [hci0] 80.207623
+      Channel: 64 len 20 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 26 len 15
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 0
+> HCI Event: Number of Completed Packets (0x13) plen 5    #341 [hci0] 80.238931
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #340: len 24 (6 Kb/s)
+        Latency: 31 msec (1-82 msec ~28 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 31 msec (1-40 msec ~28 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #342 [hci0] 80.243064
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #343 [hci0] 80.244285
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 26 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 26                                            .&              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #344 [hci0] 80.245085
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 27 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 26                                            .&              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #345 [hci0] 80.247648
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #344: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~15 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~15 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #346 [hci0] 80.251819
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #347 [hci0] 80.253025
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 27 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 4c                                            .L              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #348 [hci0] 80.253539
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 28 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 4c                                            .L              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #349 [hci0] 80.255179
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #348: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~8 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~8 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #350 [hci0] 80.293065
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #351 [hci0] 80.294281
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 28 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 72                                            .r              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #352 [hci0] 80.294858
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 29 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 72                                            .r              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #353 [hci0] 80.296387
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #352: len 26 (208 Kb/s)
+        Latency: 1 msec (1-82 msec ~5 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 1 msec (1-40 msec ~5 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #354 [hci0] 80.300548
+> ACL Data RX: Handle 129 flags 0x01 dlen 25              #355 [hci0] 80.301801
+      Channel: 66 len 48 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 29 len 43
+        Attribute bytes: 38
+        Continuation state: 2
+        00 98                                            ..              
+bluetoothd[473]: < ACL Data TX: Han.. flags 0x00 dlen 26  #356 [hci0] 80.302505
+      Channel: 64 len 22 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Request (0x06) tid 30 len 17
+        Search pattern: [len 5]
+          Sequence (6) with 3 bytes [8 extra bits] len 5
+            UUID (3) with 2 bytes [0 extra bits] len 3
+              PnP Information (0x1200)
+        Max record count: 65535
+        Attribute list: [len 7]
+          Sequence (6) with 5 bytes [8 extra bits] len 7
+            Unsigned Integer (1) with 4 bytes [0 extra bits] len 5
+              0x0000ffff
+        Continuation state: 2
+        00 98                                            ..              
+> HCI Event: Number of Completed Packets (0x13) plen 5    #357 [hci0] 80.305141
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #356: len 26 (104 Kb/s)
+        Latency: 2 msec (1-82 msec ~3 msec)
+        Channel: 64 [PSM 1 mode Basic (0x00)] {chan 2}
+        Channel Latency: 2 msec (1-40 msec ~3 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 27              #358 [hci0] 80.309319
+      Channel: 66 len 23 [PSM 1 mode Basic (0x00)] {chan 2}
+      SDP: Service Search Attribute Response (0x07) tid 30 len 18
+        Attribute bytes: 15
+        Continuation state: 0
+        Combined attribute bytes: 167
+          Attribute list: [len 161] {position 0}
+            Attribute: Service Record Handle (0x0000) [len 2]
+              0x00010001
+            Attribute: Service Class ID List (0x0001) [len 2]
+              UUID (3) with 2 bytes [0 extra bits] len 3
+                PnP Information (0x1200)
+            Attribute: Protocol Descriptor List (0x0004) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  L2CAP (0x0100)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0001
+              Sequence (6) with 3 bytes [8 extra bits] len 5
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  SDP (0x0001)
+            Attribute: Language Base Attribute ID List (0x0006) [len 2]
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x656e
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x006a
+              Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                0x0100
+            Attribute: Bluetooth Profile Descriptor List (0x0009) [len 2]
+              Sequence (6) with 6 bytes [8 extra bits] len 8
+                UUID (3) with 2 bytes [0 extra bits] len 3
+                  PnP Information (0x1200)
+                Unsigned Integer (1) with 2 bytes [0 extra bits] len 3
+                  0x0100
+            Attribute: Unknown (0x0100) [len 2]
+              Broadcom Bluetooth Wireless Keyboard PnP Server [len 47]
+            Attribute: Unknown (0x0101) [len 2]
+              Keyboard [len 8]
+            Attribute: Unknown (0x0200) [len 2]
+              0x0103
+            Attribute: Unknown (0x0201) [len 2]
+              0x056e
+            Attribute: Unknown (0x0202) [len 2]
+              0x1050
+            Attribute: Unknown (0x0203) [len 2]
+              0x0019
+            Attribute: Unknown (0x0204) [len 2]
+              true
+            Attribute: Unknown (0x0205) [len 2]
+              0x0002
+> HCI Event: Mode Change (0x14) plen 6                    #359 [hci0] 80.455196
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Mode: Sniff (0x02)
+        Interval: 10.000 msec (0x0010)
+< ACL Data TX: Handle 129 flags 0x00 dlen 12              #360 [hci0] 82.548233
+      L2CAP: Disconnection Request (0x06) ident 9 len 4
+        Destination CID: 64
+        Source CID: 66
+< HCI Command: Exit Sniff Mode (0x02|0x0004) plen 2       #361 [hci0] 82.548340
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+> HCI Event: Command Status (0x0f) plen 4                 #362 [hci0] 82.548919
+      Exit Sniff Mode (0x02|0x0004) ncmd 5
+        Status: Success (0x00)
+> HCI Event: Number of Completed Packets (0x13) plen 5    #363 [hci0] 83.082611
+        Num handles: 1
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Count: 1
+        #360: len 12 (0 Kb/s)
+        Latency: 534 msec (1-534 msec ~269 msec)
+> ACL Data RX: Handle 129 flags 0x02 dlen 12              #364 [hci0] 83.122816
+      L2CAP: Disconnection Response (0x07) ident 9 len 4
+        Destination CID: 64
+        Source CID: 66
+> HCI Event: Mode Change (0x14) plen 6                    #365 [hci0] 83.163896
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Mode: Active (0x00)
+        Interval: 0.000 msec (0x0000)
+> HCI Event: Mode Change (0x14) plen 6                    #366 [hci0] 84.145064
+        Status: Success (0x00)
+        Handle: 129 Address: <KEYBOARD-MAC> (OUI 20-73-34)
+        Mode: Sniff (0x02)
+        Interval: 10.000 msec (0x0010)
+bluetoothctl[43941]: @ MGMT Close: bluetoothctl             {0x0002} 126.292951
+bluetoothd[473]: @ MGMT Command:... (0x0009) plen 1  {0x0001} [hci0] 126.319829
+        Bondable: Disabled (0x00)
+@ MGMT Event: Command Complete (0x0001) plen 7       {0x0001} [hci0] 126.319865
+      Set Bondable (0x0009) plen 4
+        Status: Success (0x00)
+        Current settings: 0x00400ac3
+          Powered
+          Connectable
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Secure Connections
+          LL Privacy
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #367 [hci0] 128.610999
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 19 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #368 [hci0] 128.650930
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #369 [hci0] 131.230870
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 2a 00 00 00 00 00                    ....*.....      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #370 [hci0] 131.330897
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #371 [hci0] 163.129594
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 09 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #372 [hci0] 163.170739
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #373 [hci0] 163.569488
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0a 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #374 [hci0] 163.649558
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #375 [hci0] 164.609562
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0b 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #376 [hci0] 164.689555
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #377 [hci0] 165.450725
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0d 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #378 [hci0] 165.452052
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #379 [hci0] 168.569416
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0e 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #380 [hci0] 168.609337
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #381 [hci0] 169.049319
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0f 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #382 [hci0] 169.210589
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #383 [hci0] 169.809314
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 18 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #384 [hci0] 169.889298
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #385 [hci0] 170.609337
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0b 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #386 [hci0] 170.649276
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #387 [hci0] 170.849258
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0b 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #388 [hci0] 171.049260
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #389 [hci0] 171.209255
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 0a 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #390 [hci0] 171.289238
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #391 [hci0] 172.249233
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #392 [hci0] 172.329198
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #393 [hci0] 172.489187
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #394 [hci0] 172.529300
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 05 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #395 [hci0] 172.530452
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #396 [hci0] 172.609170
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #397 [hci0] 172.809232
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 19 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #398 [hci0] 172.810435
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 19 05 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #399 [hci0] 172.929205
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 05 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #400 [hci0] 172.930408
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #401 [hci0] 173.249166
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #402 [hci0] 173.289161
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 10 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #403 [hci0] 173.329141
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #404 [hci0] 173.330470
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #405 [hci0] 173.970382
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #406 [hci0] 174.129111
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 05 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #407 [hci0] 174.169124
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 05 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #408 [hci0] 174.329109
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #409 [hci0] 174.330348
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #410 [hci0] 174.409126
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #411 [hci0] 174.449097
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 05 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #412 [hci0] 174.569113
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #413 [hci0] 174.570341
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #414 [hci0] 174.689106
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #415 [hci0] 174.690319
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 05 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #416 [hci0] 174.809112
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #417 [hci0] 174.810352
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #418 [hci0] 174.929099
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #419 [hci0] 174.930325
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 05 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #420 [hci0] 175.049100
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #421 [hci0] 175.089087
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 11 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #422 [hci0] 175.129085
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #423 [hci0] 175.169075
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 05 00 00 00 00 00                    ..........      
+> ACL Data RX: Handle 129 flags 0x02 dlen 14             #424 [hci0] 175.209149
+      Channel: 65 len 10 [PSM 19 mode Basic (0x00)] {chan 1}
+        a1 01 00 00 00 00 00 00 00 00                    ..........      

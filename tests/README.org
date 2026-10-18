@@ -1,0 +1,166 @@
+#+TITLE: Sway card - tests and their results
+#+STARTUP: overview
+
+Every test run on the sway card that left a script or a result file. The
+point is that a conclusion in the docs or a commit can be checked, or the
+test repeated, from what is here.
+
+Naming, as in the console card's repository:
+- =test_NN_<name>.sh= is a copy of the script exactly as it ran. The
+  maintained version lives in =../tools/= and may have changed since.
+- =result_NN_<label>.<ext>= is what the run produced, unchanged, except
+  that personal data is replaced by markers such as =<SSID>=,
+  =<KEYBOARD-MAC>= and =<LINK-KEY>= (see "Privacy" at the end).
+
+How to repeat a test: copy the script to the tablet and run it as its
+header says. The hp240 tab gets the script there with
+=scp ~/p25t-backup/p25t-sway/tests/test_NN_<name>.sh p25t-sway:=.
+
+* 01 Accelerometer orientation (2026-10-15)
+- Question :: Why does the screen rotation come out 90 degrees off?
+  iio-sensor-proxy reported "left-up" with the tablet in its normal
+  landscape position.
+- Script :: =test_01_accel_probe.sh= (sudo, one run per position: L0, P90,
+  L180, P270). It records the sensor's raw readings, the kernel
+  mount_matrix, the udev =ACCEL_MOUNT_MATRIX= and two short runs of
+  monitor-sensor.
+- Results ::
+  - =result_01_monitor-sensor.txt=: monitor-sensor by hand while turning
+    the tablet, before the probe existed;
+  - =result_01_before.txt=: all four positions with Debian's hwdb;
+  - =result_01_after.txt=: the same after the fix and a reboot.
+- Found :: systemd's =60-sensor.hwdb= gives every device-tree SC7A20 the
+  PineTab2 matrix (=0, 0, -1; 1, 0, 0; 0, -1, 0=). iio-sensor-proxy 3.7
+  prefers that udev value over the kernel's =mount_matrix=, so every name
+  was one quarter-turn off: L0 left-up, P90 bottom-up, L180 right-up, P270
+  normal.
+- Conclusion :: =debian/files/61-p25t-sensor.hwdb= overrides it with
+  =1, 0, 0; 0, 0, 1; 0, -1, 0= (iio-sensor-proxy's convention: the axis
+  pointing up reads -1 g). After it: L0 normal, P90 left-up, L180
+  bottom-up, P270 right-up. Installed by the build on both cards.
+- Note :: monitor-sensor's first line can be the daemon's previous
+  value; the "changed" line that follows is the current one. Over ssh
+  the claim is refused: polkit allows only the active local session (or
+  root).
+
+* 02 Sway first start (2026-10-15)
+- Question :: Does sway run on the P25T as Debian ships it: GPU, panel
+  orientation, touch, keyboard, logind session?
+- Script :: =test_02_sway_check.sh=, run over ssh while sway ran on tty1.
+  It asks sway and the system (outputs, inputs, session, memory,
+  temperatures, backlight) and reads the sway log.
+- Results ::
+  - =result_02_sway-first.log=: =sway -d= log of the first start;
+  - =result_02_sway-check.txt=: first look (09:30);
+  - =result_02_sway-check-after.txt=: the same file, with a second run
+    added right after the GPU benchmark of test 03 (09:55, label
+    =after-glmark2=): memory and temperatures after load.
+- Conclusion :: Sway 1.10.1 / wlroots 0.18.2 runs with GLES2 on Mali-G52
+  (Panfrost, Mesa 25.0.7), in a logind session on seat0/tty1 (no seatd).
+  It applies the device tree's panel orientation by itself (DSI-1
+  800x1280, transform 90), so no output line is needed. Touch and
+  keyboard work. Fonts were too small at first, so foot and the bar use
+  Terminus 18 px.
+
+* 03 GPU benchmark (2026-10-15)
+- Question :: How fast is the GPU under sway?
+- Command :: =glmark2-es2-wayland= in foot (default 800x600 window); there
+  is no script.
+- Result :: =result_03_glmark2.txt=; the state right after it is the
+  =after-glmark2= run in =result_02_sway-check-after.txt=.
+- Conclusion :: glmark2 score 306, all 33 scenes ran without errors.
+  CPU/GPU at 38-39/35-36 °C, about 330-350 MB of memory in use.
+
+* 04 Battery percentage across reboots (2026-10-15)
+- Question :: Why does the battery % jump: 27 % before a reboot, 72-78 %
+  after it with the charger in, and 98 % -> 69 % across a reboot after a
+  full charge?
+- Script :: =test_04_battery_log.sh= (normal user, in the background).
+  One CSV line per minute of what the RK817 fuel gauge reports: status,
+  capacity, a % estimated from the voltage via the stock OCV table,
+  voltage, current, charge counters, charger.
+- Result :: =result_04_battery-log.csv= (285 lines, 12:38-17:30, a full
+  charge and one reboot).
+- Found :: The driver's % right after a reboot is a guess from one
+  power-on voltage. It was too high with the charger in and too low
+  under load. Every reboot resets the RK817 (=DEV_RST=), and the driver
+  then takes its "first boot" path. The running coulomb count was right:
+  "100 %" was reached at 13:28, but 3079 mAh more went in before charge
+  termination at 17:08. The real state at 12:38 was about 21-32 %, not
+  the 83 % shown. After termination the tablet ran from the battery
+  although plugged in.
+- Conclusion :: A kernel change to keep the saved charge level across
+  the reset is proposed, not done (it needs the RK817 datasheet checked
+  first).
+
+* 05 Bluetooth keyboard (2026-10-16)
+- Question :: The keyboard sometimes dropped or stuck keys. Is that the
+  keyboard, the radio shared with 2.4 GHz Wi-Fi, or the tablet's
+  Bluetooth link? Later the same morning: why won't it connect any more?
+- Script :: =test_05_bt_keytest.sh= (sudo, 45 s of key events while
+  typing the alphabet three times; optionally with Wi-Fi down). Traces
+  with =btmon=, commands in the results' notes below.
+- Results ::
+  - =result_05_bt-keys-wifi-on.txt=: test B, Wi-Fi on 2.4 GHz;
+  - =result_05_btmon-key.txt=: trace while the keyboard tried to
+    reconnect (nothing arrived);
+  - =result_05_btmon-key2.txt=: the same, with =btmgmt connectable on=;
+  - =result_05_btmon-pair.txt=: trace of pairing again and connecting.
+  The traces came from =sudo timeout 60 btmon > FILE= (240 s for the
+  pairing).
+- Found ::
+  - Test A, on another laptop and tablet: clean, so the keyboard itself
+    is fine.
+  - Test B: 78 presses, 78 releases, nothing stuck, so no
+    Wi-Fi/Bluetooth clash was seen.
+  - The connection failure: the keyboard keeps a single host, and
+    pairing it elsewhere for test A had replaced the tablet. The fix was
+    =remove=, =pair=, then =connect= at once while the keyboard was still
+    in pairing mode, then =trust=. It then reconnects by itself after
+    keyboard off/on and after a tablet reboot.
+  - Test C (Wi-Fi off) was not needed.
+- Conclusion :: No change to the card. If keys stick again, run
+  =sudo bash test_05_bt_keytest.sh stuck= right after it happens.
+
+* 06 Package lists against a running card (2026-10-16)
+- Question :: Does the build's package list cover what was installed by
+  hand on the card?
+- Script :: =test_06_manual_vs_lists.sh= (normal user, with a copy of
+  =debian/=), run as =bash test_06_manual_vs_lists.sh p25t-debian sway=.
+- Result :: =result_06_marked-manual.txt=, from the script's first
+  version. That version listed the libraries the build marks "manual"
+  (libc6 and so on) in the same section; the current one puts them in a
+  separate section 1b.
+- Conclusion :: Two real additions: =micro= (now in
+  =packages-common.txt=) and =epiphany-browser= (in =packages-sway.txt=,
+  on trial).
+
+* Checks without result files
+Checked by hand on the tablet; the outcome is recorded here and in the
+commit messages.
+| Date       | What                                                     | Outcome |
+|------------+----------------------------------------------------------+---------|
+| 2026-10-15 | rotation in all four positions; Super+o lock             | OK      |
+| 2026-10-15 | bar fields (keyboard, rotation lock, brightness, volume, Wi-Fi, battery, date) | OK |
+| 2026-10-15 | brightness keys; dim at 3 min idle, screen off at 5 min; power key screen off/on | OK |
+| 2026-10-15 | xdg-open defaults (PDF, HTML, pictures), also from mc     | OK      |
+| 2026-10-16 | autostart: tty1 countdown, key = console, tty2 and ssh stay text, ~/.no-sway | OK |
+| 2026-10-16 | GNOME Web dark with ADW_DEBUG_COLOR_SCHEME=prefer-dark   | OK      |
+
+* Privacy
+This repository is public. Before a result file goes in, personal data is
+replaced:
+| Marker           | Replaces                                            |
+|------------------+-----------------------------------------------------|
+| =<SSID>=         | the Wi-Fi network name                              |
+| =<ROUTER-MAC>=   | the Wi-Fi router's MAC address                      |
+| =<KEYBOARD-MAC>= | the Bluetooth keyboard's address                    |
+| =<OTHER-DEVICE>= | a nearby device seen during a Bluetooth scan        |
+| =<LINK-KEY>=     | the keyboard's pairing key                          |
+| =<PASSKEY>=      | the one-time pairing code                           |
+The tablet's own addresses (Wi-Fi/Bluetooth MAC, USB network
+192.168.7.x) are left in: they identify only the test tablet.
+=tools/privacy_check.sh= (installed as git hooks by
+=tools/install_privacy_hooks.sh=) refuses a commit or push that still
+contains anything from the private list, which is kept outside the
+repository.

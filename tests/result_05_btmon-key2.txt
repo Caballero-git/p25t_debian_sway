@@ -1,0 +1,79 @@
+Bluetooth monitor ver 5.82
+btmon[38780]: = Note: Linux version 7.3.0-rc4-p25t-sway (aarch64)      0.069428
+btmon[38780]: = Note: Bluetooth subsystem version 2.22                 0.069438
+= New Index: 8C:35:92:F2:B5:46 (Primary,UART,hci0)              [hci0] 0.069441
+= Open Index: 8C:35:92:F2:B5:46                                 [hci0] 0.069442
+= Index Info: 8C:35:92:F2:B5:46 (RivieraWaves S.A.S)            [hci0] 0.069444
+bluetoothd[473]: @ MGMT Open: bl.. (privileged) version 1.23  {0x0001} 0.069447
+btmgmt[39281]: @ MGMT Open: btm.. (privileged) version 1.23  {0x0002} 27.515585
+btmgmt[39281]: @ MGMT Command: Set.. (0x0007) plen 1  {0x0002} [hci0] 27.515782
+        Connectable: Enabled (0x01)
+@ MGMT Event: Command Complete (0x0001) plen 7        {0x0002} [hci0] 27.515871
+      Set Connectable (0x0007) plen 4
+        Status: Success (0x00)
+        Current settings: 0x00400ac3
+          Powered
+          Connectable
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Secure Connections
+          LL Privacy
+@ MGMT Event: New Settings (0x0006) plen 4            {0x0001} [hci0] 27.515892
+        Current settings: 0x00400ac3
+          Powered
+          Connectable
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Secure Connections
+          LL Privacy
+[39281]: @ MGMT Close: btmgmt                                {0x0002} 27.516049
+btmgmt[39496]: @ MGMT Open: btm.. (privileged) version 1.23  {0x0002} 39.991396
+btmgmt[39496]: @ MGMT Command: Read Contr.. (0x0003) plen 0  {0x0002} 39.991532
+@ MGMT Event: Command Complete (0x0001) plen 7               {0x0002} 39.991541
+      Read Controller Index List (0x0003) plen 4
+        Status: Success (0x00)
+        Controllers: 1
+          hci0
+btmgmt[39496]: @ MGMT Command: Rea.. (0x0004) plen 0  {0x0002} [hci0] 39.991635
+@ MGMT Event: Command Complete (0x0001) plen 283      {0x0002} [hci0] 39.991648
+      Read Controller Information (0x0004) plen 280
+        Status: Success (0x00)
+        Address: 8C:35:92:F2:B5:46 (Guangzhou Shiyuan Electronic Technology Company Limited)
+        Version: Bluetooth 5.2 (0x0b)
+        Manufacturer: RivieraWaves S.A.S (96)
+        Supported settings: 0x0041beff
+          Powered
+          Connectable
+          Fast Connectable
+          Discoverable
+          Bondable
+          Link Security
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Advertising
+          Secure Connections
+          Debug Keys
+          Privacy
+          Static Address
+          PHY Configuration
+          LL Privacy
+        Current settings: 0x00400ac3
+          Powered
+          Connectable
+          Secure Simple Pairing
+          BR/EDR
+          Low Energy
+          Secure Connections
+          LL Privacy
+        Class: 0x400000
+          Major class: Miscellaneous
+          Minor class: 0x00
+          Telephony (Cordless telephony, Modem, Headset)
+        Name: p25t-sway
+        Short name: 
+btmgmt[39496]: @ MGMT Close: btmgmt                          {0x0002} 39.991782
+bluetoothctl[40162]: @ MGMT Open: bluetoothctl version 1.23  {0x0002} 80.621846
+bluetoothctl[40162]: @ MGMT Close: bluetoothctl              {0x0002} 80.635978

@@ -1,0 +1,261 @@
+=================== wifi-on (wifi-on)   2026-10-16 11:28:37   7.3.0-rc4-p25t-sway
+## Wi-Fi
+	SSID: <SSID>
+	freq: 2417.0
+	signal: -68 dBm
+## Bluetooth services
+active
+active
+377 /usr/bin/btattach -B /dev/ttyS1 -P h4 -S 1500000
+## controller
+Controller 8C:35:92:F2:B5:46 (public)
+	Powered: yes
+	Discoverable: no
+	DiscoverableTimeout: 0x000000b4 (180)
+	Pairable: no
+## paired / connected devices
+Device <KEYBOARD-MAC> (public)
+	Name: 1byone Keyboard
+	Icon: input-keyboard
+	Paired: yes
+	Bonded: yes
+	Trusted: yes
+	Connected: yes
+	LegacyPairing: yes
+	UUID: Human Interface Device... (00001124-0000-1000-8000-00805f9b34fb)
+## input devices
+Device:                  adc-keys
+Kernel:                  /dev/input/event3
+Device:                  rk805 pwrkey
+Kernel:                  /dev/input/event0
+Device:                  silead_ts
+Kernel:                  /dev/input/event1
+Device:                  1byone Keyboard
+Kernel:                  /dev/input/event4
+Device:                  1byone Keyboard Mouse
+Kernel:                  /dev/input/event5
+## key events per device (node: presses / releases / pressed-but-never-released)
+event4: 78 / 78 / none
+  typed: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z 
+## kernel messages (Bluetooth, UART, HID) during this boot, last 40
+[    0.083204] Serial: AMBA PL011 UART driver
+[    0.266811] fe650000.serial: ttyS1 MMIO32:0x00000000fe650000 (irq = 25, base_baud = 1500000) is a 16550A
+[    0.271457] printk: legacy bootconsole [uart0] disabled
+[    1.694862] usbcore: registered new interface driver usbhid
+[    1.694873] usbhid: USB HID core driver
+[    2.445626] xhci-hcd xhci-hcd.8.auto: xHCI Host Controller
+[    2.445670] xhci-hcd xhci-hcd.8.auto: new USB bus registered, assigned bus number 1
+[    2.445848] xhci-hcd xhci-hcd.8.auto: USB0 root hub has no ports
+[    2.445870] xhci-hcd xhci-hcd.8.auto: hcc params 0x0220fe64 hci version 0x110 quirks 0x0000808002000010
+[    2.446019] xhci-hcd xhci-hcd.8.auto: irq 69, io mem 0xfcc00000
+[    2.684333] dw-apb-uart fe660000.serial: forbid DMA for kernel console
+[    7.847374] aicbt_patch_table_load bt uart_baud[0]:1500000 
+[    7.847378] aicbt_patch_table_load bt uart_flowctrl[0]:1 
+[    9.981587] dw-apb-uart fe650000.serial: failed to request DMA
+[   10.179986] Bluetooth: Core ver 2.22
+[   10.180118] NET: Registered PF_BLUETOOTH protocol family
+[   10.180123] Bluetooth: HCI device and connection manager initialized
+[   10.180142] Bluetooth: HCI socket layer initialized
+[   10.180148] Bluetooth: L2CAP socket layer initialized
+[   10.180162] Bluetooth: SCO socket layer initialized
+[   10.207983] Bluetooth: HCI UART driver ver 2.3
+[   10.208006] Bluetooth: HCI UART protocol H4 registered
+[   11.414793] Bluetooth: MGMT ver 1.23
+[   11.451191] Bluetooth: RFCOMM TTY layer initialized
+[   11.451223] Bluetooth: RFCOMM socket layer initialized
+[   11.451275] Bluetooth: RFCOMM ver 1.11
+[   11.535865] Bluetooth: hci0: Bad flag given (0x1) vs supported (0x6)
+[   54.984621] usb 1-1: new full-speed USB device number 2 using xhci-hcd
+[   55.161218] input: Logitech USB Receiver as /devices/platform/fcc00000.usb/xhci-hcd.8.auto/usb1/1-1/1-1:1.0/0003:046D:C534.0001/input/input4
+[   55.257658] hid-generic 0003:046D:C534.0001: input: USB HID v1.11 Keyboard [Logitech USB Receiver] on usb-xhci-hcd.8.auto-1/input0
+[   55.269951] input: Logitech USB Receiver Mouse as /devices/platform/fcc00000.usb/xhci-hcd.8.auto/usb1/1-1/1-1:1.1/0003:046D:C534.0002/input/input5
+[   55.271313] input: Logitech USB Receiver Consumer Control as /devices/platform/fcc00000.usb/xhci-hcd.8.auto/usb1/1-1/1-1:1.1/0003:046D:C534.0002/input/input6
+[   55.325924] input: Logitech USB Receiver System Control as /devices/platform/fcc00000.usb/xhci-hcd.8.auto/usb1/1-1/1-1:1.1/0003:046D:C534.0002/input/input7
+[   55.326581] hid-generic 0003:046D:C534.0002: input: USB HID v1.11 Mouse [Logitech USB Receiver] on usb-xhci-hcd.8.auto-1/input1
+[ 1000.567168] Bluetooth: hci0: Bad flag given (0x3) vs supported (0x6)
+[ 2795.094261] Bluetooth: hci0: Bad flag given (0x3) vs supported (0x6)
+[ 2812.697906] hid-generic 0005:056E:1050.0003: unknown main item tag 0x0
+[ 2813.019457] input: 1byone Keyboard as /devices/virtual/misc/uhid/0005:056E:1050.0003/input/input10
+[ 2813.084239] input: 1byone Keyboard Mouse as /devices/virtual/misc/uhid/0005:056E:1050.0003/input/input11
+[ 2813.084404] hid-generic 0005:056E:1050.0003: input: BLUETOOTH HID v0.19 Keyboard [1byone Keyboard] on 8c:35:92:f2:b5:46
+## bluetooth journal, last 30
+oct 16 10:36:22 p25t-sway systemd[1]: bluetooth.service - Bluetooth service skipped, unmet condition check ConditionPathIsDirectory=/sys/class/bluetooth
+oct 16 10:36:22 p25t-sway systemd[1]: Started p25t-bluetooth.service - P25T: attach the AIC8800 Bluetooth (H4 on ttyS1, 1.5 Mbaud, RTS/CTS).
+oct 16 10:36:24 p25t-sway systemd[1]: Starting bluetooth.service - Bluetooth service...
+oct 16 10:36:24 p25t-sway (uetoothd)[473]: bluetooth.service: ConfigurationDirectory 'bluetooth' already exists but the mode is different. (File system: 755 ConfigurationDirectoryMode: 555)
+oct 16 10:36:24 p25t-sway bluetoothd[473]: Bluetooth daemon 5.82
+oct 16 10:36:24 p25t-sway systemd[1]: Started bluetooth.service - Bluetooth service.
+oct 16 10:36:24 p25t-sway bluetoothd[473]: Starting SDP server
+oct 16 10:36:24 p25t-sway bluetoothd[473]: profiles/network/bnep.c:bnep_init() kernel lacks bnep-protocol support
+oct 16 10:36:24 p25t-sway bluetoothd[473]: Bluetooth management interface 1.23 initialized
+oct 16 10:36:24 p25t-sway bluetoothd[473]: Battery Provider Manager created
+oct 16 10:36:24 p25t-sway bluetoothd[473]: src/device.c:set_wake_allowed_complete() Set device flags return status: Invalid Parameters
+oct 16 10:44:47 p25t-sway bluetoothd[473]: profiles/input/device.c:control_connect_cb() connect to <KEYBOARD-MAC>: Host is down (112)
+oct 16 10:45:08 p25t-sway bluetoothd[473]: profiles/input/device.c:control_connect_cb() connect to <KEYBOARD-MAC>: Host is down (112)
+oct 16 10:52:53 p25t-sway bluetoothd[473]: src/device.c:set_wake_allowed_complete() Set device flags return status: Invalid Parameters
+oct 16 10:54:02 p25t-sway bluetoothd[473]: profiles/input/device.c:control_connect_cb() connect to <KEYBOARD-MAC>: Host is down (112)
+oct 16 10:55:06 p25t-sway bluetoothd[473]: profiles/input/device.c:control_connect_cb() connect to <KEYBOARD-MAC>: Host is down (112)
+oct 16 10:55:24 p25t-sway bluetoothd[473]: profiles/input/device.c:control_connect_cb() connect to <KEYBOARD-MAC>: Host is down (112)
+oct 16 11:22:47 p25t-sway bluetoothd[473]: src/device.c:set_wake_allowed_complete() Set device flags return status: Invalid Parameters
+## raw events
+-event3   DEVICE_ADDED                 adc-keys                          seat0 default group1  cap:k
+-event0   DEVICE_ADDED                 rk805 pwrkey                      seat0 default group2  cap:k
+-event1   DEVICE_ADDED                 silead_ts                         seat0 default group3  cap:t ntouches 10 calib
+-event4   DEVICE_ADDED                 1byone Keyboard                   seat0 default group4  cap:k
+-event5   DEVICE_ADDED                 1byone Keyboard Mouse             seat0 default group4  cap:p left scroll-nat scroll-button
+-event4   KEYBOARD_KEY                 +0.000s	KEY_A (30) pressed
+ event4   KEYBOARD_KEY                 +0.120s	KEY_A (30) released
+ event4   KEYBOARD_KEY                 +0.280s	KEY_B (48) pressed
+ event4   KEYBOARD_KEY                 +0.400s	KEY_B (48) released
+ event4   KEYBOARD_KEY                 +0.680s	KEY_C (46) pressed
+ event4   KEYBOARD_KEY                 +0.760s	KEY_C (46) released
+ event4   KEYBOARD_KEY                 +1.280s	KEY_D (32) pressed
+ event4   KEYBOARD_KEY                 +1.482s	KEY_D (32) released
+ event4   KEYBOARD_KEY                 +1.520s	KEY_E (18) pressed
+ event4   KEYBOARD_KEY                 +1.600s	KEY_E (18) released
+ event4   KEYBOARD_KEY                 +1.840s	KEY_F (33) pressed
+ event4   KEYBOARD_KEY                 +1.920s	KEY_F (33) released
+ event4   KEYBOARD_KEY                 +2.160s	KEY_G (34) pressed
+ event4   KEYBOARD_KEY                 +2.280s	KEY_G (34) released
+ event4   KEYBOARD_KEY                 +2.560s	KEY_H (35) pressed
+ event4   KEYBOARD_KEY                 +2.640s	KEY_H (35) released
+ event4   KEYBOARD_KEY                 +3.280s	KEY_I (23) pressed
+ event4   KEYBOARD_KEY                 +3.320s	KEY_I (23) released
+ event4   KEYBOARD_KEY                 +3.720s	KEY_J (36) pressed
+ event4   KEYBOARD_KEY                 +3.800s	KEY_J (36) released
+ event4   KEYBOARD_KEY                 +4.040s	KEY_K (37) pressed
+ event4   KEYBOARD_KEY                 +4.120s	KEY_K (37) released
+ event4   KEYBOARD_KEY                 +4.360s	KEY_L (38) pressed
+ event4   KEYBOARD_KEY                 +4.400s	KEY_L (38) released
+ event4   KEYBOARD_KEY                 +4.721s	KEY_M (50) pressed
+ event4   KEYBOARD_KEY                 +4.779s	KEY_M (50) released
+ event4   KEYBOARD_KEY                 +5.040s	KEY_N (49) pressed
+ event4   KEYBOARD_KEY                 +5.120s	KEY_N (49) released
+ event4   KEYBOARD_KEY                 +6.160s	KEY_O (24) pressed
+ event4   KEYBOARD_KEY                 +6.240s	KEY_O (24) released
+ event4   KEYBOARD_KEY                 +7.441s	KEY_P (25) pressed
+ event4   KEYBOARD_KEY                 +7.520s	KEY_P (25) released
+ event4   KEYBOARD_KEY                 +7.920s	KEY_Q (16) pressed
+ event4   KEYBOARD_KEY                 +8.039s	KEY_Q (16) released
+ event4   KEYBOARD_KEY                 +8.399s	KEY_R (19) pressed
+ event4   KEYBOARD_KEY                 +8.479s	KEY_R (19) released
+ event4   KEYBOARD_KEY                 +8.839s	KEY_S (31) pressed
+ event4   KEYBOARD_KEY                 +8.919s	KEY_S (31) released
+ event4   KEYBOARD_KEY                 +9.279s	KEY_T (20) pressed
+ event4   KEYBOARD_KEY                 +9.359s	KEY_T (20) released
+ event4   KEYBOARD_KEY                 +9.799s	KEY_U (22) pressed
+ event4   KEYBOARD_KEY                 +9.839s	KEY_U (22) released
+ event4   KEYBOARD_KEY                 +10.201s	KEY_V (47) pressed
+ event4   KEYBOARD_KEY                 +10.279s	KEY_V (47) released
+ event4   KEYBOARD_KEY                 +11.039s	KEY_W (17) pressed
+ event4   KEYBOARD_KEY                 +11.119s	KEY_W (17) released
+ event4   KEYBOARD_KEY                 +11.439s	KEY_X (45) pressed
+ event4   KEYBOARD_KEY                 +11.519s	KEY_X (45) released
+ event4   KEYBOARD_KEY                 +12.319s	KEY_Y (21) pressed
+ event4   KEYBOARD_KEY                 +12.399s	KEY_Y (21) released
+ event4   KEYBOARD_KEY                 +13.919s	KEY_Z (44) pressed
+ event4   KEYBOARD_KEY                 +13.999s	KEY_Z (44) released
+ event4   KEYBOARD_KEY                 +15.439s	KEY_A (30) pressed
+ event4   KEYBOARD_KEY                 +15.481s	KEY_A (30) released
+ event4   KEYBOARD_KEY                 +15.519s	KEY_B (48) pressed
+ event4   KEYBOARD_KEY                 +15.599s	KEY_B (48) released
+ event4   KEYBOARD_KEY                 +15.999s	KEY_C (46) pressed
+ event4   KEYBOARD_KEY                 +16.119s	KEY_C (46) released
+ event4   KEYBOARD_KEY                 +16.479s	KEY_D (32) pressed
+ event4   KEYBOARD_KEY                 +16.559s	KEY_D (32) released
+ event4   KEYBOARD_KEY                 +16.799s	KEY_E (18) pressed
+ event4   KEYBOARD_KEY                 +16.879s	KEY_E (18) released
+ event4   KEYBOARD_KEY                 +17.119s	KEY_F (33) pressed
+ event4   KEYBOARD_KEY                 +17.199s	KEY_F (33) released
+ event4   KEYBOARD_KEY                 +17.519s	KEY_G (34) pressed
+ event4   KEYBOARD_KEY                 +17.579s	KEY_G (34) released
+ event4   KEYBOARD_KEY                 +17.839s	KEY_H (35) pressed
+ event4   KEYBOARD_KEY                 +17.919s	KEY_H (35) released
+ event4   KEYBOARD_KEY                 +18.279s	KEY_I (23) pressed
+ event4   KEYBOARD_KEY                 +18.359s	KEY_I (23) released
+ event4   KEYBOARD_KEY                 +19.079s	KEY_J (36) pressed
+ event4   KEYBOARD_KEY                 +19.119s	KEY_J (36) released
+ event4   KEYBOARD_KEY                 +19.479s	KEY_K (37) pressed
+ event4   KEYBOARD_KEY                 +19.480s	KEY_K (37) released
+ event4   KEYBOARD_KEY                 +19.679s	KEY_L (38) pressed
+ event4   KEYBOARD_KEY                 +19.759s	KEY_L (38) released
+ event4   KEYBOARD_KEY                 +20.119s	KEY_M (50) pressed
+ event4   KEYBOARD_KEY                 +20.199s	KEY_M (50) released
+ event4   KEYBOARD_KEY                 +20.439s	KEY_N (49) pressed
+ event4   KEYBOARD_KEY                 +20.519s	KEY_N (49) released
+ event4   KEYBOARD_KEY                 +21.679s	KEY_O (24) pressed
+ event4   KEYBOARD_KEY                 +21.780s	KEY_O (24) released
+ event4   KEYBOARD_KEY                 +21.849s	KEY_P (25) pressed
+ event4   KEYBOARD_KEY                 +21.890s	KEY_P (25) released
+ event4   KEYBOARD_KEY                 +22.249s	KEY_Q (16) pressed
+ event4   KEYBOARD_KEY                 +22.369s	KEY_Q (16) released
+ event4   KEYBOARD_KEY                 +22.759s	KEY_R (19) pressed
+ event4   KEYBOARD_KEY                 +22.799s	KEY_R (19) released
+ event4   KEYBOARD_KEY                 +23.319s	KEY_S (31) pressed
+ event4   KEYBOARD_KEY                 +23.440s	KEY_S (31) released
+ event4   KEYBOARD_KEY                 +23.799s	KEY_T (20) pressed
+ event4   KEYBOARD_KEY                 +23.919s	KEY_T (20) released
+ event4   KEYBOARD_KEY                 +24.159s	KEY_U (22) pressed
+ event4   KEYBOARD_KEY                 +24.239s	KEY_U (22) released
+ event4   KEYBOARD_KEY                 +24.839s	KEY_V (47) pressed
+ event4   KEYBOARD_KEY                 +24.918s	KEY_V (47) released
+ event4   KEYBOARD_KEY                 +25.599s	KEY_W (17) pressed
+ event4   KEYBOARD_KEY                 +25.950s	KEY_W (17) released
+ event4   KEYBOARD_KEY                 +26.309s	KEY_X (45) pressed
+ event4   KEYBOARD_KEY                 +26.389s	KEY_X (45) released
+ event4   KEYBOARD_KEY                 +27.359s	KEY_Y (21) pressed
+ event4   KEYBOARD_KEY                 +27.400s	KEY_Y (21) released
+ event4   KEYBOARD_KEY                 +27.559s	KEY_Z (44) pressed
+ event4   KEYBOARD_KEY                 +27.640s	KEY_Z (44) released
+ event4   KEYBOARD_KEY                 +28.119s	KEY_A (30) pressed
+ event4   KEYBOARD_KEY                 +28.199s	KEY_A (30) released
+ event4   KEYBOARD_KEY                 +29.079s	KEY_B (48) pressed
+ event4   KEYBOARD_KEY                 +29.158s	KEY_B (48) released
+ event4   KEYBOARD_KEY                 +29.559s	KEY_C (46) pressed
+ event4   KEYBOARD_KEY                 +29.639s	KEY_C (46) released
+ event4   KEYBOARD_KEY                 +29.919s	KEY_D (32) pressed
+ event4   KEYBOARD_KEY                 +29.999s	KEY_D (32) released
+ event4   KEYBOARD_KEY                 +30.199s	KEY_E (18) pressed
+ event4   KEYBOARD_KEY                 +30.279s	KEY_E (18) released
+ event4   KEYBOARD_KEY                 +30.599s	KEY_F (33) pressed
+ event4   KEYBOARD_KEY                 +30.679s	KEY_F (33) released
+ event4   KEYBOARD_KEY                 +31.159s	KEY_G (34) pressed
+ event4   KEYBOARD_KEY                 +31.239s	KEY_G (34) released
+ event4   KEYBOARD_KEY                 +31.519s	KEY_H (35) pressed
+ event4   KEYBOARD_KEY                 +31.599s	KEY_H (35) released
+ event4   KEYBOARD_KEY                 +32.039s	KEY_I (23) pressed
+ event4   KEYBOARD_KEY                 +32.118s	KEY_I (23) released
+ event4   KEYBOARD_KEY                 +32.399s	KEY_J (36) pressed
+ event4   KEYBOARD_KEY                 +32.439s	KEY_J (36) released
+ event4   KEYBOARD_KEY                 +32.678s	KEY_K (37) pressed
+ event4   KEYBOARD_KEY                 +32.758s	KEY_K (37) released
+ event4   KEYBOARD_KEY                 +33.158s	KEY_L (38) pressed
+ event4   KEYBOARD_KEY                 +33.238s	KEY_L (38) released
+ event4   KEYBOARD_KEY                 +33.559s	KEY_M (50) pressed
+ event4   KEYBOARD_KEY                 +33.639s	KEY_M (50) released
+ event4   KEYBOARD_KEY                 +33.878s	KEY_N (49) pressed
+ event4   KEYBOARD_KEY                 +33.958s	KEY_N (49) released
+ event4   KEYBOARD_KEY                 +34.718s	KEY_O (24) pressed
+ event4   KEYBOARD_KEY                 +34.798s	KEY_O (24) released
+ event4   KEYBOARD_KEY                 +35.078s	KEY_P (25) pressed
+ event4   KEYBOARD_KEY                 +35.158s	KEY_P (25) released
+ event4   KEYBOARD_KEY                 +35.558s	KEY_Q (16) pressed
+ event4   KEYBOARD_KEY                 +35.678s	KEY_Q (16) released
+ event4   KEYBOARD_KEY                 +36.038s	KEY_R (19) pressed
+ event4   KEYBOARD_KEY                 +36.120s	KEY_R (19) released
+ event4   KEYBOARD_KEY                 +36.519s	KEY_S (31) pressed
+ event4   KEYBOARD_KEY                 +36.599s	KEY_S (31) released
+ event4   KEYBOARD_KEY                 +36.878s	KEY_T (20) pressed
+ event4   KEYBOARD_KEY                 +36.958s	KEY_T (20) released
+ event4   KEYBOARD_KEY                 +37.438s	KEY_U (22) pressed
+ event4   KEYBOARD_KEY                 +37.560s	KEY_U (22) released
+ event4   KEYBOARD_KEY                 +38.048s	KEY_V (47) pressed
+ event4   KEYBOARD_KEY                 +38.158s	KEY_V (47) released
+ event4   KEYBOARD_KEY                 +39.038s	KEY_W (17) pressed
+ event4   KEYBOARD_KEY                 +39.238s	KEY_W (17) released
+ event4   KEYBOARD_KEY                 +39.478s	KEY_X (45) pressed
+ event4   KEYBOARD_KEY                 +39.518s	KEY_X (45) released
+ event4   KEYBOARD_KEY                 +40.118s	KEY_Y (21) pressed
+ event4   KEYBOARD_KEY                 +40.158s	KEY_Y (21) released
+ event4   KEYBOARD_KEY                 +40.838s	KEY_Z (44) pressed
+ event4   KEYBOARD_KEY                 +40.918s	KEY_Z (44) released

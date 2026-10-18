@@ -1,0 +1,126 @@
+=================== position L0   2026-10-15 08:52:21
+## device /sys/bus/iio/devices/iio:device0  name: sc7a20
+mount_matrix: -1, 0, 0; 0, 0, -1; 0, 1, 0
+## raw x y z, 3 readings
+-16 -16 -992
+16 16 -960
+32 0 -1024
+## udev properties (mount matrix from hwdb would show here)
+DEVPATH=/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0
+DEVNAME=/dev/iio:device0
+DEVTYPE=iio_device
+OF_NAME=accelerometer
+OF_FULLNAME=/i2c@fe5a0000/accelerometer@19
+SUBSYSTEM=iio
+ACCEL_MOUNT_MATRIX=1, 0, 0; 0, 0, 1; 0, -1, 0
+IIO_SENSOR_PROXY_TYPE=iio-poll-accel iio-buffer-accel
+SYSTEMD_WANTS=iio-sensor-proxy.service
+## iio-sensor-proxy
+iio-sensor-proxy	3.7-3
+## monitor-sensor, 2 runs of 4 s (first line may be the previous position)
+=== Has accelerometer (orientation: undefined, tilt: undefined)
+    Accelerometer orientation changed: normal
+=== Has accelerometer (orientation: normal, tilt: vertical)
+## sessions
+SESSION  UID USER SEAT LEADER CLASS   TTY IDLE SINCE
+      1 1000 jose -    562    user    -   no   -
+      2 1000 jose -    567    manager -   no   -
+
+2 sessions listed.
+Id=1
+Name=jose
+Seat=
+TTY=
+Remote=yes
+Type=tty
+Class=user
+Active=yes
+State=active
+
+Id=2
+Name=jose
+Seat=
+TTY=
+Remote=no
+Type=unspecified
+Class=manager
+Active=yes
+State=active
+
+## iio-sensor-proxy journal (this boot, last 30 lines)
+oct 15 08:46:06 p25t-sway systemd[1]: Starting iio-sensor-proxy.service - IIO Sensor Proxy service...
+oct 15 08:46:07 p25t-sway systemd[1]: Started iio-sensor-proxy.service - IIO Sensor Proxy service.
+oct 15 08:46:07 p25t-sway iio-sensor-prox[417]: Could not find trigger name associated with /sys/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0
+oct 15 08:46:07 p25t-sway iio-sensor-prox[417]: Could not write to '/sys/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0/buffer/enable': Operation not permitted
+oct 15 08:46:07 p25t-sway iio-sensor-prox[417]: Unable to enable ring buffer for /sys/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0
+oct 15 08:46:07 p25t-sway iio-sensor-prox[417]: Not a switch [/sys/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0/../capabilities/sw]
+oct 15 08:46:07 p25t-sway iio-sensor-prox[417]: Invalid bitmask entry for /sys/devices/platform/adc-keys/input/input2/event2
+=================== position P90   2026-10-15 08:53:17
+## device /sys/bus/iio/devices/iio:device0  name: sc7a20
+mount_matrix: -1, 0, 0; 0, 0, -1; 0, 1, 0
+## raw x y z, 3 readings
+976 16 64
+944 32 16
+976 48 32
+## udev properties (mount matrix from hwdb would show here)
+DEVPATH=/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0
+DEVNAME=/dev/iio:device0
+DEVTYPE=iio_device
+OF_NAME=accelerometer
+OF_FULLNAME=/i2c@fe5a0000/accelerometer@19
+SUBSYSTEM=iio
+ACCEL_MOUNT_MATRIX=1, 0, 0; 0, 0, 1; 0, -1, 0
+IIO_SENSOR_PROXY_TYPE=iio-poll-accel iio-buffer-accel
+SYSTEMD_WANTS=iio-sensor-proxy.service
+## iio-sensor-proxy
+iio-sensor-proxy	3.7-3
+## monitor-sensor, 2 runs of 4 s (first line may be the previous position)
+=== Has accelerometer (orientation: normal, tilt: vertical)
+    Accelerometer orientation changed: left-up
+=== Has accelerometer (orientation: left-up, tilt: vertical)
+=================== position L180   2026-10-15 08:53:55
+## device /sys/bus/iio/devices/iio:device0  name: sc7a20
+mount_matrix: -1, 0, 0; 0, 0, -1; 0, 1, 0
+## raw x y z, 3 readings
+16 96 1104
+48 16 1056
+32 96 1040
+## udev properties (mount matrix from hwdb would show here)
+DEVPATH=/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0
+DEVNAME=/dev/iio:device0
+DEVTYPE=iio_device
+OF_NAME=accelerometer
+OF_FULLNAME=/i2c@fe5a0000/accelerometer@19
+SUBSYSTEM=iio
+ACCEL_MOUNT_MATRIX=1, 0, 0; 0, 0, 1; 0, -1, 0
+IIO_SENSOR_PROXY_TYPE=iio-poll-accel iio-buffer-accel
+SYSTEMD_WANTS=iio-sensor-proxy.service
+## iio-sensor-proxy
+iio-sensor-proxy	3.7-3
+## monitor-sensor, 2 runs of 4 s (first line may be the previous position)
+=== Has accelerometer (orientation: left-up, tilt: vertical)
+    Accelerometer orientation changed: bottom-up
+=== Has accelerometer (orientation: bottom-up, tilt: vertical)
+=================== position P270   2026-10-15 08:54:32
+## device /sys/bus/iio/devices/iio:device0  name: sc7a20
+mount_matrix: -1, 0, 0; 0, 0, -1; 0, 1, 0
+## raw x y z, 3 readings
+-960 32 48
+-928 48 64
+-976 64 32
+## udev properties (mount matrix from hwdb would show here)
+DEVPATH=/devices/platform/fe5a0000.i2c/i2c-1/1-0019/iio:device0
+DEVNAME=/dev/iio:device0
+DEVTYPE=iio_device
+OF_NAME=accelerometer
+OF_FULLNAME=/i2c@fe5a0000/accelerometer@19
+SUBSYSTEM=iio
+ACCEL_MOUNT_MATRIX=1, 0, 0; 0, 0, 1; 0, -1, 0
+IIO_SENSOR_PROXY_TYPE=iio-poll-accel iio-buffer-accel
+SYSTEMD_WANTS=iio-sensor-proxy.service
+## iio-sensor-proxy
+iio-sensor-proxy	3.7-3
+## monitor-sensor, 2 runs of 4 s (first line may be the previous position)
+=== Has accelerometer (orientation: bottom-up, tilt: vertical)
+    Accelerometer orientation changed: right-up
+=== Has accelerometer (orientation: right-up, tilt: vertical)

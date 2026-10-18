@@ -1,0 +1,7 @@
+Bluetooth monitor ver 5.82
+btmon[29982]: = Note: Linux version 7.3.0-rc4-p25t-sway (aarch64)      0.004698
+btmon[29982]: = Note: Bluetooth subsystem version 2.22                 0.004711
+= New Index: 8C:35:92:F2:B5:46 (Primary,UART,hci0)              [hci0] 0.004717
+= Open Index: 8C:35:92:F2:B5:46                                 [hci0] 0.004719
+= Index Info: 8C:35:92:F2:B5:46 (RivieraWaves S.A.S)            [hci0] 0.004721
+bluetoothd[473]: @ MGMT Open: bl.. (privileged) version 1.23  {0x0001} 0.004727

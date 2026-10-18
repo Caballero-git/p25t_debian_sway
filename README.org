@@ -1,0 +1,252 @@
+#+TITLE: Debian 13 and sway on the Teclast P25T
+#+STARTUP: overview
+
+* What this is
+Mainline Linux and Debian 13 "trixie" (arm64) on the Teclast P25T, a
+10-inch Android tablet from 2023, with sway as the graphical session. The
+system runs from a microSD card. The internal eMMC (Android 12) is never
+written: take the card out and the tablet is stock again.
+
+The tablet:
+| Part            | Chip                                                       |
+|-----------------+------------------------------------------------------------|
+| board           | P9A6                                                       |
+| SoC             | Rockchip RK3566, 4 x Cortex-A55, Mali-G52 GPU              |
+| memory          | 4 GB LPDDR4X                                               |
+| power           | RK817 PMIC (regulators, charger, fuel gauge, audio codec), SYR837 for the CPU |
+| screen          | 800x1280 MIPI-DSI panel (JD9365 controller), PWM backlight |
+| touchscreen     | Silead GSL3673                                             |
+| Wi-Fi and Bluetooth | AIC8800 (Wi-Fi on SDIO, Bluetooth on UART1)            |
+| accelerometer   | Silan SC7A20                                               |
+| cameras         | rear GalaxyCore GC5035, front GC02M2                       |
+
+The same kernel and the same build scripts make two cards:
+- *console*: text consoles only (the CPU is modest), with mouse and touch
+  selection on the console;
+- *sway*: a Wayland session with sway, foot, auto-rotation, a status bar,
+  brightness and power keys, and a few desktop programs.
+The two profiles differ only in their package lists, hostname and user
+configuration. This repository is the sway card's; it builds the console
+card's root filesystem too.
+
+* What works
+Patch numbers are this repository's series, =kernel/patches/0001= ...
+=0026=.
+| Area                          | State   | How                                                     |
+|-------------------------------+---------+---------------------------------------------------------|
+| boot from microSD             | works   | stock SPL -> mainline U-Boot -> Linux (see "How it boots") |
+| display, backlight            | works   | panel driver 0001, DT 0002; landscape 0020; line timing 0003, 0021 |
+| touchscreen                   | works   | 0015-0017; firmware from the stock kernel, built in     |
+| GPU (Panfrost)                | works   | 0012; sway on GLES2, glmark2 score 306                  |
+| CPU frequency scaling         | works   | real vdd_cpu (SYR837), 0010                             |
+| SoC temperature               | works   | 0014                                                    |
+| Wi-Fi                         | works   | out-of-tree AIC8800 driver, patched for Linux 7.3       |
+| Bluetooth                     | works   | 0006; a Bluetooth keyboard pairs and reconnects         |
+| battery and charger           | works   | 0009 (but see "Open": the % after a reboot)             |
+| audio                         | works   | 0013, 0018: headphones, speaker, jack detect, volume keys, microphone |
+| accelerometer, auto-rotation  | works   | 0011, 0018, 0022; =debian/files/61-p25t-sensor.hwdb=    |
+| USB-C host (wired keyboard)   | works   | 0007, 0008; switched with =set-usb-role host=, then reboot |
+| USB-C device (serial, network)| flaky   | best with the cable in before power-on                  |
+| rear torch                    | works   | 0019                                                    |
+| rear camera                   | works   | 0024-0026: raw 1296x972 frames, =rear-snap= makes a PNG |
+| front camera                  | open    | no mainline driver for the GC02M2                       |
+Boot to a login takes about 14 s (kernel ~6 s).
+
+On the sway card:
+- sway 1.10 starts by itself after the login on tty1 (3-second
+  countdown; a key keeps the text console);
+- the screen follows the tablet's position (Super+o locks it);
+- status bar: keyboard layout, rotation lock, brightness, volume, Wi-Fi,
+  battery, date;
+- brightness keys; the screen dims after 3 minutes and goes off after 5;
+  a short press on the power key turns the screen off and on;
+- keyboard layouts es and us (Alt+Shift);
+- programs: foot (terminal), fuzzel (launcher), zathura (PDF), imv
+  (pictures), Firefox ESR, and GNOME Web on trial; one dark style for all.
+  Installed but not set up yet: wvkbd (on-screen keyboard) and lisgd
+  (touch gestures).
+
+* How it boots
+The tablet's bootloader is locked, and it does not need to be unlocked:
+1. The boot ROM starts the stock SPL on the eMMC.
+2. The stock SPL looks at the microSD card first. It looks for a GPT
+   partition named =uboot= and loads the FIT image it finds there.
+3. That FIT holds mainline U-Boot, Rockchip's BL31 and U-Boot's device
+   tree.
+4. U-Boot loads =Image=, the device tree and =initramfs.cpio.gz= from the
+   FAT partition =P25TBOOT=.
+5. The initramfs (busybox) logs the boot to the card, tunes the USB PHY
+   and hands over to Debian on the ext4 partition =p25troot=.
+The card holds:
+| Partition       | Start   | Contents                                       |
+|-----------------+---------+------------------------------------------------|
+| 1-3 =uboot=, =uboot_a=, =uboot_b= | 8 MiB | the same U-Boot FIT three times |
+| 4 =P25TBOOT= (FAT) | 32 MiB | kernel, device trees, initramfs, checksums  |
+| 5 =p25troot= (ext4) | 1 GiB | Debian, to the end of the card              |
+U-Boot writes a short status note at about 650 MB, outside every
+partition, so a failed boot can be read on the PC without a serial
+console.
+
+* Building a card
+Everything runs on a Linux PC (the author's runs Linux Mint 22), with an
+arm64 cross compiler and the card in a USB reader.
+
+#+begin_quote
+*Not in this repository yet.* U-Boot, the FIT layout and the initramfs
+were made during the bring-up, in an earlier repository that is not
+public. A new card gets them by copying the first GiB of a working card
+(=tools/clone_boot_part.sh=), and =install_debian.sh= takes the initramfs
+from the author's build folder. Without a first card, the steps below
+build the kernel and the root filesystem, but not a bootable card.
+#+end_quote
+
+The scripts expect this repository at =~/p25t-backup/p25t-sway= and the
+kernel tree at =~/p25t-backup/linux-sway=, and they create the user
+=jose= (=TABLET_USER= in =debian/build_debian.sh=). Each script explains
+itself in its header.
+1. Kernel: clone mainline Linux to =~/p25t-backup/linux-sway=, then
+   - apply the series on its base commit (=f2c53ea949c5=, named in every
+     patch): =git checkout -b p25t-base f2c53ea949c5= and
+     =git am <REPO>/kernel/patches/*.patch=. (=tools/apply_series.sh=
+     does the same and then compares the result with the author's
+     bring-up branch, which only exists on the author's PC.)
+   - =bash tools/build_kernel.sh sway= builds it (config: the full
+     =kernel/p25t-kernel.config= plus =kernel/common.fragment= and
+     =kernel/sway.fragment=);
+   - =bash tools/build_aic8800.sh sway= builds the Wi-Fi driver;
+   - =bash tools/pack_kernel.sh sway= packs kernel, modules and firmware.
+2. Root filesystem: =bash debian/build_debian.sh sway= (mmdebstrap, 10-25
+   minutes). It needs your Wi-Fi configuration and SSH key in
+   =build/personal/=; =build/= is never committed.
+3. Card: =bash tools/clone_boot_part.sh read= with a working card in the
+   reader, then =bash tools/clone_boot_part.sh write <DEVICE>= with the
+   new one (this ERASES it, and asks first).
+4. =bash debian/install_debian.sh sway= puts Debian and the kernel on the
+   card and checks every file.
+5. On the tablet, after the first boot: nothing to do. The build already
+   installed the user configuration (=config/= into =~/.config=) and the
+   autostart.
+For the console card, write =console= instead of =sway=.
+
+A kernel can also be updated on a running card: copy the packed kernel
+to the tablet and run =install_modules.sh= and =deploy_kernel.sh= from
+it. Both keep the previous kernel for a rollback.
+
+* Using the sway card
+[[file:docs/sway-tutorial.org][docs/sway-tutorial.org]] is the guide:
+starting and stopping, the keys, windows and workspaces, foot, the
+programs, rotation, the bar, brightness and the power key, the Bluetooth
+keyboard, and what to do when something goes wrong. A few things to know
+first:
+- Sway needs a keyboard for the login on tty1: a Bluetooth keyboard, or a
+  wired one in USB host mode (=set-usb-role host=, then reboot). Do not
+  charge in host mode; switch back with =set-usb-role normal=.
+- =touch ~/.no-sway= keeps tty1 a text console; tty2-tty6 and SSH logins
+  never start sway.
+- =rear-snap photo_{now}.png= takes a photo with the rear camera (made
+  for the console card, not yet checked under sway).
+
+* Repository map
+| Path               | Contents                                                          |
+|--------------------+-------------------------------------------------------------------|
+| =kernel/patches/=  | the 26 kernel patches, with a README (subjects, old numbering)    |
+| =kernel/=          | config and its fragments, the AIC8800 build fix                   |
+| =debian/=          | root filesystem build, card install, package lists, tablet setup  |
+| =config/=          | the user's =~/.config= on the sway card: sway, foot, fuzzel, zathura, GTK |
+| =tools/=           | kernel build, card tools, checks run on the tablet, privacy check |
+| =docs/=            | tutorial and notes                                                |
+| =tests/=           | the sway card's tests: scripts as they ran and their results      |
+
+| Document                                                         | Read it for                                       |
+|------------------------------------------------------------------+---------------------------------------------------|
+| [[file:docs/sway-tutorial.org][docs/sway-tutorial.org]]          | using the sway card                               |
+| [[file:kernel/patches/README.org][kernel/patches/README.org]]    | the patch series and how it was made              |
+| [[file:tests/README.org][tests/README.org]]                  | each test: question, files, finding, conclusion   |
+| [[file:docs/sway-card-first-boot.org][docs/sway-card-first-boot.org]] | the first sway card checked against the console card |
+| [[file:docs/card1-inventory.org][docs/card1-inventory.org]]      | what the console card had, and what the build must reproduce |
+
+* How it was made
+The bring-up took about two weeks, from late September to 2026-10-08,
+on the console card, through 46 numbered tests run on the tablet. Most tests did not
+polish something that worked: they found out why a part did not work,
+and the answer became a patch. The 30 patches of that work were then
+squashed into the clean series here (=kernel/patches/README.org= has the
+old numbers), and the sway card was built from scratch with it.
+
+The problems that took longest, as lessons for similar tablets:
+- *Touchscreen*: four problems stacked on top of each other. The chip
+  resets before it acknowledges its soft-reset write, so the driver gave
+  up (0016 tolerates exactly that NACK). The firmware from another
+  product's GPL source was wrong for this chip; the right one was taken
+  out of the stock Android kernel. It must be built into the kernel to be
+  there at boot (0017). And the chip reports in its own rotated frame,
+  measured corner by corner. The firmware upload (4653 I2C writes) held
+  the boot for 3 s, so i2c1 now runs at 400 kHz (0023).
+- *Display*: every line was drawn 3 pixels late (the first console row
+  wrapped to the bottom). The stock timing 18/18/18 is not what the panel
+  needs; 21/18/15 is (0003, 0021). Found by trying values on the card
+  without rebuilding.
+- *Speaker and torch*: the amplifier needs its enable pin, and the torch
+  sits on an IO bank that had no supply (0018, 0019). Found by driving the
+  pins by hand.
+- *Rear camera*: the sensor probed but never sent a frame. Sixteen tests
+  narrowed it down: the sensor core froze when it switched to its PLL. The cause was a power rail: the RK817's LDO2 is
+  named =vdda_0v9= in the stock device tree but set to 1.2 V there, and
+  0.9 V is too low (0026). Lesson: compare rail *voltages* with stock,
+  not only on/off. Then a second capture froze the tablet: the capture
+  unit's runtime reset also wipes its IOMMU, so a udev rule keeps it
+  powered.
+- *Boot time*: userspace took 17-36 s. A mail server pulled in through
+  Recommends waited for the network at every boot; both cards now
+  install without Recommends.
+- *Auto-rotation* (on the sway card): systemd's hwdb gives every
+  device-tree SC7A20 the PineTab2's matrix, and iio-sensor-proxy prefers
+  it over the kernel's. =61-p25t-sensor.hwdb= overrides it.
+
+* Open
+- Battery %: after every reboot the RK817 is reset and the driver guesses
+  the charge from one voltage reading, too high with the charger in. The
+  running count is right (=tests/README.org=, test 04). A kernel change
+  is proposed, not yet made.
+- Front camera GC02M2: no mainline driver.
+- Rear camera: Bayer order and the capture unit's reset belong in the
+  drivers; full 2592x1944 resolution; focus motor; auto exposure.
+- USB-C device mode is unreliable.
+- Kernel base: a commit between 7.3-rc4 and rc5; moving to the 7.3
+  release is planned.
+
+* Safety rules followed throughout
+- Never write to the eMMC. Every script that writes a card checks that
+  its target is a removable or USB disk, and asks before it erases one.
+- Write to the RK817 power chip only after a reviewed proposal. The
+  device tree describes only the rails Linux must control, each with
+  values copied from the stock device tree; every other rail stays as the
+  bootloader left it.
+- Tests that may freeze the tablet run over SSH, with the output going to
+  the PC and =sync= between steps.
+- Should the eMMC ever need repair, the way back is Teclast's official
+  firmware image, flashed with Rockchip's tool, not a backup.
+
+* Privacy
+This repository is public. Wi-Fi settings, SSH keys and build outputs
+stay in =build/=, which is never committed. =tools/privacy_check.sh=,
+installed as git hooks by =tools/install_privacy_hooks.sh=, refuses a
+commit or a push that contains anything from a private list kept outside
+the repository. Test results have personal data replaced by markers such
+as =<SSID>= (=tests/README.org=, "Privacy").
+
+* Conventions
+- Org files throughout; GitHub shows them as pages.
+- =<UPPER-CASE>= in angle brackets is a placeholder to replace, e.g.
+  =<DEVICE>= -> =/dev/sdb=.
+
+* Credits and licences
+- Linux: GPL-2.0. The kernel patches here are under the same licence.
+- U-Boot: GPL-2.0+. BL31 is a Rockchip binary from =rkbin= and is not in
+  this repository.
+- AIC8800 driver: [[https://github.com/radxa-pkg/aic8800][radxa-pkg/aic8800]]
+  (GPL-2.0); only a build fix is here.
+- The panel's start-up table and the touchscreen firmware come from the
+  tablet's stock software.
+- Written with help from Claude (Anthropic); the patches carry
+  =Co-Authored-By= lines.

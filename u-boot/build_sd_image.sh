@@ -50,7 +50,7 @@ echo "3/4 Disk image with GPT"
 rm -f "$OUT"
 truncate -s 289M "$OUT"
 sgdisk -a 1 -n 1:16384:24575 -c 1:uboot -n 2:24576:32767 -c 2:uboot_a \
-       -n 3:32768:40959 -c 3:uboot_b -n 4:65536:589823 -c 4:P25TBOOT "$OUT" > /dev/null
+       -n 3:32768:40959 -c 3:uboot_b -n 4:65536:589823 -c 4:P25TBOOT -t 4:0700 "$OUT" > /dev/null
 for start in 16384 24576 32768; do
     dd if="$W/uboot.itb" of="$OUT" bs=512 seek=$start conv=notrunc status=none
     dd if="$W/uboot.itb" of="$OUT" bs=512 seek=$((start + 4096)) conv=notrunc status=none

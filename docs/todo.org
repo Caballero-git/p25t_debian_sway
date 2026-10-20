@@ -1,0 +1,113 @@
+#+TITLE: P25T sway card - to do
+#+STARTUP: overview
+#+TODO: TODO WAIT | DONE
+
+Open work, most urgent first. A finished item gets DONE with the date
+and where the result is (commit, test, doc), then moves to "Done" at the
+end. Started 2026-10-20.
+
+* Boot and stage 1
+** TODO Volume-key rescue does not work
+Stage 1 should stay in the stage-1 system when a volume key is held at
+power-on (=docs/boot.org= of the bring-up, "Rescue and rollback").
+- Found 2026-10-20 in the stage-1 logs: every boot of both cards logs
+  "volume key ADC: unreadable". =initramfs/init= reads
+  =/sys/bus/iio/devices/iio:device0=, but since the accelerometer was
+  enabled (2026-09-26) device 0 is the SC7A20 and the keys' ADC is
+  =iio:device1= (=fe720000.saradc=, idle value 1023).
+- So the rescue path has never worked since then.
+- Fix: find the IIO device whose name ends in =saradc= instead of using
+  a fixed number. Then rebuild (=tools/build_initramfs.sh=).
+- Test on the test card: a normal boot reaches Debian; a boot with a
+  volume key held stays in stage 1 (the log shows a value below 900).
+** TODO stage1 initramfs as the default
+=install_debian.sh= uses the cards' initramfs (af94fcee...) unless told
+=stage1=. The stage1 one booted the test card (2026-10-20). Make it the
+default once the volume-key fix above is in it and tested, so the
+default changes only once.
+** TODO Boot timing on the test card
+Test-card boots 1-3 handed over to Debian at 8.1-9.2 s, boot 4 at
+4.84 s, the sway card always at ~4.9 s. The extra time is in stage 1's
+writes to P25TBOOT (each followed by =sync=), not in the initramfs
+(boots 3 and 4: same initramfs, identical kernel logs). The FAT format
+is the same as card 1's (512-byte clusters). Likely cause: the new card
+(SanDisk A1 128 GB) is slow on small writes for a while after the first
+large write.
+- Check the next boots' logs: on the tablet
+  =tar czf ~/testcard-logs.tar.gz -C /boot/firmware logs=, copy to
+  =~/p25t-backup/=; compare "switching to Debian at" in
+  =boot-N-handover.txt=.
+- If it stays slow: test the card's write speed on the PC.
+** WAIT USB2 PHY tuning (not tested)
+The bring-up's =initramfs/init= has a USB2 PHY tuning block (stock
+kernel values: pre-emphasis, eye height, bvalid filter; =devmem= writes
+to the USB PHY and GRF, not to the RK817). It was added after the cards'
+initramfs was built, so it has never run on a card, although the
+bring-up docs say it does. It may help the flaky USB gadget.
+- Kept out of =initramfs/init= here until tested on its own.
+- Test: add it to the test card's init, compare gadget enumeration over
+  several boots with and without it (=/boot/no-usb-tuning= skips it).
+** TODO Docs for the boot part (move step 6)
+- =docs/boot.org= here: boot chain, card layout, the three build
+  scripts, =make_boot_part.sh=, rescue.
+- README.org: remove "Not in this repository yet"; the build steps use
+  =make_boot_part.sh= instead of =clone_boot_part.sh=.
+- Bring-up repository (private): =docs/boot.org=, =findings.org=,
+  =hardware.org= say the initramfs applies the USB tuning - it does not;
+  =boot.org= gives the initramfs sha256 as ac4f3d83..., the cards carry
+  af94fcee...
+
+* Hardware
+** WAIT Battery % after a reboot
+After every reboot the RK817 is reset and the driver guesses the charge
+from one voltage reading (=tests/README.org=, test 04). A kernel change
+to keep the saved level is proposed. Needs the RK817 datasheet checked
+first (=~/p25t-backup/RK817 datasheet V1.7.pdf=) and an explicit OK
+before anything writes to the RK817.
+** TODO Volume keys under sway
+triggerhappy's udev hook logs "th-cmd ... failed with exit code 1" for
+input devices that appear after boot (seen with a USB receiver in host
+mode, 2026-10-20). Check that the volume keys and new input devices
+still reach triggerhappy.
+** TODO Rear camera under sway
+=rear-snap= is installed by the build but was only checked on the
+console card.
+** TODO Front camera GC02M2
+No mainline driver; needs D-PHY split mode.
+** TODO Rear camera follow-ups
+Bayer order (RGGB) and the capture unit's reset in the drivers; full
+2592x1944; focus motor (DW9714); auto exposure in =rear-snap=.
+** TODO USB-C gadget unreliable
+Enumeration works best with the cable in before power-on. See the USB
+tuning item above.
+
+* Sway card
+** TODO Touch helpers
+wvkbd (on-screen keyboard) and lisgd (edge gestures) are installed but
+not set up.
+** TODO Programs on trial
+GNOME Web (=packages-sway.txt=, on trial against Firefox ESR); light
+music and video players and browsers, not tied to GNOME or KDE
+(preference: Xfce or LXQt programs).
+
+* Repository and PC
+** TODO tools/apply_series.sh needs the bring-up branch
+Its last step compares with =origin/p25t-bringup=, which exists only on
+the author's PC; elsewhere it fails after applying the patches. Make
+that step optional.
+** TODO Kernel base: move to the 7.3 release
+The series sits on a commit between 7.3-rc4 and rc5.
+** TODO Clean up on hp240
+- =build/rootfs-sway= (1.6 GB) before the next Debian build.
+- Leftovers of the privacy cleanup in =~/p25t-backup=: the history
+  rewrite script, its replacement lists and the git bundles, once the
+  public history is known to be good.
+
+* Done
+** DONE Boot part from this repository
+CLOSED: [2026-10-20]
+U-Boot (=tools/build_uboot.sh=), the initramfs
+(=tools/build_initramfs.sh=) and a new card's boot part
+(=tools/make_boot_part.sh=); a blank card made with them booted the
+tablet (2026-10-19), also with the stage1 initramfs (2026-10-20).
+Commits 21-23.

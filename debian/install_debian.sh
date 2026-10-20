@@ -4,12 +4,19 @@
 # the card to boot it.
 #
 # Usage (SD card in the PC; it asks for sudo itself):
-#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh sway
-#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh console
+#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh sway [cards|stage1]
+#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh console [cards|stage1]
+# The second word picks the initramfs:
+#     cards   (default) the one the cards run since 2026-09-25, sha256
+#             af94fcee..., kept in ~/p25t-backup/debian (copied to
+#             build/initramfs/)
+#     stage1  the one tools/build_initramfs.sh built from this repository,
+#             build/stage1/initramfs.cpio.gz, checked against its .sha256
 #
 # Needs: build/rootfs-<profile> (build_debian.sh), the packed kernel
 # build/kernel-<profile>/p25t-kernel-<profile>/ (pack_kernel.sh), and a card
-# with U-Boot + P25TBOOT (for a new card: tools/clone_boot_part.sh).
+# with U-Boot + P25TBOOT (for a new card: tools/make_boot_part.sh, or
+# tools/clone_boot_part.sh to copy card 1's).
 # Only one P25T card in the PC (both carry the labels P25TBOOT / p25troot).
 #
 # What it does to the card (and nothing else):
@@ -31,12 +38,21 @@ PROFILE="${1:-}"
 case "$PROFILE" in
     console) HOSTNAME_NEW=p25t ;;
     sway)    HOSTNAME_NEW=p25t-sway ;;
-    *) echo "usage: $0 console|sway"; exit 1 ;;
+    *) echo "usage: $0 console|sway [cards|stage1]"; exit 1 ;;
+esac
+INITRAMFS="${2:-cards}"
+case "$INITRAMFS" in
+    cards|stage1) ;;
+    *) echo "usage: $0 console|sway [cards|stage1]"; exit 1 ;;
 esac
 REPO="$HOME/p25t-backup/p25t-sway"
 R="$REPO/build/rootfs-$PROFILE"
 KP="$REPO/build/kernel-$PROFILE/p25t-kernel-$PROFILE"
-INITD="$REPO/build/initramfs"
+if [ "$INITRAMFS" = stage1 ]; then
+    INITD="$REPO/build/stage1"                 # tools/build_initramfs.sh
+else
+    INITD="$REPO/build/initramfs"
+fi
 INIT_OLD="$HOME/p25t-backup/debian"          # card 1's build folder: the only copy of the initramfs
 INIT_SHA=af94fceef82006ee4813095b0b32a70de5e3a491db7290b8b635010a83ccefd8
 TABLET_USER=jose
@@ -53,13 +69,21 @@ case "$PWFIELD" in ""|"!"*|"*"*) die "user $TABLET_USER has no password - run bu
 ( cd "$KP" && sha256sum -c --quiet files.sha256 ) || die "packed kernel in $KP damaged or missing"
 REL=$(cat "$KP/release.txt")
 [ -f "$R/usr/lib/modules/$REL/extra/aic8800_fdrv.ko" ] || die "the root filesystem has no modules for $REL"
-if [ ! -f "$INITD/initramfs.cpio.gz" ]; then
-    mkdir -p "$INITD"
-    cp "$INIT_OLD/initramfs.cpio.gz" "$INITD/" || die "no initramfs in $INIT_OLD"
+if [ "$INITRAMFS" = stage1 ]; then
+    [ -f "$INITD/initramfs.cpio.gz" ] && [ -f "$INITD/initramfs.cpio.gz.sha256" ] \
+        || die "no initramfs in $INITD - run tools/build_initramfs.sh first"
+    ( cd "$INITD" && sha256sum -c --quiet initramfs.cpio.gz.sha256 ) \
+        || die "$INITD/initramfs.cpio.gz does not match its .sha256 - run tools/build_initramfs.sh again"
+else
+    if [ ! -f "$INITD/initramfs.cpio.gz" ]; then
+        mkdir -p "$INITD"
+        cp "$INIT_OLD/initramfs.cpio.gz" "$INITD/" || die "no initramfs in $INIT_OLD"
+    fi
+    echo "$INIT_SHA  initramfs.cpio.gz" > "$INITD/initramfs.cpio.gz.sha256"
+    ( cd "$INITD" && sha256sum -c --quiet initramfs.cpio.gz.sha256 ) || die "initramfs.cpio.gz is not the known one (af94fcee...)"
 fi
-echo "$INIT_SHA  initramfs.cpio.gz" > "$INITD/initramfs.cpio.gz.sha256"
-( cd "$INITD" && sha256sum -c --quiet initramfs.cpio.gz.sha256 ) || die "initramfs.cpio.gz is not the known one (af94fcee...)"
-echo "root filesystem OK ($(du -sh "$R" | cut -f1), hostname $HOSTNAME_NEW), kernel $REL, initramfs OK"
+INIT_NOW=$(cut -c1-16 "$INITD/initramfs.cpio.gz.sha256")
+echo "root filesystem OK ($(du -sh "$R" | cut -f1), hostname $HOSTNAME_NEW), kernel $REL, initramfs $INITRAMFS ($INIT_NOW...) OK"
 
 say "2/9 Finding the P25T card"
 N=$(blkid -t LABEL=P25TBOOT -o device | wc -l)
@@ -96,7 +120,7 @@ fi
 
 echo
 echo "This will ERASE partition 5 (P25TROOT) on $DISK, install the '$PROFILE' system there"
-echo "and put kernel $REL on P25TBOOT."
+echo "and put kernel $REL and the '$INITRAMFS' initramfs ($INIT_NOW...) on P25TBOOT."
 read -r -p "Type YES to continue: " ANSWER
 [ "$ANSWER" = "YES" ] || die "not confirmed"
 

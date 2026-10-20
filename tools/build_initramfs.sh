@@ -135,7 +135,7 @@ REPORT="$OUT/compare-cards.txt"
 ( cd "$CMP/card" && zcat "$CARD_CPIO" | cpio -id --quiet 2> /dev/null )
 cpio_list "$CARD_CPIO" > "$CMP/card.list"
 {
-echo "build_initramfs.sh compare, $(date '+%F %T')"
+echo "build_initramfs.sh compare, $(date -u '+%F %T') UTC"
 echo "new:   $OUT/initramfs.cpio.gz"
 echo "cards: $CARD_CPIO (af94fcee...)"
 echo

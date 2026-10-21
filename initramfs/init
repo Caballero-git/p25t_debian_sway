@@ -74,10 +74,18 @@ log "first snapshot written to $PREFIX-*"
 # --- Stage 3: hand over to Debian (ext4 partition labelled p25troot) ---
 # Only if /boot/boot-debian exists on the card. Holding a volume key while
 # powering on keeps this stage-1 system instead (SARADC idle = 1023).
+# The keys' ADC is found by its name (fe720000.saradc), not by its number:
+# since the accelerometer was added (2026-09-26) it is iio:device1, and
+# reading iio:device0 made this check fail on every boot.
 handover() {
     H="$PREFIX-handover.txt"
-    KEY=$(cat /sys/bus/iio/devices/iio:device0/in_voltage0_raw 2>/dev/null)
-    echo "volume key ADC: ${KEY:-unreadable}" > "$H"
+    KEY=""; ADC=""
+    for d in /sys/bus/iio/devices/iio:device*; do
+        case "$(cat "$d/name" 2>/dev/null)" in
+            *saradc) ADC=$d; KEY=$(cat "$d/in_voltage0_raw" 2>/dev/null); break ;;
+        esac
+    done
+    echo "volume key ADC (${ADC:-no saradc device}): ${KEY:-unreadable}" > "$H"
     if [ -n "$KEY" ] && [ "$KEY" -lt 900 ]; then
         echo "volume key held: staying in stage 1" >> "$H"; sync; return
     fi

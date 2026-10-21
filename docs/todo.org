@@ -7,24 +7,11 @@ and where the result is (commit, test, doc), then moves to "Done" at the
 end. Started 2026-10-20.
 
 * Boot and stage 1
-** TODO Volume-key rescue does not work
-Stage 1 should stay in the stage-1 system when a volume key is held at
-power-on (=docs/boot.org= of the bring-up, "Rescue and rollback").
-- Found 2026-10-20 in the stage-1 logs: every boot of both cards logs
-  "volume key ADC: unreadable". =initramfs/init= reads
-  =/sys/bus/iio/devices/iio:device0=, but since the accelerometer was
-  enabled (2026-09-26) device 0 is the SC7A20 and the keys' ADC is
-  =iio:device1= (=fe720000.saradc=, idle value 1023).
-- So the rescue path has never worked since then.
-- Fix: find the IIO device whose name ends in =saradc= instead of using
-  a fixed number. Then rebuild (=tools/build_initramfs.sh=).
-- Test on the test card: a normal boot reaches Debian; a boot with a
-  volume key held stays in stage 1 (the log shows a value below 900).
 ** TODO stage1 initramfs as the default
 =install_debian.sh= uses the cards' initramfs (af94fcee...) unless told
-=stage1=. The stage1 one booted the test card (2026-10-20). Make it the
-default once the volume-key fix above is in it and tested, so the
-default changes only once.
+=stage1=. The stage1 one booted the test card (2026-10-20), and with the
+volume-key fix (sha256 30364a9e...) the rescue works too (2026-10-21).
+Next: make it the default.
 ** TODO Boot timing on the test card
 Test-card boots 1-3 handed over to Debian at 8.1-9.2 s, boot 4 at
 4.84 s, the sway card always at ~4.9 s. The extra time is in stage 1's
@@ -50,8 +37,12 @@ bring-up docs say it does. It may help the flaky USB gadget.
 ** TODO Docs for the boot part (move step 6)
 - =docs/boot.org= here: boot chain, card layout, the three build
   scripts, =make_boot_part.sh=, rescue.
-- README.org: remove "Not in this repository yet"; the build steps use
-  =make_boot_part.sh= instead of =clone_boot_part.sh=.
+- README.org: done 2026-10-21, not committed yet (goes with the next
+  changes): "Not in this repository yet" removed; the build steps use
+  =build_uboot.sh=, =build_initramfs.sh=, =make_boot_part.sh= and
+  =install_debian.sh ... stage1=; "How it boots" no longer says the
+  initramfs tunes the USB PHY; =u-boot/= and =initramfs/= in the folder
+  map.
 - Bring-up repository (private): =docs/boot.org=, =findings.org=,
   =hardware.org= say the initramfs applies the USB tuning - it does not;
   =boot.org= gives the initramfs sha256 as ac4f3d83..., the cards carry
@@ -111,6 +102,16 @@ The series sits on a commit between 7.3-rc4 and rc5.
   public history is known to be good.
 
 * Done
+** DONE Volume-key rescue
+CLOSED: [2026-10-21]
+Holding a volume key at power-on did not keep the stage-1 system: init
+read =iio:device0=, which since the accelerometer (2026-09-26) is the
+SC7A20, while the keys' ADC is =iio:device1= (=fe720000.saradc=); every
+boot logged "volume key ADC: unreadable". =initramfs/init= now finds
+the ADC by its name. Test card, initramfs put on with
+=tools/deploy_initramfs.sh=: boot 6 normal (ADC 1023 on iio:device1,
+Debian), boot 7 with a volume key held (775, stayed in stage 1), boot 8
+normal again.
 ** DONE Front camera GC02M2
 CLOSED: [2026-10-21]
 Patches 0027-0030 (rkcif stop order, D-PHY split mode, GC02M2 driver,
@@ -132,4 +133,6 @@ U-Boot (=tools/build_uboot.sh=), the initramfs
 (=tools/build_initramfs.sh=) and a new card's boot part
 (=tools/make_boot_part.sh=); a blank card made with them booted the
 tablet (2026-10-19), also with the stage1 initramfs (2026-10-20).
-Commits 21-23.
+Commits 21-23. The docs followed later: README.org on 2026-10-21 (to be
+committed with the next changes); =docs/boot.org= is still open, see
+"Docs for the boot part".

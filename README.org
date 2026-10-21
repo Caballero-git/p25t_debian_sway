@@ -62,7 +62,8 @@ On the sway card:
   a short press on the power key turns the screen off and on;
 - keyboard layouts es and us (Alt+Shift);
 - programs: foot (terminal), fuzzel (launcher), zathura (PDF), imv
-  (pictures), Firefox ESR, and GNOME Web on trial; one dark style for all.
+  (pictures), Firefox ESR, and GNOME Web and qutebrowser on trial; one
+  dark style for all.
   Installed but not set up yet: wvkbd (on-screen keyboard) and lisgd
   (touch gestures).
 
@@ -75,8 +76,8 @@ The tablet's bootloader is locked, and it does not need to be unlocked:
    tree.
 4. U-Boot loads =Image=, the device tree and =initramfs.cpio.gz= from the
    FAT partition =P25TBOOT=.
-5. The initramfs (busybox) logs the boot to the card, tunes the USB PHY
-   and hands over to Debian on the ext4 partition =p25troot=.
+5. The initramfs (busybox) logs the boot to the card and hands over to
+   Debian on the ext4 partition =p25troot=.
 The card holds:
 | Partition       | Start   | Contents                                       |
 |-----------------+---------+------------------------------------------------|
@@ -91,14 +92,12 @@ console.
 Everything runs on a Linux PC (the author's runs Linux Mint 22), with an
 arm64 cross compiler and the card in a USB reader.
 
-#+begin_quote
-*Not in this repository yet.* U-Boot, the FIT layout and the initramfs
-were made during the bring-up, in an earlier repository that is not
-public. A new card gets them by copying the first GiB of a working card
-(=tools/clone_boot_part.sh=), and =install_debian.sh= takes the initramfs
-from the author's build folder. Without a first card, the steps below
-build the kernel and the root filesystem, but not a bootable card.
-#+end_quote
+Everything on the card is built from this repository: the kernel,
+U-Boot, the initramfs, the card layout and Debian. The sources come from
+their own projects at fixed versions (Linux, which you clone in step 1;
+U-Boot, busybox and the AIC8800 driver, which the scripts download),
+plus one binary, Rockchip's BL31, checked by its sha256. Nothing
+downloaded is stored here. A card made this way booted the tablet on 2026-10-19.
 
 The scripts expect this repository at =~/p25t-backup/p25t-sway= and the
 kernel tree at =~/p25t-backup/linux-sway=, and they create the user
@@ -115,18 +114,32 @@ itself in its header.
      =kernel/sway.fragment=);
    - =bash tools/build_aic8800.sh sway= builds the Wi-Fi driver;
    - =bash tools/pack_kernel.sh sway= packs kernel, modules and firmware.
-2. Root filesystem: =bash debian/build_debian.sh sway= (mmdebstrap, 10-25
+2. Boot loader and stage 1 (about a minute each; both builds are
+   reproducible, and their =compare= mode checks them against a card):
+   - =bash tools/build_uboot.sh= builds U-Boot and the FIT the stock SPL
+     loads;
+   - =bash tools/build_initramfs.sh= builds the stage-1 initramfs
+     (static busybox and =initramfs/init=).
+3. Root filesystem: =bash debian/build_debian.sh sway= (mmdebstrap, 10-25
    minutes). It needs your Wi-Fi configuration and SSH key in
    =build/personal/=; =build/= is never committed.
-3. Card: =bash tools/clone_boot_part.sh read= with a working card in the
-   reader, then =bash tools/clone_boot_part.sh write <DEVICE>= with the
-   new one (this ERASES it, and asks first).
-4. =bash debian/install_debian.sh sway= puts Debian and the kernel on the
-   card and checks every file.
-5. On the tablet, after the first boot: nothing to do. The build already
+4. Card, with only the new card in the reader:
+   - =bash tools/make_boot_part.sh image= makes the boot part (partition
+     table, U-Boot three times, an empty P25TBOOT);
+   - =bash tools/make_boot_part.sh write <DEVICE>= writes it, e.g.
+     =/dev/sdb=. This ERASES the card and asks first; it refuses a card
+     that already carries a P25T system.
+5. =bash debian/install_debian.sh sway stage1= puts Debian, the kernel
+   and the initramfs built in step 2 on the card and checks every file.
+   (Without =stage1= it uses the author's copy of the initramfs the first
+   cards were made with, which is not in this repository.)
+6. On the tablet, after the first boot: nothing to do. The build already
    installed the user configuration (=config/= into =~/.config=) and the
    autostart.
-For the console card, write =console= instead of =sway=.
+For the console card, write =console= instead of =sway=. To copy the boot
+part of an existing card instead of building it,
+=tools/clone_boot_part.sh= reads its first GiB and writes it to a new
+card.
 
 A kernel can also be updated on a running card: copy the packed kernel
 to the tablet and run =install_modules.sh= and =deploy_kernel.sh= from
@@ -159,6 +172,8 @@ first:
 |--------------------+-------------------------------------------------------------------|
 | =kernel/patches/=  | the 30 kernel patches, with a README (subjects, old numbering)    |
 | =kernel/=          | config and its fragments, the AIC8800 build fix                   |
+| =u-boot/=          | U-Boot configuration, FIT layout, BL31 splitter, SD image builder |
+| =initramfs/=       | =init=, the stage-1 system (logs, hand-over to Debian)            |
 | =debian/=          | root filesystem build, card install, package lists, tablet setup  |
 | =config/=          | the user's =~/.config= on the sway card: sway, foot, fuzzel, zathura, GTK |
 | =tools/=           | kernel build, card tools, checks run on the tablet, privacy check |

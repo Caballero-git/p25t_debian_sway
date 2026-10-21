@@ -91,19 +91,13 @@ Enumeration works best with the cable in before power-on. See the USB
 tuning item above.
 
 * Sway card
-** TODO qutebrowser does not start
-Installed for testing (2026-10-20); it does not start. The cards install
-without Recommends, so a part that Qt 6 or qutebrowser only recommends
-(a platform plugin, the web engine's pieces) may be missing.
-- =tools/recommends_check.py qutebrowser= lists every missing Recommends
-  under it; with its start-up error, decide what goes into
-  =debian/packages-sway.txt=.
-- Then the same check for the other Qt 6 programs on trial.
 ** TODO Touch helpers
 wvkbd (on-screen keyboard) and lisgd (edge gestures) are installed but
 not set up.
 ** TODO Programs on trial
-GNOME Web (=packages-sway.txt=, on trial against Firefox ESR); light
+GNOME Web and qutebrowser (=packages-sway.txt=, on trial against Firefox
+ESR); tried on the card only, not in the lists: sqlitebrowser, audacious
+(testing the tablet's limits); light
 music and video players and browsers, not tied to GNOME or KDE
 (preference: Xfce or LXQt programs).
 
@@ -121,6 +115,16 @@ The series sits on a commit between 7.3-rc4 and rc5.
   public history is known to be good.
 
 * Done
+** DONE qutebrowser does not start
+CLOSED: [2026-10-21]
+Qt 6 found no Wayland platform plugin ("no Qt platform plugin could be
+initialized"): =qt6-wayland= is only a Recommends of =libqt6gui6=, and
+the cards install without Recommends. =tools/recommends_check.py=
+showed it; with =qt6-wayland= and =qt6-svg-plugins= qutebrowser starts.
+Both are now in =packages-sway.txt=, with =librsvg2-common= (SVG icons
+for GTK programs) and qutebrowser itself on trial; =linux-sysctl-defaults=
+in =packages-common.txt= (ping as a normal user). Qt 5 (=qtwayland5=)
+not added: its only user on the card, sqlitebrowser, is a test.
 ** DONE Boot part from this repository
 CLOSED: [2026-10-20]
 U-Boot (=tools/build_uboot.sh=), the initramfs

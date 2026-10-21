@@ -26,6 +26,15 @@ wl-clipboard
 libinput-tools
 # utilities (2026-10-15): PDF reader, web browser, image viewer, "open with"
 # (imv's command is imv-wayland: plain imv belongs to renameutils)
+# Qt 6 programs under sway (Recommends of libqt6gui6, found 2026-10-21 with
+# tools/recommends_check.py): without qt6-wayland no Qt 6 program starts
+# ("no Qt platform plugin could be initialized"); qt6-svg-plugins for SVG
+# icons. (qt6-qpa-plugins, also recommended, only holds VNC and TUIO
+# touch plugins: not needed.)
+qt6-wayland
+qt6-svg-plugins
+# SVG loader for GTK programs (icons; Recommends of GTK 3/4 and the icon theme)
+librsvg2-common
 zathura
 zathura-pdf-poppler
 firefox-esr
@@ -35,3 +44,5 @@ xdg-utils
 # on trial (2026-10-16): lighter than Firefox; programs being tried out to
 # see what the tablet can do. Remove here whatever is dropped later.
 epiphany-browser
+# on trial (2026-10-21): keyboard-driven browser (Qt 6 WebEngine)
+qutebrowser

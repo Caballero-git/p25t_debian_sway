@@ -16,6 +16,10 @@ upower
 lm-sensors
 libpam-systemd
 dbus-user-session
+# ping as a normal user: since trixie ping has no raw-socket capability and
+# relies on net.ipv4.ping_group_range, set by this package (a Recommends of
+# iputils-ping; without it "ping: socket: Operation not permitted", 2026-10-21)
+linux-sysctl-defaults
 # polkit: iio-sensor-proxy (screen rotation) and hostnamed ask it for permission;
 # card 1 got it through a Recommends (found 2026-10-14 with monitor-sensor)
 polkitd

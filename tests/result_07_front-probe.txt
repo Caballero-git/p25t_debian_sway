@@ -1,0 +1,17 @@
+=== front camera probe (test_47) ===
+lun 19 oct 2026 08:53:40 CEST
+7.3.0-rc4-p25t #1 SMP PREEMPT Sat Oct 10 20:47:45 CEST 2026
+regulator vdda_0v9: 1200000 uV, enabled
+regulator vcc1v8_dvp: 1800000 uV, enabled
+regulator vcc2v8_dvp: 2800000 uV, enabled
+regulator vcc_camera:  uV, enabled
+rear sensor: power/control auto -> on, runtime_status active
+
+found: GPIO4B_IOMUX_L 0x0000 (B0 func 0, B3 func 0), DDR_L 0x04c0, DR_L 0x0480; MCLK gate OPEN (clock running)
+before (front not powered by us)   0x10: -- -- | 0x21: -- -- | 0x3c: -- -- | B0=0 B3=0
+reset on, powerdown on             0x10: -- -- | 0x21: -- -- | 0x3c: -- -- | B0=1 B3=0
+Rockchip order: B3 high, B0 low    0x10: 02 f0 | 0x21: -- -- | 0x3c: -- -- | B0=0 B3=1
+restored: GPIO4B_IOMUX_L 0x0000, DDR_L 0x04c0, DR_L 0x0480
+RESULT: GC02M2 chip ID 02 f0 at 0x10: FOUND
+rear sensor power/control back to auto
+=== done ===

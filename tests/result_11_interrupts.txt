@@ -1,0 +1,46 @@
+            CPU0       CPU1       CPU2       CPU3       
+  14:      88684      36187     258376     625223  GICv3               28 Level     arch_timer
+  20:          1          0          0          0  GICv3              167 Level     rockchip_usb2phy
+  21:          0          0          0          0  GICv3               46 Level     fe530000.dma-controller
+  22:          0          0          0          0  GICv3               45 Level     fe530000.dma-controller
+  23:          0          0          0          0  GICv3               48 Level     fe550000.dma-controller
+  24:          0          0          0          0  GICv3               47 Level     fe550000.dma-controller
+  25:        240          0          0          0  GICv3              149 Level     ttyS1
+  26:        340          0          0          0  GICv3              150 Level     ttyS2
+  27:          0          0          0          0  GICv3              170 Level     fdea0800.iommu
+  28:          0          0          0          0  GICv3               95 Level     fdee0800.iommu
+  29:     200000          0          0          0  GICv3              178 Level     fdfe0800.iommu, rockchip-cif
+  30:      72517          0          0          0  GICv3              180 Level     fe043e00.iommu, fe040000.vop
+  31:          2          0          0          0  GICv3              201 Level     dwc3
+  32:    6025041          0          0          0  GICv3               78 Level     fdd40000.i2c
+  33:          1          0          0          0  rockchip_gpio_irq    3 Level     rk817
+  34:          0          0          0          0  rk817                0 Edge      rk805_pwrkey_fall
+  35:          0          0          0          0  rk817                1 Edge      rk805_pwrkey_rise
+  39:          0          0          0          0  rk817                5 Edge      RTC alarm
+  42:          0          0          0          0  rk817                8 Edge      rk817_plug_in
+  43:          1          0          0          0  rk817                9 Edge      rk817_plug_out
+  58:    3574141          0          0          0  GICv3               79 Level     fe5a0000.i2c
+  59:    1186712          0          0          0  rockchip_gpio_irq    8 Level     gsl3673
+  60:       5430          0          0          0  GICv3               80 Level     fe5b0000.i2c
+  61:          1          0          0          0  GICv3              147 Level     rockchip_thermal
+  62:          0          0          0          0  GICv3              181 Edge      fe600000.watchdog
+  63:          0          0          0          0  GICv3              260 Level     arm-pmu
+  64:          0          0          0          0  GICv3              261 Level     arm-pmu
+  65:          0          0          0          0  GICv3              262 Level     arm-pmu
+  66:          0          0          0          0  GICv3              263 Level     arm-pmu
+  67:          0          0          0          0  GICv3               71 Level     panfrost-gpu
+  68:          0          0          0          0  GICv3               73 Level     panfrost-mmu
+  69:          0          0          0          0  GICv3               72 Level     panfrost-job
+  70:      23361          0          0          0  GICv3              130 Level     dw-mci
+  71:      11577          0          0          0  GICv3              125 Level     fe720000.saradc
+  72:      29511          0          0          0  GICv3              131 Level     dw-mci
+  73:          0          0          0          0  rockchip_gpio_irq    1 Edge      Headphone detection
+IPI0:        605        976       7898       6989  Rescheduling interrupts
+IPI1:      67035      78606    1978441    2096892  Function call interrupts
+IPI2:          0          0          0          0  CPU stop interrupts
+IPI3:          0          0          0          0  CPU stop NMIs
+IPI4:          0          0          0          0  Timer broadcast interrupts
+IPI5:      64444      10456     341252       9427  IRQ work interrupts
+IPI6:          0          0          0          0  CPU backtrace interrupts
+IPI7:          0          0          0          0  KGDB roundup interrupts
+ Err:          0

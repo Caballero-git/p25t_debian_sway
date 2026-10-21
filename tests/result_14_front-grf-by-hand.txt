@@ -1,0 +1,89 @@
+[sudo] password for jose: 
+=== front camera driver, test_51 captures with the GRF fix (test_54) ===
+lun 19 oct 2026 19:30:25 CEST
+7.3.0-rc4-p25t #2 SMP PREEMPT Mon Oct 19 18:23:45 CEST 2026
+--- 1. driver and DT
+[    0.130878] /csi@fdfb0000: Fixed dependency cycle(s) with /i2c@fe5b0000/camera-sensor@10
+[    0.131705] /i2c@fe5b0000/camera-sensor@10: Fixed dependency cycle(s) with /csi@fdfb0000
+[    0.132646] /csi@fdfb0000: Fixed dependency cycle(s) with /video-capture@fdfe0000
+[    0.133410] /video-capture@fdfe0000: Fixed dependency cycle(s) with /csi@fdfb0000
+D-PHY: split mode (lanes 2-3) in the DT
+VICAP power/control on
+GRF VI_CON0 0x0440 -> 0x0570 (clock lane 0, data lanes 0-1 on, as patch 0030 will do)
+sensor subdev /dev/v4l-subdev2, video /dev/video0
+- entity 4: rkcif-mipi0 (2 pads, 5 links, 0 routes)
+		[stream:0 fmt:SRGGB10_1X10/1296x972 field:none]
+		<- "dw-mipi-csi2rx fdfb0000.csi":1 [ENABLED]
+		[stream:0 fmt:SRGGB10_1X10/1296x972 field:none
+		-> "rkcif-mipi0-id0":0 [ENABLED]
+- entity 7: rkcif-mipi0-id0 (1 pad, 1 link)
+		<- "rkcif-mipi0":1 [ENABLED]
+- entity 13: rkcif-mipi0-id1 (1 pad, 1 link)
+- entity 19: rkcif-mipi0-id2 (1 pad, 1 link)
+- entity 25: rkcif-mipi0-id3 (1 pad, 1 link)
+- entity 31: dw-mipi-csi2rx fdfb0000.csi (2 pads, 2 links, 0 routes)
+		[stream:0 fmt:SRGGB10_1X10/1296x972 field:none]
+		<- "gc02m2 2-0010":0 [ENABLED]
+		[stream:0 fmt:SRGGB10_1X10/1296x972 field:none]
+		-> "rkcif-mipi0":0 [ENABLED]
+- entity 36: gc02m2 2-0010 (1 pad, 1 link, 0 routes)
+		[stream:0 fmt:SRGGB10_1X10/1296x972 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		-> "dw-mipi-csi2rx fdfb0000.csi":0 [ENABLED]
+    
+    User Controls
+    
+                           exposure 0x00980911 (int)    : min=4 max=1252 step=1 default=1141 value=1141 flags=has-min-max
+                    horizontal_flip 0x00980914 (bool)   : default=0 value=0 flags=modify-layout, has-min-max
+                      vertical_flip 0x00980915 (bool)   : default=0 value=0 flags=modify-layout, has-min-max
+    
+    Camera Controls
+    
+                 camera_orientation 0x009a0922 (menu)   : min=0 max=2 default=0 value=0 (Front) flags=read-only, has-min-max
+    
+    Image Source Controls
+    
+                  vertical_blanking 0x009e0901 (int)    : min=296 max=15411 step=1 default=296 value=296 flags=has-min-max
+                horizontal_blanking 0x009e0902 (int)    : min=896 max=896 step=1 default=896 value=896 flags=read-only, has-min-max
+                      analogue_gain 0x009e0903 (int)    : min=64 max=646 step=1 default=128 value=128 flags=has-min-max
+    
+    Image Processing Controls
+    
+                     link_frequency 0x009f0901 (intmenu): min=0 max=0 default=0 value=0 (336000000 0x1406f400) flags=read-only, has-min-max
+                         pixel_rate 0x009f0902 (int64)  : min=67200000 max=67200000 step=1 default=67200000 value=67200000 flags=read-only, has-min-max
+
+--- 2. a_1600_noflip: 1600x1200, vertical_flip=0, analogue_gain=128 (19:30:27)
+   sensor pad now: SRGGB10_1X10 1600x1200
+exposure: 1141 vertical_flip: 0 analogue_gain: 128 vertical_blanking: 68 
+   exit 0 (124 = timeout); 20 of 20 frames
+   kept cam54_a_1600_noflip.raw (2 frames, SRGGB10_1X10 = RG10)
+   alive
+
+--- 3. b_1600_vflip: 1600x1200, vertical_flip=1, analogue_gain=128 (19:30:50)
+   sensor pad now: SGBRG10_1X10 1600x1200
+exposure: 1141 vertical_flip: 1 analogue_gain: 128 vertical_blanking: 68 
+   exit 0 (124 = timeout); 20 of 20 frames
+   kept cam54_b_1600_vflip.raw (2 frames, SGBRG10_1X10 = GB10)
+   alive
+
+--- 4. c_1296_vflip: 1296x972, vertical_flip=1, analogue_gain=128 (19:31:09)
+   sensor pad now: SGBRG10_1X10 1296x972
+exposure: 1141 vertical_flip: 1 analogue_gain: 128 vertical_blanking: 296 
+   exit 124 (124 = timeout); 0 of 20 frames
+   alive
+   IOMMU page fault - no more captures
+GRF VI_CON0 back: 0x0440
+
+--- kernel log ---
+[  921.714755]  el1h_64_irq_handler+0x18/0x24
+[  921.714763]  el1h_64_irq+0x6c/0x70
+[  921.714769]  default_idle_call+0x28/0x44 (P)
+[  921.714776]  do_idle+0x264/0x2f0
+[  921.714783]  cpu_startup_entry+0x34/0x3c
+[  921.714788]  kernel_init+0x0/0x1e0
+[  921.714794]  start_kernel+0x720/0x880
+[  921.714804]  __primary_switched+0x88/0x90
+[  921.714811] handlers:
+[  921.714814] [<0000000077f8926c>] rk_iommu_irq
+[  921.714829] [<00000000b7c68b83>] rkcif_isr
+[  921.714837] Disabling IRQ #29
+=== done ===

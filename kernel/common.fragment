@@ -9,3 +9,5 @@ CONFIG_ZRAM_BACKEND_ZSTD=y
 CONFIG_ZRAM_DEF_COMP_ZSTD=y
 # USB headsets / sound cards
 CONFIG_SND_USB_AUDIO=m
+# Front camera GalaxyCore GC02M2 (patch 0029; DTB variant 0030)
+CONFIG_VIDEO_GC02M2=y

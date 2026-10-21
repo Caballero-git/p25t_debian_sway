@@ -1,8 +1,9 @@
 #+TITLE: Sway card - tests and their results
 #+STARTUP: overview
 
-Every test run on the sway card that left a script or a result file. The
-point is that a conclusion in the docs or a commit can be checked, or the
+Every test run on the sway card that left a script or a result file,
+and the front camera tests run on the console card (07-21, see there).
+The point is that a conclusion in the docs or a commit can be checked, or the
 test repeated, from what is here.
 
 Naming, as in the console card's repository:
@@ -134,6 +135,109 @@ header says. The hp240 tab gets the script there with
 - Conclusion :: Two real additions: =micro= (now in
   =packages-common.txt=) and =epiphany-browser= (in =packages-sway.txt=,
   on trial).
+
+* 07-21 Front camera GC02M2 (console card, 2026-10-19/20)
+- Where they ran :: on the console card (kernel 7.3.0-rc4-p25t, same
+  patch series), over ssh from the PC. They were first numbered 47-61 in
+  the console card's repository (=p25t-linux=, private). The copies here
+  carry the sway numbers in their file names. Their texts are unchanged,
+  so they still say =test_47=, =result_47.txt=, =cam47...= and use the old
+  patch numbers. Both tables below translate them.
+- Pictures :: two pictures that show the outcome are here,
+  =result_19_front-kernel3.png= and =result_21_front-kernel5.png= (made
+  on the PC from the raw frames, =cam59_four.png= and =cam61_two.png= in
+  the console repository). The raw frames and the other pictures stay in
+  the console card's repository.
+- Question :: How do we get the front camera (GalaxyCore GC02M2, 2 MP, 1
+  MIPI lane on the D-PHY's lanes 2-3) working under mainline, which has
+  no driver for the sensor and no split mode in the D-PHY driver?
+
+** Numbers
+| Here | Console | Script                             | Result(s)                                                 |
+|------+---------+------------------------------------+-----------------------------------------------------------|
+|   07 |      47 | =test_07_front_probe.sh=           | =result_07_front-probe.txt=                               |
+|   08 |      48 | =test_08_front_first_frames.sh=    | =result_08_front-first-frames.txt=                        |
+|   09 |      49 | =test_09_front_vflip.sh=           | =result_09_front-vflip.txt=                               |
+|   10 |      50 | =test_10_front_window_sweep.sh=    | =result_10_front-window-sweep.txt=                        |
+|   11 |      51 | =test_11_front_driver.sh=          | =result_11_front-driver.txt=, =_dmesg.txt=, =_interrupts.txt= |
+|   12 |      52 | =test_12_front_receiver_watch.sh=  | =result_12_front-receiver-watch.txt=                      |
+|   13 |      53 | =test_13_front_grf_clock_lane0.sh= | =result_13_front-grf-clock-lane0.txt=                     |
+|   14 |      54 | =test_14_front_grf_by_hand.sh=     | =result_14_front-grf-by-hand.txt=                         |
+|   15 |      55 | =test_15_front_roll.sh=            | =result_15_front-roll.txt=                                |
+|   16 |      56 | =test_16_front_line_data.sh=       | =result_16_front-line-data.txt=                           |
+|   17 |      57 | =test_17_front_dphy_reset.sh=      | =result_17_front-dphy-reset.txt=                          |
+|   18 |      58 | =test_18_front_vicap_reset.sh=     | =result_18_front-vicap-reset.txt=                         |
+|   19 |      59 | =test_19_front_kernel3.sh=         | =result_19_front-kernel3.txt=, =.png=                     |
+|   20 |      60 | =test_20_front_colour_order.sh=    | =result_20_front-colour-order.txt=                        |
+|   21 |      61 | =test_21_front_kernel5.sh=         | =result_21_front-kernel5.txt=, =.png=                     |
+
+| Patch in the texts | Now (kernel/patches)                               |
+|--------------------+----------------------------------------------------|
+| 0027, 0032         | 0029 media: i2c: GC02M2 driver                     |
+| 0028, 0030         | 0028 phy: inno-csidphy: rk3568 split mode          |
+| 0031               | 0027 rkcif: stop at a frame end before the source  |
+| 0029, 0033         | 0030 front camera DTB variant                      |
+The kernel numbers in the texts (#2 ... #5) are console card builds:
+#2 = old 0027-0029, #3/#4 = + 0030, 0031, #5 = + 0032, 0033.
+
+** By hand, no driver (07-10)
+- 07 :: Powers the sensor by hand (GPIO4_B0 reset, GPIO4_B3 powerdown,
+  the rear camera's MCLK) and reads its ID. Found: chip ID =02 f0= at
+  i2c2 0x10 once B3 is high and B0 low.
+- 08 :: Borrows the running rear pipeline: rear sensor to standby, BSP
+  register table into the GC02M2, D-PHY switched to split mode (lanes
+  2-3) by register writes. Found: first front frames, about 20 fps, no
+  receiver errors; the rear pipeline recovers afterwards. The picture is
+  upside down.
+- 09 :: As 08 with the vertical flip on (register 0x17 = 0x82). Found:
+  upright, but every frame rolled (the seam at the same line in all
+  frames).
+- 10 :: As 09, sweeping the window's y start (120, 30, 210). Found: the
+  roll stayed with every y start, so the window was not its cause; it
+  was taken up again with the driver (14-19).
+
+** With the driver (11-21)
+- 11 :: First run of the driver, split mode and front DTB (old 0027-0029).
+  Found: no frame; the VICAP wrote outside its buffers (IOMMU page fault),
+  then 200000 unhandled interrupts and the VICAP interrupt switched off.
+- 12 :: Watches the receiver while capturing. Found: the tablet froze
+  (register reads during a faulting capture). Later tests do not read
+  registers while streaming.
+- 13 :: Sets GRF VI_CON0 clock lane 0 and data lanes 0-1 by hand, as
+  test 08 had them. Found: 5 of 5 clean frames. Fix: these GRF bits are
+  now set by the split mode (patch 0028).
+- 14 :: The four captures of 11 with the GRF fix by hand. Found: frames
+  arrive, but rolled; 1296x972 after 1600x1200 overran the buffers.
+- 15 :: Six captures in a row. Found: the seam is at a different line in
+  each capture, the same in all frames of one capture; only the first
+  capture after a boot is clean.
+- 16 :: Reads the sensor's MIPI line length and window while streaming.
+  Found: right in every capture, so the sensor is not the cause.
+- 17 :: Resets the D-PHY between captures. Found: no help.
+- 18 :: Resets the VICAP's D and I parts between captures. Found: no help
+  (page fault on the second capture). Cause, from the code: rkcif stopped
+  the sensor first and then waited for a frame end that never came.
+  Fix: patch 0027.
+- 19 :: Kernel with the GRF and rkcif fixes, no hand pokes: five captures
+  with mixed sizes and the vertical flip. Found: all clean, but the frames
+  stay RGGB with the flip while the driver reported GBRG.
+  =result_19_front-kernel3.png=: four of the captures, in test order.
+  Without flip (left two) the picture is turned by 180 degrees; with the
+  vertical flip (right two) it is upright but mirrored (the map on the
+  wall is on the wrong side).
+- 20 :: The colour order with each flip. Found: RGGB with any flip; both
+  flips give the upright picture (the sensor is mounted turned by 180
+  degrees). Fix: the driver always reports RGGB, the DTB has
+  =rotation = <180>= (patches 0029, 0030).
+- 21 :: Final kernel: the rotation control reads 180, the pad is SRGGB10
+  with both flips, and 1600x1200 and 1296x972 captures with both flips
+  are clean and upright. =result_21_front-kernel5.png=: the two captures
+  (1600x1200 left, the 1296x972 crop right), as the room really looks.
+- Rear camera :: after the rkcif change, three rear-snap captures were
+  clean (checked by hand, no result file).
+- Conclusion :: The front camera works on the console card with patches
+  0027-0030 and =rk3566-teclast-p25t-front.dtb=. The udev rule that keeps
+  the VICAP powered is still needed.
 
 * Checks without result files
 Checked by hand on the tablet; the outcome is recorded here and in the

@@ -12,10 +12,13 @@
 # to a folder p25t-kernel-<profile>/ with:
 #   Image, rk3566-teclast-p25t.dtb, rk3566-teclast-p25t-usbhost.dtb,
 #   new.sha256           (the three boot files; read by deploy_kernel.sh)
+#   rk3566-teclast-p25t-front.dtb (front camera DTB, patch 0030; put on the
+#                        card by set_camera_dtb.sh, not by deploy_kernel.sh)
 #   modules.tar          (lib/modules/<release>/, incl. extra/aic8800_*.ko)
 #   firmware-aic8800.tar (lib/firmware/aic8800_fw/)
 #   release.txt          (kernel release, e.g. 7.3.0-rc4-p25t)
-#   install_modules.sh, deploy_kernel.sh, health_snapshot.sh, health_compare.sh
+#   install_modules.sh, deploy_kernel.sh, health_snapshot.sh, health_compare.sh,
+#   set_camera_dtb.sh
 #   files.sha256         (all of the above)
 set -euo pipefail
 
@@ -35,7 +38,7 @@ say() { echo; echo "=== $*"; }
 die() { echo "STOPPED: $*"; exit 1; }
 
 say "1/4 Checks"
-for f in "$B/Image" "$B/dts/rockchip/rk3566-teclast-p25t.dtb" "$B/dts/rockchip/rk3566-teclast-p25t-usbhost.dtb"; do
+for f in "$B/Image" "$B/dts/rockchip/rk3566-teclast-p25t.dtb" "$B/dts/rockchip/rk3566-teclast-p25t-usbhost.dtb" "$B/dts/rockchip/rk3566-teclast-p25t-front.dtb"; do
     [ -f "$f" ] || die "$f missing - run build_kernel.sh $PROFILE"
 done
 N=$(ls "$OUT/modules-staging/lib/modules" | wc -l)
@@ -47,7 +50,7 @@ M="$OUT/modules-staging/lib/modules/$REL"
 [ -f "$M/extra/aic8800_fdrv.ko" ] && [ -f "$M/extra/aic8800_bsp.ko" ] || die "no AIC8800 modules - run build_aic8800.sh $PROFILE (after every build_kernel.sh)"
 grep -q 'extra/aic8800_fdrv.ko' "$M/modules.dep" || die "modules.dep does not list the AIC8800 modules"
 [ -d "$OUT/firmware-staging/lib/firmware/aic8800_fw" ] || die "no staged AIC8800 firmware"
-for s in install_modules.sh deploy_kernel.sh health_snapshot.sh health_compare.sh; do
+for s in install_modules.sh deploy_kernel.sh health_snapshot.sh health_compare.sh set_camera_dtb.sh; do
     [ -f "$REPO/tools/$s" ] || die "$REPO/tools/$s missing"
 done
 echo "release $REL, $(find "$M" -name '*.ko*' | wc -l) modules"
@@ -57,11 +60,12 @@ rm -rf "$P" "$OUT/$NAME.tar"
 mkdir -p "$P"
 cp "$B/Image" "$B/dts/rockchip/rk3566-teclast-p25t.dtb" "$B/dts/rockchip/rk3566-teclast-p25t-usbhost.dtb" "$P/"
 ( cd "$P" && sha256sum Image rk3566-teclast-p25t.dtb rk3566-teclast-p25t-usbhost.dtb > new.sha256 )
+cp "$B/dts/rockchip/rk3566-teclast-p25t-front.dtb" "$P/"
 tar -C "$OUT/modules-staging" --owner=0 --group=0 --exclude="lib/modules/$REL/build" --exclude="lib/modules/$REL/source" -cf "$P/modules.tar" "lib/modules/$REL"
 tar -C "$OUT/firmware-staging" --owner=0 --group=0 -cf "$P/firmware-aic8800.tar" lib/firmware/aic8800_fw
 echo "$REL" > "$P/release.txt"
-for s in install_modules.sh deploy_kernel.sh health_snapshot.sh health_compare.sh; do cp "$REPO/tools/$s" "$P/"; done
-( cd "$P" && sha256sum Image rk3566-teclast-p25t.dtb rk3566-teclast-p25t-usbhost.dtb new.sha256 modules.tar firmware-aic8800.tar release.txt install_modules.sh deploy_kernel.sh health_snapshot.sh health_compare.sh > files.sha256 )
+for s in install_modules.sh deploy_kernel.sh health_snapshot.sh health_compare.sh set_camera_dtb.sh; do cp "$REPO/tools/$s" "$P/"; done
+( cd "$P" && sha256sum Image rk3566-teclast-p25t.dtb rk3566-teclast-p25t-usbhost.dtb rk3566-teclast-p25t-front.dtb new.sha256 modules.tar firmware-aic8800.tar release.txt install_modules.sh deploy_kernel.sh health_snapshot.sh health_compare.sh set_camera_dtb.sh > files.sha256 )
 
 say "3/4 Tar"
 tar -C "$OUT" -cf "$OUT/$NAME.tar" "$NAME"
@@ -70,5 +74,6 @@ tar -tf "$OUT/$NAME.tar" | sed 's/^/    /'
 
 say "4/4 Summary"
 cat "$P/new.sha256"
+( cd "$P" && sha256sum rk3566-teclast-p25t-front.dtb )
 echo "tar: $OUT/$NAME.tar ($(du -h "$OUT/$NAME.tar" | cut -f1)), release $REL"
 echo "PACK OK ($PROFILE, $REL)"

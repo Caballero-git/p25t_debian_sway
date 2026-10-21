@@ -2,7 +2,7 @@
 #+DATE: 2026-10-10
 
 * What this is
-  - 26 patches on mainline ~f2c53ea949c5048f96b3dbb5a5ee7131ce4ff2de~
+  - 30 patches on mainline ~f2c53ea949c5048f96b3dbb5a5ee7131ce4ff2de~
     ("Merge tag 'net-7.3-rc5'", between 7.3-rc4 and rc5). Each patch
     carries a ~base-commit:~ line.
   - The same kernel serves both cards; only ~CONFIG_LOCALVERSION~ differs
@@ -46,6 +46,10 @@
   | 0024 | 0028                        | GC5035 sensor driver                                 |
   | 0025 | 0029                        | rear camera pipeline, LDO9                           |
   | 0026 | 0030                        | RK817 LDO2 at 1.2 V                                  |
+  | 0027 | (new 2026-10-20)            | rkcif: stop the capture at a frame end before source |
+  | 0028 | (new 2026-10-19/20)         | phy: inno-csidphy rk3568 split mode (lanes 2-3)      |
+  | 0029 | (new 2026-10-19/20)         | GC02M2 front camera sensor driver                    |
+  | 0030 | (new 2026-10-19/20)         | front camera DTB variant (rk3566-teclast-p25t-front) |
   Message bodies kept from the old patches still mention the old numbers
   (e.g. "patch 0008"); this table translates them.
 
@@ -57,3 +61,23 @@
   - Patches keep the panel frame for touch (0015), the panel rotation 90
     (0020) and the landscape accelerometer frame (0022): a compositor
     relies on all three.
+  - 0027-0030 (front camera) were written after the series was made and
+    are not in ~p25t-linux~'s bring-up series. They come from
+    ../../tests/ 07-21 (run on the console card). While testing they were
+    seven patches. Squashed on 2026-10-21; the final tree differs from the
+    seven only in comments:
+    | Now  | While testing (old numbers in tests 07-21) |
+    |------+--------------------------------------------|
+    | 0027 | 0031                                       |
+    | 0028 | 0028 + 0030                                |
+    | 0029 | 0027 + 0032                                |
+    | 0030 | 0029 + 0033                                |
+  - 0027 changes mainline's rkcif stop order (frame end first, then the
+    sensor). It was found with the front camera and applies to the rear
+    camera too; the rear was rechecked after it (2026-10-20: three clean
+    rear-snap captures).
+  - ~tools/apply_new_patches.sh apply~ adds new patches to ~linux-sway~.
+    The base DTB is byte-identical with and without 0027-0030 (sha256
+    b3c30f4f...); the front camera is in the extra DTB
+    ~rk3566-teclast-p25t-front.dtb~, put on the card with
+    ~tools/set_camera_dtb.sh~.

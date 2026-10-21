@@ -1,0 +1,107 @@
+[sudo] password for jose: 
+=== front camera, kernel with 0030 + 0031 (test_59) ===
+mar 20 oct 2026 21:54:46 CEST
+7.3.0-rc4-p25t #4 SMP PREEMPT Tue Oct 20 21:25:59 CEST 2026
+--- 1. driver and DT
+[    0.131795] /csi@fdfb0000: Fixed dependency cycle(s) with /i2c@fe5b0000/camera-sensor@10
+[    0.132623] /i2c@fe5b0000/camera-sensor@10: Fixed dependency cycle(s) with /csi@fdfb0000
+[    0.133551] /csi@fdfb0000: Fixed dependency cycle(s) with /video-capture@fdfe0000
+[    0.134318] /video-capture@fdfe0000: Fixed dependency cycle(s) with /csi@fdfb0000
+D-PHY: split mode (lanes 2-3) in the DT
+VICAP power/control on
+GRF VI_CON0 (read only, set by the D-PHY driver at stream start): 0x0000 at boot
+sensor subdev /dev/v4l-subdev2, video /dev/video0
+- entity 4: rkcif-mipi0 (2 pads, 5 links, 0 routes)
+		[stream:0 fmt:SRGGB10_1X10/3840x2160 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range]
+		<- "dw-mipi-csi2rx fdfb0000.csi":1 [ENABLED]
+		[stream:0 fmt:SRGGB10_1X10/3840x2160 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		-> "rkcif-mipi0-id0":0 [ENABLED]
+- entity 7: rkcif-mipi0-id0 (1 pad, 1 link)
+		<- "rkcif-mipi0":1 [ENABLED]
+- entity 13: rkcif-mipi0-id1 (1 pad, 1 link)
+- entity 19: rkcif-mipi0-id2 (1 pad, 1 link)
+- entity 25: rkcif-mipi0-id3 (1 pad, 1 link)
+- entity 31: dw-mipi-csi2rx fdfb0000.csi (2 pads, 2 links, 0 routes)
+		[stream:0 fmt:SRGGB10_1X10/3840x2160 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range]
+		<- "gc02m2 2-0010":0 [ENABLED]
+		[stream:0 fmt:SRGGB10_1X10/3840x2160 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range]
+		-> "rkcif-mipi0":0 [ENABLED]
+- entity 36: gc02m2 2-0010 (1 pad, 1 link, 0 routes)
+		[stream:0 fmt:SRGGB10_1X10/1600x1200 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		-> "dw-mipi-csi2rx fdfb0000.csi":0 [ENABLED]
+    
+    User Controls
+    
+                           exposure 0x00980911 (int)    : min=4 max=1252 step=1 default=1141 value=1141 flags=has-min-max
+                    horizontal_flip 0x00980914 (bool)   : default=0 value=0 flags=modify-layout, has-min-max
+                      vertical_flip 0x00980915 (bool)   : default=0 value=0 flags=modify-layout, has-min-max
+    
+    Camera Controls
+    
+                 camera_orientation 0x009a0922 (menu)   : min=0 max=2 default=0 value=0 (Front) flags=read-only, has-min-max
+    
+    Image Source Controls
+    
+                  vertical_blanking 0x009e0901 (int)    : min=68 max=15183 step=1 default=68 value=68 flags=has-min-max
+                horizontal_blanking 0x009e0902 (int)    : min=592 max=592 step=1 default=592 value=592 flags=read-only, has-min-max
+                      analogue_gain 0x009e0903 (int)    : min=64 max=646 step=1 default=128 value=128 flags=has-min-max
+    
+    Image Processing Controls
+    
+                     link_frequency 0x009f0901 (intmenu): min=0 max=0 default=0 value=0 (336000000 0x1406f400) flags=read-only, has-min-max
+                         pixel_rate 0x009f0902 (int64)  : min=67200000 max=67200000 step=1 default=67200000 value=67200000 flags=read-only, has-min-max
+
+--- 2. 1_1600: 1600x1200, vertical_flip=0, analogue_gain=256 (21:54:47)
+   sensor pad now: SRGGB10_1X10 1600x1200
+exposure: 1141 vertical_flip: 0 analogue_gain: 256 vertical_blanking: 68 
+   VICAP interrupts during the capture: 380
+   exit 0 (124 = timeout); 8 of 8 frames
+   kept cam59_1_1600.raw (3 frames, SRGGB10_1X10 = RG10)
+   alive
+
+--- 3. 2_1296: 1296x972, vertical_flip=0, analogue_gain=256 (21:55:00)
+   sensor pad now: SRGGB10_1X10 1296x972
+exposure: 1141 vertical_flip: 0 analogue_gain: 256 vertical_blanking: 296 
+   VICAP interrupts during the capture: 221
+   exit 0 (124 = timeout); 8 of 8 frames
+   kept cam59_2_1296.raw (3 frames, SRGGB10_1X10 = RG10)
+   alive
+
+--- 4. 3_1600: 1600x1200, vertical_flip=0, analogue_gain=256 (21:55:11)
+   sensor pad now: SRGGB10_1X10 1600x1200
+exposure: 1141 vertical_flip: 0 analogue_gain: 256 vertical_blanking: 68 
+   VICAP interrupts during the capture: 380
+   exit 0 (124 = timeout); 8 of 8 frames
+   kept cam59_3_1600.raw (3 frames, SRGGB10_1X10 = RG10)
+   alive
+
+--- 5. 4_1296_vflip: 1296x972, vertical_flip=1, analogue_gain=256 (21:55:25)
+   sensor pad now: SGBRG10_1X10 1296x972
+exposure: 1141 vertical_flip: 1 analogue_gain: 256 vertical_blanking: 296 
+   VICAP interrupts during the capture: 221
+   exit 0 (124 = timeout); 8 of 8 frames
+   kept cam59_4_1296_vflip.raw (3 frames, SGBRG10_1X10 = GB10)
+   alive
+
+--- 6. 5_1600_vflip: 1600x1200, vertical_flip=1, analogue_gain=256 (21:55:36)
+   sensor pad now: SGBRG10_1X10 1600x1200
+exposure: 1141 vertical_flip: 1 analogue_gain: 256 vertical_blanking: 68 
+   VICAP interrupts during the capture: 380
+   exit 0 (124 = timeout); 8 of 8 frames
+   kept cam59_5_1600_vflip.raw (3 frames, SGBRG10_1X10 = GB10)
+   alive
+
+--- kernel log ---
+[   17.726639] Bluetooth: MGMT ver 1.23
+[   17.774233] Bluetooth: RFCOMM TTY layer initialized
+[   17.774267] Bluetooth: RFCOMM socket layer initialized
+[   17.774300] Bluetooth: RFCOMM ver 1.11
+[   18.517610] Bluetooth: hci0: Bad flag given (0x1) vs supported (0x6)
+[   19.145932] rwnx_send_sm_connect_req drv_vif_index:0 connect to <SSID>(23) channel:2417 auth_type:0
+[   19.271687] get_txpwr_max:txpwr_max:0 
+[   25.833735] rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdea0000.video-codec
+[   25.833781] rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdeb0000.rga
+[   25.833801] rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdee0000.video-codec
+[   52.201481] rwnx_reg_notifier Enter
+[   52.202233] rwnx_reg_notifier Enter
+=== done ===

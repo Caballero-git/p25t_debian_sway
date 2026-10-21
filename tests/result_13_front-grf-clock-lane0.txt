@@ -1,0 +1,21 @@
+[sudo] password for jose: 
+=== front camera driver, GRF clock lane 0 on (test_53) ===
+lun 19 oct 2026 19:19:01 CEST
+7.3.0-rc4-p25t #2 SMP PREEMPT Mon Oct 19 18:23:45 CEST 2026
+GRF VI_CON0 before: 0x0000 (VI_CON1 is set by the driver at stream start)
+GRF VI_CON0 now:    0x0130 (bit 8 clock lane 0, bits 5:4 data lanes 0-1 on)
+capture, 5 frames (19:19:02)
+exit 0 (124 = timeout); 5 of 5 frames; irq count 145
+kept cam53_1296.raw (2 frames, RG10)
+GRF VI_CON0 back: 0x0440
+alive (19:19:13)
+--- kernel log ---
+[   24.284834] Bluetooth: RFCOMM socket layer initialized
+[   24.284870] Bluetooth: RFCOMM ver 1.11
+[   24.919469] rwnx_send_sm_connect_req drv_vif_index:0 connect to <SSID>(23) channel:2417 auth_type:0
+[   24.945233] get_txpwr_max:txpwr_max:0 
+[   25.078296] Bluetooth: hci0: Bad flag given (0x1) vs supported (0x6)
+[   58.596526] rwnx_reg_notifier Enter
+[   58.596976] rwnx_reg_notifier Enter
+[  113.465633] systemd-journald[252]: File /var/log/journal/cf26acb3911e4387b4efa01f5c5f15a4/user-1000.journal corrupted or uncleanly shut down, renaming and replacing.
+=== done ===

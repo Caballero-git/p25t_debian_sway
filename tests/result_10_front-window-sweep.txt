@@ -1,0 +1,104 @@
+[sudo] password for jose: 
+=== front camera, flip + window y sweep (test_50) ===
+lun 19 oct 2026 10:31:25 CEST
+7.3.0-rc4-p25t #1 SMP PREEMPT Sat Oct 10 20:47:45 CEST 2026
+regulator vdda_0v9: 1200000 uV (1200000 expected)
+capture started (10:31:28); keeper pid 1437, capture pid 1438
+
+rear capture running: 3 frames after 0.4 s
+found: GRF VI_CON0 0x0130 VI_CON1 0x0000 | PHY lane-enable 0x4d dual/cal 0x1f THS clk 0x16 l0 0x16 l1 0x16 l2 0x1b clk1 0x00 clk1-phase 0x00
+       CSI N_LANES 1 (= 2 lanes) RESETN 1 SHUTDOWNZ 203440128 DPHY_RSTZ 0 | GPIO4B mux 0x0000 DDR 0x04c0 DR 0x0480
+1. rear sensor streaming (reference):
+  rear 0                     frames    3 | CSI PHY_STATE 0x03f0 (clk HS 1, stopstate clk 0 data f) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  rear 1                     frames    8 | CSI PHY_STATE 0x03c0 (clk HS 1, stopstate clk 0 data c) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  rear 2                     frames   13 | CSI PHY_STATE 0x03c0 (clk HS 1, stopstate clk 0 data c) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00200000
+  rear 3                     frames   18 | CSI PHY_STATE 0x03c0 (clk HS 1, stopstate clk 0 data c) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+2. rear sensor standby (its 0x3e was 0x91, now 91)
+  rear standby               frames   25 | CSI PHY_STATE 0x06f0 (clk HS 0, stopstate clk 1 data f) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+3. front sensor powered: chip ID 02 f0
+4. init table: 198 writes, 0 failed
+   window: y 120 x 158, 972 lines x 1296 pixels | exposure 0x047d | VTS 0x04f4 | mirror/flip 0x17 = 82
+5. routed: GRF VI_CON0 0x0570 VI_CON1 0x0880 | PHY lane-enable 0x5d dual 0x5f THS l2 0x10 clk1 0x10 | CSI N_LANES 0
+  routed, front idle         frames   25 | CSI PHY_STATE 0x0630 (clk HS 0, stopstate clk 1 data 3) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+6.1 window y start 120 (read back 0x0078), front streaming:
+  y 120, 0.5 s               frames   33 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  y 120, 1.0 s               frames   43 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  y 120, 1.5 s               frames   53 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+   frames in this step: 28
+6.2 window y start 30 (read back 0x001e), front streaming:
+  y  30, 0.5 s               frames   63 | CSI PHY_STATE 0x0630 (clk HS 0, stopstate clk 1 data 3) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  y  30, 1.0 s               frames   73 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  y  30, 1.5 s               frames   83 | CSI PHY_STATE 0x0630 (clk HS 0, stopstate clk 1 data 3) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+   frames in this step: 30
+6.3 window y start 210 (read back 0x00d2), front streaming:
+  y 210, 0.5 s               frames   93 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  y 210, 1.0 s               frames  103 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  y 210, 1.5 s               frames  113 | CSI PHY_STATE 0x0320 (clk HS 1, stopstate clk 0 data 2) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+   frames in this step: 30
+7. restored: GRF VI_CON0 0x0130 VI_CON1 0x0000 | GPIO4B mux 0x0000 DDR 0x04c0 DR 0x0480
+   PHY lane-enable 0x4d dual 0x1f THS l2 0x1b clk1 0x00 | CSI N_LANES 1
+8. rear sensor streaming again (0x3e = 00), does the rear pipeline recover?
+  rear again 0               frames  118 | CSI PHY_STATE 0x03f0 (clk HS 1, stopstate clk 0 data f) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  rear again 1               frames  123 | CSI PHY_STATE 0x03f0 (clk HS 1, stopstate clk 0 data f) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  rear again 2               frames  128 | CSI PHY_STATE 0x03c0 (clk HS 1, stopstate clk 0 data c) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+  rear again 3               frames  133 | CSI PHY_STATE 0x03c0 (clk HS 1, stopstate clk 0 data c) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000
+   rear frames after the restore: 20
+RESULT: front phase ran (see frames above)
+
+--- keeper (frames as they arrived) ---
+frame    1  t=  0.00 s  phase rear    mean  102.2  max  866
+frame    2  t=  0.05 s  phase rear    mean  102.3  max  865
+frame    3  t=  0.10 s  phase rear    mean  102.4  max  872
+frame   10  t=  0.45 s  phase rear    mean  102.3  max  870
+frame   20  t=  0.94 s  phase rear    mean  102.5  max  876
+frame   24  t=  1.14 s  phase gap     mean  102.5  max  873
+frame   25  t=  1.19 s  phase gap     mean  102.5  max  878
+frame   26  t=  1.78 s  phase y120    mean  102.4  max  885
+frame   27  t=  1.84 s  phase y120    mean   81.6  max  109
+frame   28  t=  1.89 s  phase y120    mean   81.4  max  107
+frame   30  t=  1.99 s  phase y120    mean   81.4  max  108
+frame   40  t=  2.50 s  phase y120    mean   81.8  max  109
+frame   50  t=  3.00 s  phase y120    mean   81.8  max  108
+frame   54  t=  3.20 s  phase y030    mean   81.6  max  106
+frame   55  t=  3.25 s  phase y030    mean   81.8  max  108
+frame   56  t=  3.30 s  phase y030    mean   82.3  max  105
+frame   60  t=  3.51 s  phase y030    mean   82.5  max  107
+frame   70  t=  4.01 s  phase y030    mean   82.1  max  107
+frame   80  t=  4.52 s  phase y030    mean   82.2  max  108
+frame   84  t=  4.72 s  phase y210    mean   82.0  max  105
+frame   85  t=  4.77 s  phase y210    mean   82.3  max  106
+frame   86  t=  4.82 s  phase y210    mean   82.3  max  107
+frame   90  t=  5.02 s  phase y210    mean   81.1  max  107
+frame  100  t=  5.53 s  phase y210    mean   80.9  max  107
+frame  110  t=  6.03 s  phase y210    mean   81.1  max  107
+frame  114  t=  6.23 s  phase back    mean   80.9  max  107
+frame  115  t=  6.28 s  phase back    mean   81.2  max  108
+frame  116  t=  6.33 s  phase back    mean  102.0  max  851
+frame  120  t=  6.53 s  phase back    mean  102.2  max  843
+frame  130  t=  7.02 s  phase back    mean  101.9  max  833
+(last 456448 bytes: a partial frame, dropped)
+frames per phase:
+  rear     23 frames, mean level  102.4, 20.1 fps
+  gap       2 frames, mean level  102.5, 20.1 fps
+  y120     28 frames, mean level   82.5, 19.7 fps
+  y030     30 frames, mean level   82.2, 19.8 fps
+  y210     30 frames, mean level   81.1, 19.8 fps
+  back     21 frames, mean level  100.0, 20.3 fps
+kept the last frame of phase y030: /home/jose/tests/cam50_front_y030.raw
+kept the last frame of phase y120: /home/jose/tests/cam50_front_y120.raw
+kept the last frame of phase y210: /home/jose/tests/cam50_front_y210.raw
+alive (10:31:41)
+--- kernel log ---
+[   15.151231] Bluetooth: MGMT ver 1.23
+[   15.196456] Bluetooth: RFCOMM TTY layer initialized
+[   15.196514] Bluetooth: RFCOMM socket layer initialized
+[   15.196642] Bluetooth: RFCOMM ver 1.11
+[   15.946161] Bluetooth: hci0: Bad flag given (0x1) vs supported (0x6)
+[   16.535639] rwnx_send_sm_connect_req drv_vif_index:0 connect to <SSID>(23) channel:2417 auth_type:0
+[   16.660600] get_txpwr_max:txpwr_max:0 
+[   23.524574] rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdea0000.video-codec
+[   23.524618] rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdeb0000.rga
+[   23.524708] rockchip-pm-domain fdd90000.power-management:power-controller: sync_state() pending due to fdee0000.video-codec
+[   51.428355] rwnx_reg_notifier Enter
+[   51.428990] rwnx_reg_notifier Enter
+=== done ===

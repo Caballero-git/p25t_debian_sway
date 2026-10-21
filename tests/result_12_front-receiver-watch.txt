@@ -1,0 +1,17 @@
+[sudo] password for jose: 
+=== front camera driver, receiver watch (test_52) ===
+lun 19 oct 2026 19:08:40 CEST
+7.3.0-rc4-p25t #2 SMP PREEMPT Mon Oct 19 18:23:45 CEST 2026
+VICAP irq 29: 0 so far
+
+--- 1296: 1296x972, no flip (19:08:40)
+		[stream:0 fmt:SRGGB10_1X10/1296x972 field:none colorspace:raw xfer:none ycbcr:601 quantization:full-range
+		 crop.bounds:(6,6)/1600x1200
+		 crop:(158,120)/1296x972]
+   	Width/Height      : 1296/972
+   	Pixel Format      : 'RG10' (10-bit Bayer RGRG/GBGB)
+   	   Bytes per Line : 2592
+   	   Size Image     : 2519424
+   config: GRF VI_CON0 0x0440 VI_CON1 0x0880 | PHY lane-enable 0x51 dual 0x5f THS clk 0x1b l0 0x1b l2 0x10 clk1 0x10 | CSI N_LANES 0 RESETN 1
+   VICAP ID0 CTRL0 0x0000ac23 CTRL1 0x03cc0510 (w 1296 h 972) VLW 0xa20 | INTEN 0x01ffffff
+    0.32 s  CSI PHY_STATE 0x0320 (clk HS 1) ERR1 0x00000000 ERR2 0x00000000 | VICAP INTSTAT 0x00000000

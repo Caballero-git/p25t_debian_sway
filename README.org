@@ -129,10 +129,8 @@ itself in its header.
    - =bash tools/make_boot_part.sh write <DEVICE>= writes it, e.g.
      =/dev/sdb=. This ERASES the card and asks first; it refuses a card
      that already carries a P25T system.
-5. =bash debian/install_debian.sh sway stage1= puts Debian, the kernel
-   and the initramfs built in step 2 on the card and checks every file.
-   (Without =stage1= it uses the author's copy of the initramfs the first
-   cards were made with, which is not in this repository.)
+5. =bash debian/install_debian.sh sway= puts Debian, the kernel and the
+   initramfs built in step 2 on the card and checks every file.
 6. On the tablet, after the first boot: nothing to do. The build already
    installed the user configuration (=config/= into =~/.config=) and the
    autostart.
@@ -183,6 +181,7 @@ first:
 | Document                                                         | Read it for                                       |
 |------------------------------------------------------------------+---------------------------------------------------|
 | [[file:docs/sway-tutorial.org][docs/sway-tutorial.org]]          | using the sway card                               |
+| [[file:docs/boot.org][docs/boot.org]]                    | how the card boots, the boot part, rescue and rollback |
 | [[file:kernel/patches/README.org][kernel/patches/README.org]]    | the patch series and how it was made              |
 | [[file:tests/README.org][tests/README.org]]                  | each test: question, files, finding, conclusion   |
 | [[file:docs/sway-card-first-boot.org][docs/sway-card-first-boot.org]] | the first sway card checked against the console card |

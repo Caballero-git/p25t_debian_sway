@@ -1,0 +1,190 @@
+#+TITLE: How a P25T card boots, and how its boot part is made
+#+STARTUP: overview
+
+The boot chain, the card layout, the three pieces this repository builds
+for it (U-Boot, the stage-1 initramfs, the boot part of a new card), the
+tools that change them on a running card, and what to do when a card
+does not boot. Commands in =monospace= are typed as they are;
+=<UPPER-CASE>= is a placeholder.
+
+* The chain
+The tablet's bootloader is locked and stays locked; the internal eMMC
+(Android) is never written.
+1. The boot ROM starts the stock SPL on the eMMC.
+2. The stock SPL tries the microSD card first. It looks for a GPT
+   partition named =uboot= (then =uboot_a=, =uboot_b=) and loads the FIT
+   image there, from offset +0 or, if that copy is bad, from +4096
+   sectors.
+3. The FIT holds mainline U-Boot, Rockchip's BL31 (in its six load
+   segments) and U-Boot's own device tree.
+4. U-Boot's fixed boot command loads =Image=, =rk3566-teclast-p25t.dtb=
+   and =initramfs.cpio.gz= from the FAT partition =P25TBOOT= (partition
+   4) and starts Linux.
+5. Linux runs =/init= of the initramfs: stage 1. It logs the boot onto
+   the card and hands over to Debian on the ext4 partition =p25troot=.
+On a normal boot the hand-over comes about 5 s after power-on, and the
+login prompt about 15-20 s after power-on.
+
+* The card
+** Layout (512-byte sectors)
+| Sectors        | GPT name / label             | Contents                                   |
+|----------------+------------------------------+--------------------------------------------|
+| 16384-24575    | =uboot=                      | the FIT at +0 and +4096                    |
+| 24576-32767    | =uboot_a=                    | the same                                   |
+| 32768-40959    | =uboot_b=                    | the same                                   |
+| 65536-589823   | =P25TBOOT= (FAT32, 256 MiB)  | kernel, device trees, initramfs, logs      |
+| 1331200 (+32)  | outside every partition      | U-Boot's status note                       |
+| 2097152-end    | =P25TROOT= / ext4 =p25troot= | Debian                                     |
+Partitions 1-3 have the GPT type 8300, P25TBOOT 0700 (as card 1). Linux
+finds P25TBOOT and p25troot by their labels (=/etc/fstab=), so a new
+card needs no UUIDs changed. P25TBOOT is mounted at =/boot/firmware= on
+the tablet.
+
+** Files on P25TBOOT
+| File                                   | What                                                       |
+|----------------------------------------+------------------------------------------------------------|
+| =Image=                                | the kernel                                                 |
+| =rk3566-teclast-p25t.dtb=              | the *active* device tree: a copy of one of the three below |
+| =rk3566-teclast-p25t-normal.dtb=       | USB-C as a device (serial console and network to a PC)     |
+| =rk3566-teclast-p25t-usbhost.dtb=      | USB-C as a host (wired keyboard and mouse)                 |
+| =rk3566-teclast-p25t-front.dtb=        | the normal one with the front camera instead of the rear   |
+| =initramfs.cpio.gz=                    | stage 1                                                    |
+| =initramfs.cpio.gz.previous=           | the one before it (=deploy_initramfs.sh=)                  |
+| =*.pre-NNNN-backup=                    | earlier kernels and device trees (=deploy_kernel.sh=)      |
+| =CARD-SHA256SUMS=                      | checksums; =sha256sum -c CARD-SHA256SUMS= in the folder    |
+| =boot-debian=                          | present: stage 1 hands over to Debian                      |
+| =autorun.sh= (optional)                | run in the background by stage 1 (experiments only)        |
+| =logs/=                                | =bootcount= and =boot-N-*.txt= of every boot               |
+U-Boot always loads =rk3566-teclast-p25t.dtb=, so choosing a USB role
+or a camera means copying the right variant to that name; the tools in
+"On a running card" do it and keep =CARD-SHA256SUMS= in step.
+
+** Boot logs (=logs/boot-N-*.txt=)
+| File        | Written by | Contents                                                    |
+|-------------+------------+-------------------------------------------------------------|
+| =dmesg=     | stage 1    | the kernel log, with times                                  |
+| =status=    | stage 1    | uptime, block devices, inputs, IIO, network, display, regulators |
+| =handover=  | stage 1    | the volume-key reading, the root device, the hand-over time |
+| =pmic=, =gpio= | stage 1 | read-only register dumps, only when it stays in stage 1     |
+| =debian=    | Debian     | failed units, gadget, network, warnings (=p25t-bootlog=)    |
+=bootcount= is N of the latest boot. The handover file is the quickest
+check of a boot: on a normal one it reads
+=volume key ADC (/sys/bus/iio/devices/iio:device1): 1023=, then the
+root device and "switching to Debian at ... s".
+
+* U-Boot
+- Mainline U-Boot =v2026.10-rc5= with =u-boot/p25t-u-boot.config=
+  (based on =generic-rk3568=), plus Rockchip's =rk3568_bl31_v1.46.elf=
+  from rkbin.
+- The stock SPL needs the legacy Rockchip FIT layout: data outside the
+  FIT structure, aligned (=mkimage -E -B 0x200 -p 0x1000=), described by
+  =u-boot/p25t.its=; =u-boot/split_bl31.py= cuts BL31 into the six
+  segments the =.its= names. The FIT must stay below 2 MiB (two copies
+  per 4 MiB partition).
+- The boot command, with no delay, loads the three files from =mmc 1:4=
+  and runs =booti=. At every step it writes its environment as text to
+  the card at sector 1331200 (32 sectors), with a variable =stage=:
+  =bootcmd-reached=, =linux-loaded=, then =booti-failed= or
+  =load-failed= if something went wrong. After a failure it waits as a
+  USB fastboot device.
+- Reading the status note on the PC, with the card in the reader as
+  =<DEVICE>= (e.g. =/dev/sdb=):
+  #+begin_example
+  sudo dd if=<DEVICE> bs=512 skip=1331200 count=32 status=none | tr -d '\0'
+  #+end_example
+- Build: =bash tools/build_uboot.sh= downloads U-Boot at the tag and
+  only the one BL31 file (checked by sha256), builds =u-boot.bin=,
+  =u-boot.dtb= and the tools, and makes =build/u-boot/uboot.itb=. The
+  build is reproducible (the build date is the tag's). =compare= checks
+  it part by part against a saved copy of card 1's first GiB: the BL31
+  pieces and the device tree are identical, U-Boot differs only in its
+  date string.
+
+* Stage 1: the initramfs
+=initramfs/init= with a static busybox 1.37.0; nothing else.
+1. Mounts =/proc=, =/sys=, =/dev=, =configfs=; waits for =P25TBOOT=
+   (=findfs=, up to 30 s) and mounts it on =/boot=.
+2. Counts the boot (=logs/bootcount= = N) and writes =boot-N-dmesg.txt=
+   and =boot-N-status.txt=.
+3. If =/boot/boot-debian= exists: hand-over.
+   - Reads the volume keys' ADC (the IIO device named =*saradc=). A
+     value below 900 means a key is held: it stays in stage 1.
+   - Otherwise finds =p25troot= (up to 10 s), mounts it read-only,
+     checks =/sbin/init=, moves =/dev=, =/proc=, =/sys= and runs
+     =switch_root= into Debian.
+   - Everything is noted in =boot-N-handover.txt=.
+4. If it stays in stage 1:
+   - read-only register dumps (=boot-N-pmic.txt=, =boot-N-gpio.txt=);
+   - a hello on the screen (tty1) with the boot number;
+   - =autorun.sh= from P25TBOOT, if present;
+   - a USB gadget on the USB-C port: serial console (=/dev/ttyACM0= on
+     the PC) and network (the tablet is 192.168.7.2);
+   - a root shell on that serial console, and =telnetd= with a root
+     shell without password on that network;
+   - a new status file every 5 s for 2 minutes, then every 30 s.
+   The gadget needs the normal USB-C role (not host mode). The root
+   shells are reachable only with the tablet and a cable in hand - fine
+   for a rescue system, but worth knowing.
+- Build: =bash tools/build_initramfs.sh= downloads the busybox 1.37.0
+  release (checked by sha256), configures it as =defconfig= plus
+  =CONFIG_STATIC=y=, without the SHA hardware acceleration (x86 code that
+  breaks a cross build) and without =tc= (does not build against current
+  kernel headers), and packs it with =init= into
+  =build/stage1/initramfs.cpio.gz=. The build is reproducible (fixed
+  times, sorted names, =cpio --reproducible=, =gzip -n=, UTC).
+  =compare= lists the differences from the first cards' initramfs.
+- History: the first cards ran an initramfs built on 2026-09-25
+  (sha256 af94fcee...). Its volume-key check read =iio:device0=, which
+  became the accelerometer the next day, so the rescue did not work
+  until the fix of 2026-10-21. The bring-up repository's =init= also has
+  a USB2 PHY tuning block that was added after that build and has never
+  run on a card; it waits for its own test (=docs/todo.org=).
+
+* A new card
+With only the new card in the PC's reader:
+1. =bash tools/make_boot_part.sh image= builds
+   =build/boot-part/boot-part.img= (289 MiB): the partition table,
+   =uboot.itb= six times and an empty P25TBOOT. If
+   =build/card1-first-1GiB.img= exists, the partition table is compared
+   with card 1's.
+2. =bash tools/make_boot_part.sh write <DEVICE>= (asks for sudo, then
+   for YES) writes it, compares it read back, moves the backup GPT to
+   the card's end and gives the card its own GUIDs. It refuses anything
+   but a whole removable/USB/SD disk of 4-255 GB, the PC's own disk, a
+   card while another P25T card is in the PC, and any card that carries
+   a P25T system (a partition named P25TROOT, or the p25troot file
+   system at 1 GiB).
+3. =bash debian/install_debian.sh sway= (or =console=) adds the root
+   partition, Debian, the kernel, the device trees and the initramfs
+   (=stage1=, the default; =cards= takes the first cards' old one), and
+   checks every file.
+=tools/clone_boot_part.sh read= / =write <DEVICE>= instead copies the
+first GiB of an existing card.
+
+* On a running card
+All on the tablet, from the unpacked kernel folder or the copied files;
+each keeps what it replaces and updates =CARD-SHA256SUMS=; reboot
+afterwards.
+| Change                     | Command                                                       |
+|----------------------------+---------------------------------------------------------------|
+| new kernel and modules     | =sudo bash install_modules.sh <TAG> <DIR>=, then =sudo bash deploy_kernel.sh <TAG> <DIR>= |
+| new initramfs              | =sudo bash deploy_initramfs.sh initramfs.cpio.gz= (with its =.sha256= beside it) |
+| USB-C role                 | =bash set-usb-role.sh host= / =normal= / =status=              |
+| camera (front or rear)     | =sudo bash set_camera_dtb.sh front <DIR>= / =rear= / =status=  |
+=<TAG>= is the number of the first patch the new kernel adds; the
+outgoing kernel is kept as =*.pre-<TAG>-backup=. =<DIR>= is the
+unpacked =p25t-kernel-<profile>/= folder made by =tools/pack_kernel.sh=.
+
+* Rescue and rollback
+| Situation                        | What to do                                                    |
+|----------------------------------+---------------------------------------------------------------|
+| Debian does not come up          | hold a volume key while pressing power, until the stage-1 text appears on the screen; then the serial console (=/dev/ttyACM0=) or =telnet 192.168.7.2= from the PC, whose USB network interface needs an address in 192.168.7.0/24 (normal USB-C role only) |
+| a new kernel does not boot       | on the PC: copy the newest =Image.pre-NNNN-backup= over =Image= and the matching =*.dtb.pre-NNNN-backup= over =rk3566-teclast-p25t.dtb= on P25TBOOT |
+| a new initramfs does not boot    | on the PC: copy =initramfs.cpio.gz.previous= over =initramfs.cpio.gz= (or, if Debian still runs: =sudo bash deploy_initramfs.sh restore=) |
+| stay in stage 1 on every boot    | delete =boot-debian= on P25TBOOT (put it back to return)      |
+| nothing boots at all             | on the PC: read the U-Boot status note (above) and =logs/= on P25TBOOT |
+| Android back                     | power off and take the card out                               |
+After copying files by hand on the PC, =sha256sum -c CARD-SHA256SUMS=
+in P25TBOOT names the files that changed. That is expected: the next
+=deploy_kernel.sh= or =deploy_initramfs.sh= of that file writes its new
+line.

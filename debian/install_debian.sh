@@ -4,14 +4,16 @@
 # the card to boot it.
 #
 # Usage (SD card in the PC; it asks for sudo itself):
-#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh sway [cards|stage1]
-#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh console [cards|stage1]
+#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh sway [stage1|cards]
+#     bash ~/p25t-backup/p25t-sway/debian/install_debian.sh console [stage1|cards]
 # The second word picks the initramfs:
-#     cards   (default) the one the cards run since 2026-09-25, sha256
-#             af94fcee..., kept in ~/p25t-backup/debian (copied to
-#             build/initramfs/)
-#     stage1  the one tools/build_initramfs.sh built from this repository,
-#             build/stage1/initramfs.cpio.gz, checked against its .sha256
+#     stage1  (default since 2026-10-21) the one tools/build_initramfs.sh
+#             built from this repository, build/stage1/initramfs.cpio.gz,
+#             checked against its .sha256
+#     cards   the one the first cards were made with (2026-09-25, sha256
+#             af94fcee..., kept only in the author's ~/p25t-backup/debian,
+#             copied to build/initramfs/); its volume-key rescue does not
+#             work (docs/todo.org)
 #
 # Needs: build/rootfs-<profile> (build_debian.sh), the packed kernel
 # build/kernel-<profile>/p25t-kernel-<profile>/ (pack_kernel.sh), and a card
@@ -38,12 +40,12 @@ PROFILE="${1:-}"
 case "$PROFILE" in
     console) HOSTNAME_NEW=p25t ;;
     sway)    HOSTNAME_NEW=p25t-sway ;;
-    *) echo "usage: $0 console|sway [cards|stage1]"; exit 1 ;;
+    *) echo "usage: $0 console|sway [stage1|cards]"; exit 1 ;;
 esac
-INITRAMFS="${2:-cards}"
+INITRAMFS="${2:-stage1}"
 case "$INITRAMFS" in
-    cards|stage1) ;;
-    *) echo "usage: $0 console|sway [cards|stage1]"; exit 1 ;;
+    stage1|cards) ;;
+    *) echo "usage: $0 console|sway [stage1|cards]"; exit 1 ;;
 esac
 REPO="$HOME/p25t-backup/p25t-sway"
 R="$REPO/build/rootfs-$PROFILE"

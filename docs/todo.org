@@ -7,11 +7,14 @@ and where the result is (commit, test, doc), then moves to "Done" at the
 end. Started 2026-10-20.
 
 * Boot and stage 1
-** TODO stage1 initramfs as the default
-=install_debian.sh= uses the cards' initramfs (af94fcee...) unless told
-=stage1=. The stage1 one booted the test card (2026-10-20), and with the
-volume-key fix (sha256 30364a9e...) the rescue works too (2026-10-21).
-Next: make it the default.
+** TODO Rescue fix on the sway card and card 1
+Both still run the first cards' initramfs (af94fcee...), so holding a
+volume key does not stop the hand-over there. On each card, with Debian
+running: copy =build/stage1/initramfs.cpio.gz= and its =.sha256= and
+=tools/deploy_initramfs.sh= to the tablet, then
+=sudo bash deploy_initramfs.sh initramfs.cpio.gz= and reboot; check
+=boot-N-handover.txt= (ADC about 1023 on iio:device1). The same
+initramfs serves both profiles.
 ** TODO Boot timing on the test card
 Test-card boots 1-3 handed over to Debian at 8.1-9.2 s, boot 4 at
 4.84 s, the sway card always at ~4.9 s. The extra time is in stage 1's
@@ -34,20 +37,6 @@ bring-up docs say it does. It may help the flaky USB gadget.
 - Kept out of =initramfs/init= here until tested on its own.
 - Test: add it to the test card's init, compare gadget enumeration over
   several boots with and without it (=/boot/no-usb-tuning= skips it).
-** TODO Docs for the boot part (move step 6)
-- =docs/boot.org= here: boot chain, card layout, the three build
-  scripts, =make_boot_part.sh=, rescue.
-- README.org: done 2026-10-21, not committed yet (goes with the next
-  changes): "Not in this repository yet" removed; the build steps use
-  =build_uboot.sh=, =build_initramfs.sh=, =make_boot_part.sh= and
-  =install_debian.sh ... stage1=; "How it boots" no longer says the
-  initramfs tunes the USB PHY; =u-boot/= and =initramfs/= in the folder
-  map.
-- Bring-up repository (private): =docs/boot.org=, =findings.org=,
-  =hardware.org= say the initramfs applies the USB tuning - it does not;
-  =boot.org= gives the initramfs sha256 as ac4f3d83..., the cards carry
-  af94fcee...
-
 * Hardware
 ** WAIT Battery % after a reboot
 After every reboot the RK817 is reset and the driver guesses the charge
@@ -60,13 +49,9 @@ triggerhappy's udev hook logs "th-cmd ... failed with exit code 1" for
 input devices that appear after boot (seen with a USB receiver in host
 mode, 2026-10-20). Check that the volume keys and new input devices
 still reach triggerhappy.
-** TODO Rear camera under sway
-=rear-snap= is installed by the build but was only checked on the
-console card.
 ** TODO Front camera follow-ups
 - A photo tool like =rear-snap= (both flips on, gain; or one tool for
   both cameras).
-- Check it on the sway card (kernel with 0027-0030, front DTB).
 - One camera at a time: switching is a DTB swap and a reboot
   (=tools/set_camera_dtb.sh=). Both at once would need the ISP path for
   the rear camera (lanes 0-1), not in mainline for rk3566.
@@ -102,6 +87,22 @@ The series sits on a commit between 7.3-rc4 and rc5.
   public history is known to be good.
 
 * Done
+** DONE Both cameras under sway
+CLOSED: [2026-10-21]
+Front and rear camera work on the sway card (kernel with 0001-0030;
+the front one with the front DTB).
+** DONE Docs for the boot part
+CLOSED: [2026-10-21]
+README.org builds a card from this repository alone (commit 29);
+=docs/boot.org= describes the chain, the card, U-Boot, stage 1, a new
+card, the tools for a running card, and rescue and rollback. In the
+bring-up repository (private), =docs/boot.org=, =findings.org=,
+=hardware.org= and README.org no longer say the initramfs applies the
+USB tuning or give the old hash ac4f3d83...; they point here for the
+maintained =init=.
+** DONE stage1 initramfs as the default
+CLOSED: [2026-10-21]
+=install_debian.sh= uses =build/stage1/= unless told =cards=.
 ** DONE Volume-key rescue
 CLOSED: [2026-10-21]
 Holding a volume key at power-on did not keep the stage-1 system: init

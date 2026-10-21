@@ -72,8 +72,17 @@ still reach triggerhappy.
 ** TODO Rear camera under sway
 =rear-snap= is installed by the build but was only checked on the
 console card.
-** TODO Front camera GC02M2
-No mainline driver; needs D-PHY split mode.
+** TODO Front camera GC02M2 (work in progress)
+No mainline driver; the CSI D-PHY must run in split mode. Started
+2026-10-18 on the console card; on hp240 (not committed yet): patches
+0027 (GC02M2 sensor driver), 0028 and 0030 (inno-csidphy split mode),
+0029 (front-camera DTB variant), =tools/apply_new_patches.sh=,
+=tools/set_camera_dtb.sh=, =tests/test_07_front_probe.sh=, and changes
+to =kernel/common.fragment=, =kernel/p25t-console.config=,
+=kernel/patches/README.org=, =tools/pack_kernel.sh=.
+- When it works: review the patches, squash the trial-and-error steps
+  (as was done for the bring-up series), renumber, update
+  =kernel/patches/README.org=, then commit and push the final files.
 ** TODO Rear camera follow-ups
 Bayer order (RGGB) and the capture unit's reset in the drivers; full
 2592x1944; focus motor (DW9714); auto exposure in =rear-snap=.
@@ -82,6 +91,14 @@ Enumeration works best with the cable in before power-on. See the USB
 tuning item above.
 
 * Sway card
+** TODO qutebrowser does not start
+Installed for testing (2026-10-20); it does not start. The cards install
+without Recommends, so a part that Qt 6 or qutebrowser only recommends
+(a platform plugin, the web engine's pieces) may be missing.
+- =tools/recommends_check.py qutebrowser= lists every missing Recommends
+  under it; with its start-up error, decide what goes into
+  =debian/packages-sway.txt=.
+- Then the same check for the other Qt 6 programs on trial.
 ** TODO Touch helpers
 wvkbd (on-screen keyboard) and lisgd (edge gestures) are installed but
 not set up.

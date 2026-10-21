@@ -31,7 +31,7 @@ card's root filesystem too.
 
 * What works
 Patch numbers are this repository's series, =kernel/patches/0001= ...
-=0026=.
+=0030=.
 | Area                          | State   | How                                                     |
 |-------------------------------+---------+---------------------------------------------------------|
 | boot from microSD             | works   | stock SPL -> mainline U-Boot -> Linux (see "How it boots") |
@@ -48,8 +48,8 @@ Patch numbers are this repository's series, =kernel/patches/0001= ...
 | USB-C host (wired keyboard)   | works   | 0007, 0008; switched with =set-usb-role host=, then reboot |
 | USB-C device (serial, network)| flaky   | best with the cable in before power-on                  |
 | rear torch                    | works   | 0019                                                    |
-| rear camera                   | works   | 0024-0026: raw 1296x972 frames, =rear-snap= makes a PNG |
-| front camera                  | open    | no mainline driver for the GC02M2                       |
+| rear camera                   | works   | 0024-0027: raw 1296x972 frames, =rear-snap= makes a PNG |
+| front camera                  | works   | 0027-0030: raw 1600x1200 and 1296x972 frames; front DTB (one camera at a time) |
 Boot to a login takes about 14 s (kernel ~6 s).
 
 On the sway card:
@@ -145,17 +145,25 @@ first:
   never start sway.
 - =rear-snap photo_{now}.png= takes a photo with the rear camera (made
   for the console card, not yet checked under sway).
+- The front camera needs its own device tree, because the SoC has one
+  camera input. =pack_kernel.sh= packs it with =set_camera_dtb.sh=; on
+  the tablet, =sudo bash set_camera_dtb.sh front <DIR>= (=<DIR>= = the
+  unpacked kernel folder) makes it active from the next boot. =rear=
+  switches back (run it before the next =deploy_kernel.sh=), =status=
+  tells which one is active. There is no photo tool for it yet;
+  =tests/test_21_front_kernel5.sh= shows a capture with =v4l2-ctl=.
+  Checked on the console card.
 
 * Repository map
 | Path               | Contents                                                          |
 |--------------------+-------------------------------------------------------------------|
-| =kernel/patches/=  | the 26 kernel patches, with a README (subjects, old numbering)    |
+| =kernel/patches/=  | the 30 kernel patches, with a README (subjects, old numbering)    |
 | =kernel/=          | config and its fragments, the AIC8800 build fix                   |
 | =debian/=          | root filesystem build, card install, package lists, tablet setup  |
 | =config/=          | the user's =~/.config= on the sway card: sway, foot, fuzzel, zathura, GTK |
 | =tools/=           | kernel build, card tools, checks run on the tablet, privacy check |
 | =docs/=            | tutorial and notes                                                |
-| =tests/=           | the sway card's tests: scripts as they ran and their results      |
+| =tests/=           | tests: scripts as they ran and their results (07-21: front camera) |
 
 | Document                                                         | Read it for                                       |
 |------------------------------------------------------------------+---------------------------------------------------|
@@ -196,6 +204,16 @@ The problems that took longest, as lessons for similar tablets:
   not only on/off. Then a second capture froze the tablet: the capture
   unit's runtime reset also wipes its IOMMU, so a udev rule keeps it
   powered.
+- *Front camera* (2026-10-19/20, tests 07-21): mainline had no driver
+  for the GC02M2, and the camera sits on the second half of the CSI
+  D-PHY (split mode), which mainline did not support. A new driver (0029)
+  and split mode (0028) gave frames, but the capture unit wrote past its
+  buffers until the first half's lane enables were set as well. Then
+  every capture after the first was rolled: mainline's capture driver
+  stopped the sensor before waiting for the end of the frame (0027 waits
+  first). Lesson: when only the first run after a boot is clean, look at
+  the stop path. The sensor is mounted turned by 180 degrees; its Bayer
+  order stays RGGB with any flip (0029, 0030).
 - *Boot time*: userspace took 17-36 s. A mail server pulled in through
   Recommends waited for the network at every boot; both cards now
   install without Recommends.
@@ -208,7 +226,8 @@ The problems that took longest, as lessons for similar tablets:
   the charge from one voltage reading, too high with the charger in. The
   running count is right (=tests/README.org=, test 04). A kernel change
   is proposed, not yet made.
-- Front camera GC02M2: no mainline driver.
+- Front camera: no photo tool yet, not yet checked under sway; switching
+  cameras means a device tree swap and a reboot.
 - Rear camera: Bayer order and the capture unit's reset belong in the
   drivers; full 2592x1944 resolution; focus motor; auto exposure.
 - USB-C device mode is unreliable.
